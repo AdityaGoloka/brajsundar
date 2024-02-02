@@ -30,6 +30,7 @@ import Courses from "./pages/Courses/Courses.jsx";
 import Workshop from "./pages/Workshop/Workshop.jsx";
 import Coaching from "./pages/Coaching/Coaching.jsx";
 import About from "./pages/About.jsx";
+import Video from "./pages/Videos/Video.jsx";
 
 export default function App() {
   return (
@@ -56,6 +57,7 @@ export default function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/academy" element={<Academy />} />
+          <Route path="/video" element={<Video />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/workshop" element={<Workshop />} />
           <Route path="/coaching" element={<Coaching />} />
