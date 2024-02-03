@@ -39,7 +39,7 @@ const Home = () => {
       {/* <section> */} <Blog />
       {/* </section> */}
       <section>
-        {"Videos "}
+        {" "}
         <Videos />
       </section>
       <section id="Contact">
