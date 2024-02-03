@@ -1,13 +1,3 @@
-// import Test from "./Test";
-// import "./app.scss";
-
-// const App = () => {
-//   return (
-//
-//   );
-// };
-
-// export default App;
 import Footer from "./components/Footer/Footer.jsx";
 
 import React from "react";
@@ -30,7 +20,8 @@ import Courses from "./pages/Courses/Courses.jsx";
 import Workshop from "./pages/Workshop/Workshop.jsx";
 import Coaching from "./pages/Coaching/Coaching.jsx";
 import About from "./pages/About.jsx";
-import Video from "./pages/Videos/Video.jsx";
+import CourseViewPage from "./pages/CourseViewPage.jsx";
+import Videos from "./pages/components/carousel/Videos.jsx";
 
 export default function App() {
   return (
@@ -57,10 +48,14 @@ export default function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/academy" element={<Academy />} />
-          <Route path="/video" element={<Video />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/workshop" element={<Workshop />} />
-          <Route path="/coaching" element={<Coaching />} />
+          <Route path="/academy/courses" element={<Courses />} />
+          <Route path="/academy/workshop" element={<Workshop />} />
+          <Route path="/video" element={<Videos />} />
+          <Route path="/academy/coaching" element={<Coaching />} />
+          <Route
+            path="/academy/course-detail/:id"
+            element={<CourseViewPage />}
+          />
           <Route path="/about" element={<About />} />
           <Route path="/article/:id" element={<SingleBlog />} />{" "}
           {/* Use Route within Routes */}

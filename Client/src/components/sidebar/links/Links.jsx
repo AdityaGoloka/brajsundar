@@ -49,9 +49,9 @@ const Links = () => {
   const dropdownContent = {
     Academy: {
       contents: [
-        { content: "Courses", href: "/courses" },
-        { content: "Workshop", href: "/workshop" },
-        { content: "Coaching", href: "/coaching" },
+        { content: "Courses", href: "/academy/courses" },
+        { content: "Workshop", href: "/academy/workshop" },
+        { content: "Coaching", href: "/academy/coaching" },
       ],
     },
     Literature: {
