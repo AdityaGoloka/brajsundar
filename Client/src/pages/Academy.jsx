@@ -13,7 +13,7 @@ const Academy = () => {
           <h1 className="font-bold text-3xl my-5">Courses</h1>
           <a
             type="button"
-            href="/courses"
+            href="/academy/courses"
             className="text-white tetx-2xl  border-2 border-gray-600 border-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg  px-10  py-2.5  focus:outline-none bg-tranparent hover:bg-white/10 w-100 h-12"
           >
             Explore
@@ -32,7 +32,7 @@ const Academy = () => {
           <h1 className="font-bold text-3xl my-5">Workshop</h1>
           <a
             type="button"
-            href="/workshop"
+            href="/academy/workshop"
             className="text-white tetx-2xl  border-2 border-gray-600 border-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg  px-10  py-2.5  focus:outline-none bg-tranparent hover:bg-white/10 w-100 h-12"
           >
             Explore
@@ -52,7 +52,7 @@ const Academy = () => {
           <h1 className="font-bold text-3xl my-5">Coaching</h1>
           <a
             type="button"
-            href="/workshop"
+            href="/academy/workshop"
             className="text-white tetx-2xl  border-2 border-gray-600 border-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg  px-10  py-2.5  focus:outline-none bg-tranparent hover:bg-white/10 w-100 h-12"
           >
             Explore
