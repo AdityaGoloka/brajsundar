@@ -9,6 +9,7 @@ import Reels from "layouts/reels";
 import Videos from "layouts/videos";
 import Reviews from "layouts/reviews";
 import Articles from "layouts/articles";
+import Profile from "layouts/profile";
 import PropTypes from "prop-types"; // Import PropTypes
 
 import Icon from "@mui/material/Icon";
@@ -175,6 +176,7 @@ export default function App() {
         <Route index path="video" element={<Videos />} />
         <Route path="reviews" element={<Reviews />} />
         <Route path="articles" element={<Articles />} />
+        <Route path="profile" element={<Profile />} />
       </Routes>
       {/* </RequirePath> */}
       {configsButton}
