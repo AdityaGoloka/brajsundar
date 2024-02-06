@@ -56,7 +56,7 @@ const Hero = () => {
           initial="initial"
           animate="animate"
         >
-          <motion.h2 variants={textVariants} className="pt-14">
+          <motion.h2 variants={textVariants} className="">
             {text}
             <Cursor cursorColor="#4ca5ff" />
           </motion.h2>
@@ -89,7 +89,7 @@ const Hero = () => {
       </motion.div>
       <div className="imageContainer pr-[10rem]   object-cover ">
         <img
-          className="object-cover rounded-xl"
+          className="object-cover rounded-xl mx-auto"
           style={{ width: "28rem", height: "28rem" }}
           src="https://www.brajsundar.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FmainPage.f3cd4c84.jpeg&w=384&q=75"
           alt="braj"

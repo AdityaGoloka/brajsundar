@@ -5,7 +5,6 @@ import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
-
 const Videos = () => {
   const ref = useRef();
   const [loading, setLoading] = useState(true);
@@ -14,7 +13,9 @@ const Videos = () => {
   useEffect(() => {
     const getVideos = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/youtube/videos");
+        const response = await axios.get(
+          "http://localhost:5000/api/youtube/videos"
+        );
         setVideoData(response.data);
       } catch (error) {
         console.error("Error fetching videos:", error);
@@ -67,13 +68,14 @@ const Videos = () => {
                     href={video?.video_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                  >
-                  </a>
+                  ></a>
                   <div className="">
                     <iframe
                       title={`YouTube Video ${video?._id}`}
                       className="w-full h-96 md:h-128 lg:h-160 xl:h-192"
-                      src={`https://www.youtube.com/embed/${getYoutubeVideoId(video?.video_url)}`}
+                      src={`https://www.youtube.com/embed/${getYoutubeVideoId(
+                        video?.video_url
+                      )}`}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen

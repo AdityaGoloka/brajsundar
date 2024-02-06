@@ -38,20 +38,29 @@ const Home = () => {
         <Portfolio />
       </section> */}
       {/* <section> */}
+      <div className="my-12"></div>
       <section id="portfolio">
         <Blog />
       </section>
+      <div className="my-[5rem]"></div>
+
       <section id="portfolio">
         <Books />
       </section>
+      <div className="my-[8rem]"></div>
+
       {/* </section> */}
       <section>
         {" "}
         <Videos />
       </section>
+      <div className="my-[5rem]"></div>
+
       <section>
         <Contact />
       </section>
+      <div className="my-10"></div>
+
       {/* <section id="Footer"> */}
       <Footer />
       {/* </section> */}

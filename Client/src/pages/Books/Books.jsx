@@ -6,17 +6,17 @@ import RateDropDown from "./RateDropDown.jsx";
 import VideoCard from "./VideoCard";
 import axios from "axios";
 
-const Video = () => {
+const Books = () => {
   const [videoData, setVideoData] = useState([]);
 
   useEffect(() => {
     const getAllVideos = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/youtube/videos"
+          "http://localhost:5000/api/books/getBooks"
         );
         console.log(response.data);
-        setVideoData(response.data);
+        setVideoData(response.data.data);
       } catch (error) {
         console.error("Error fetching videos:", error);
       }
@@ -28,7 +28,7 @@ const Video = () => {
   return (
     <div>
       <div>
-        <h1 className="text-center text-4xl font-bold mb-7">Videos</h1>
+        <h1 className="text-center text-4xl font-bold mb-7">Books</h1>
       </div>{" "}
       <div className="mx-[7rem] flex gap-10 justify-between lg:flex-row flex-col">
         <div className="lg:block hidden">
@@ -51,9 +51,11 @@ const Video = () => {
           {videoData.map((videos) => (
             <VideoCard
               key={videos.id}
-              videoName={videos.videoName}
-              video_url={videos.video_url}
+              bookName={videos.bookName}
+              thumbnail={videos.bookThumbnail}
+              bookLink={videos.bookLink}
             />
+            // <h1>hello world</h1>
           ))}
         </div>
       </div>
@@ -61,4 +63,4 @@ const Video = () => {
   );
 };
 
-export default Video;
+export default Books;

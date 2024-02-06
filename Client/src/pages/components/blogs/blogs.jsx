@@ -16,10 +16,10 @@ const Single = ({ item }) => {
     target: ref,
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [-300, 200]);
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
 
   const truncatedBlogDetail =
-    item.content.length > 30
+    item.content.length > 20
       ? `${item.content.split(" ").slice(0, 50).join(" ")} ...`
       : item.content;
 
@@ -30,12 +30,16 @@ const Single = ({ item }) => {
 
   return (
     <section>
-      <div className="container my-5 lg:my-0 ">
+      <div className="container mx-10 py-3 sm:mx-0 sm:my-0">
         <div className="wrapper">
           <div className="imageContainer" ref={ref}>
-            <img src={item.thumbnail} alt="" />
+            <img
+              src={item.thumbnail}
+              className="sm:w-[80%] sm:mx-auto lg:w-full mx-10"
+              alt=""
+            />
           </div>
-          <motion.div className="textContainer " style={{ y }}>
+          <motion.div className="textContainer sm:-my-10" style={{ y }}>
             <h2>{item.title}</h2>
             <p>{truncatedBlogDetail}</p>
             <div>
