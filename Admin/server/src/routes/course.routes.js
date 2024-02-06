@@ -1,10 +1,8 @@
 import { Router } from "express";
-// import {
-//   uploadCourse
-// } from "../controllers/course.controller.js";
+import { addCourse } from "../controllers/course.controller.js";
 const router = Router();
 
-// router.post("/uploadCourse", uploadCourse);
+router.post("/addCourse", addCourse);
 // router.get("/getArticles", getArticles);
 // router.delete("/deleteArticle/:id", deleteArticle);
 // router.get("/getArticle/:id", getArticle);

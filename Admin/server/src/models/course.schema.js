@@ -20,7 +20,7 @@ const courseSchema = mongoose.Schema(
     //   required: true,
     // },
     CourseDescription: {
-      type: [String],
+      type: String,
       required: true,
     },
     CourseObjectives: {
