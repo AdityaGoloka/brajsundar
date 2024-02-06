@@ -25,6 +25,7 @@ import Video from "./pages/Videos/Video.jsx";
 import Reel from "./pages/Reels/Reel.jsx";
 import Blogs from "./pages/Blogs/Blogs.jsx";
 import Books from "./pages/Books/Books.jsx";
+import BlogDetail from "./pages/Blogs/BlogDetail.jsx";
 
 export default function App() {
   return (
@@ -52,6 +53,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="/academy" element={<Academy />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/books" element={<Books />} />
           <Route path="/academy/courses" element={<Courses />} />
           <Route path="/academy/workshop" element={<Workshop />} />
