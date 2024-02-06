@@ -101,11 +101,11 @@ const Books = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="hover:scale-100 h-3"
+                className="hover:scale-100 "
               >
                 <div
                   className="bg-white/5 p-5 rounded-lg cursor-pointer mx-5 my"
-                  style={{ height: "500px" }}
+                  style={{ height: "330px" }}
                 >
                   <div className="">
                     <img
@@ -115,7 +115,7 @@ const Books = () => {
                     />
                   </div>
                   <div className="">
-                    <h2 className="text-2xl text-white font-bold font-medium title-font mb-4">
+                    <h2 className="text-xl text-white font-bold font-medium title-font mb-4">
                       {videos.bookName}
                     </h2>
                     {/* Add other details like author, description, etc. here */}
