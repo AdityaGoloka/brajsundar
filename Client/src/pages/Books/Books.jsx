@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import RatingCard from "./RatingCard";
 import VideoDuration from "./VideoDuration";
 import PriceFilterCard from "./PriceFilterCard.jsx";
 import RateDropDown from "./RateDropDown.jsx";
 import VideoCard from "./VideoCard";
-import { motion, useAnimation } from "framer-motion";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import axios from "axios";
 
 const Books = () => {
   const [videoData, setVideoData] = useState([]);
@@ -29,108 +25,41 @@ const Books = () => {
     getAllVideos();
   }, []);
 
-  const controls = useAnimation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-
-      if (scrollY > windowHeight / 2) {
-        controls.start({ opacity: 1 });
-      } else {
-        controls.start({ opacity: 0 });
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [controls]);
-
-  const sliderSettings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
   return (
-    <motion.div
-      className="text-gray-600 body-font"
-      initial={{ opacity: 0 }}
-      animate={controls}
-    >
-      <div className="container px-10 mx-auto">
-        <div className="flex flex-wrap w-full mb-16 justify-center">
-          <div className="lg:w-1/2 w-full  lg:mb-0 text-center ">
-            <motion.h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">
-              Books
-            </motion.h1>
-            <div className="h-1 w-full bg-indigo-500 rounded"></div>
+    <div>
+      <div>
+        <h1 className="text-center text-4xl font-bold mb-7">Books</h1>
+      </div>{" "}
+      <div className="mx-[7rem] flex gap-10 justify-between lg:flex-row flex-col">
+        <div className="lg:block hidden">
+          {/* ratings */}
+          <div className="w-full my-5 mb-10">
+            <RateDropDown />
+          </div>
+          <div className="w-full my-10">
+            <h1 className="font-bold">Ratings</h1> <RatingCard />
+          </div>
+
+          <div className="w-full my-10">
+            <h1 className="font-bold">Video Duration</h1> <VideoDuration />
+          </div>
+          <div className="w-full my-10">
+            <h1 className="font-bold">Video Duration</h1> <PriceFilterCard />
           </div>
         </div>
-        <div className="slider-controls">
-          <Slider {...sliderSettings}>
-            {videoData.map((videos) => (
-              <motion.div
-                key={videos.id}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="h-4"
-              >
-                <div
-                  className="bg-white/5 p-5 rounded-lg cursor-pointer mx-5 my"
-                  style={{ height: "500px" }}
-                >
-                  <div className="">
-                    <img
-                      className="h-48 w-full object-cover object-center mb-6 rounded"
-                      src={videos.bookThumbnail}
-                      alt={videos.bookName}
-                    />
-                  </div>
-                  <div className="">
-                    <h2 className="text-xl  text-white font-bold font-medium title-font mb-4">
-                      {videos.bookName}
-                    </h2>
-                    {/* Add other details like author, description, etc. here */}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </Slider>
+        <div className="flex flex-col gap-4">
+          {videoData.map((videos) => (
+            <VideoCard
+              key={videos.id}
+              bookName={videos.bookName}
+              thumbnail={videos.bookThumbnail}
+              bookLink={videos.bookLink}
+            />
+            // <h1>hello world</h1>
+          ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

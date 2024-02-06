@@ -9,8 +9,8 @@ import Mainnavbar from "../components/mainNavbar/Mainnavbar";
 import Blog from "./components/blogs/blogs.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import Videos from "./components/carousel/Videos.jsx";
-// import Books from "../components/Books/Books.jsx";
-import Books from "./Books/Books.jsx";
+import Books from "../components/Books/Books.jsx";
+// import Books from "./Books/Books.jsx";
 
 const Home = () => {
   return (
