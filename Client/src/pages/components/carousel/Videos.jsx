@@ -52,7 +52,7 @@ const Videos = () => {
         </div>
       </div>
       <div className="flex items-center h-[250rem] justify-center min-h-screen relative">
-        <div className="rounded-lg overflow-hidden max-w-screen-lg w-full border border-blue-500 mx-4 h-full">
+        <div className="rounded-lg overflow-hidden max-w-screen-lg w-full mx-4 h-full">
           <Carousel
             autoPlay={false}
             dynamicHeight={true}
@@ -70,7 +70,7 @@ const Videos = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 ></a>
-                <div className="h-[600px] w-full border border-green-700">
+                <div className="h-[600px] w-full">
                   <iframe
                     title={`YouTube Video ${video?._id}`}
                     className="w-full h-full md:h-128 lg:h-160 xl:h-192"

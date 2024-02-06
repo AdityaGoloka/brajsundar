@@ -84,7 +84,7 @@ const Books = () => {
       initial={{ opacity: 0 }}
       animate={controls}
     >
-      <div className="container px-10 mx-auto">
+      <div className="container px-10 mx-auto border">
         <div className="flex flex-wrap w-full mb-16 justify-center">
           <div className="lg:w-1/2 w-full  lg:mb-0 text-center ">
             <motion.h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">

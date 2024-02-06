@@ -63,20 +63,20 @@ const Hero = () => {
           <motion.h1 variants={textVariants} className="font-bold">
             Spiritual Leader, Author, Educator
           </motion.h1>
-          <motion.div variants={textVariants} className="buttons">
+          {/* <motion.div variants={textVariants} className="buttons">
             <motion.button variants={textVariants}>
               See the Latest Courses
             </motion.button>
             <motion.button variants={textVariants} className="bg-white">
               Contact Me
             </motion.button>
-          </motion.div>
-          <motion.img
+          </motion.div> */}
+          {/* <motion.img
             variants={textVariants}
             animate="scrollButton"
             src="/scroll.png"
             alt=""
-          />
+          /> */}
         </motion.div>
       </div>
       <motion.div
