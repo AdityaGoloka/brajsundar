@@ -107,3 +107,27 @@
 //     }
 //   }
 // }
+.slider-controls {
+  position: relative; // Ensure relative positioning for the container
+
+  .prev-arrow,
+  .next-arrow {
+    position: absolute; // Position arrows absolutely within the container
+    top: 50%; // Adjust top position to center vertically
+    transform: translateY(-50%); // Center vertically
+    z-index: 1; // Ensure arrows appear above the slider
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+
+  .prev-arrow {
+    left: 0; // Position left arrow at the left edge of the container
+    top: 0;
+    // padding: 10px;
+  }
+
+  .next-arrow .slick-next {
+    right: 0; // Position right arrow at the right edge of the container
+  }
+}

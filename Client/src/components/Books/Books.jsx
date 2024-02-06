@@ -1,6 +1,12 @@
 import { useRef, useEffect, useState } from "react";
 import "./Books.scss";
-import { motion, useAnimation, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useAnimation,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
@@ -112,7 +118,7 @@ const Books = () => {
       initial={{ opacity: 0 }}
       animate={controls}
     >
-      <div className="container px-5 py-10 mx-auto">
+      <div className="container px-5  mx-auto">
         <div className="flex flex-wrap w-full mb-16 justify-center">
           <div className="lg:w-1/2 w-full mb-6 lg:mb-0 text-center">
             <motion.h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">
@@ -149,11 +155,13 @@ const Books = () => {
         </div>
         <div className="flex justify-center items-center ">
           <a href="/blogs">
-            <button className="text-white border border-blue-400 bg-blue-400 rounded-lg px-8 py-4 mt-8">Read More</button>
+            <button className="text-white border border-blue-400 bg-blue-400 rounded-lg px-8 py-4 mt-8">
+              Read More
+            </button>
           </a>
         </div>
       </div>
-    </motion.section >
+    </motion.section>
   );
 };
 

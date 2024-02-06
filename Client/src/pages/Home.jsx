@@ -9,7 +9,8 @@ import Mainnavbar from "../components/mainNavbar/Mainnavbar";
 import Blog from "./components/blogs/blogs.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import Videos from "./components/carousel/Videos.jsx";
-import Books from "../components/Books/Books.jsx";
+// import Books from "../components/Books/Books.jsx";
+import Books from "./Books/Books.jsx";
 
 const Home = () => {
   return (
@@ -42,19 +43,19 @@ const Home = () => {
       <section id="portfolio">
         <Blog />
       </section>
-      <div className="my-[5rem]"></div>
+      {/* <div className="my-[5rem]"></div> */}
 
       <section id="portfolio">
         <Books />
       </section>
-      <div className="my-[8rem]"></div>
+      {/* <div className="my-[8rem]"></div> */}
 
       {/* </section> */}
       <section>
         {" "}
         <Videos />
       </section>
-      <div className="my-[5rem]"></div>
+      {/* <div className="my-[5rem]"></div> */}
 
       <section>
         <Contact />

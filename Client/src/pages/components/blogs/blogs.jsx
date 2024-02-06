@@ -26,13 +26,7 @@ const Blogs = () => {
 
   function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "green" }}
-        onClick={onClick}
-      />
-    );
+    return <div className={className} style={{ ...style }} onClick={onClick} />;
   }
 
   useEffect(() => {
@@ -99,7 +93,7 @@ const Blogs = () => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 900,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -107,7 +101,7 @@ const Blogs = () => {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -122,52 +116,58 @@ const Blogs = () => {
       initial={{ opacity: 0 }}
       animate={controls}
     >
-      <div className="container px-5 py-10 mx-auto">
+      <div className="container px-10 mx-auto">
         <div className="flex flex-wrap w-full mb-16 justify-center">
-          <div className="lg:w-1/2 w-full mb-6 lg:mb-0 text-center">
+          <div className="lg:w-1/2 w-full  lg:mb-0 text-center ">
+            {/* <div className="flex "> */}{" "}
             <motion.h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">
               Explore My Blogs
             </motion.h1>
+            {/* <button
+                type="button"
+                className=" mx-auto text-sm focus:outline-none text-white bg-purple-700 hover:bg-purple-800  focus:ring-4 focus:ring-purple-300  rounded-lg  px-3 py-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+              >
+                Enroll Now
+              </button> */}
+            {/* </div> */}
             <div className="h-1 w-full bg-indigo-500 rounded"></div>
           </div>
         </div>
-        <Slider {...sliderSettings}>
-          {items.map((item) => (
-            <motion.div
-              key={item._id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className=" hover:scale-100 h-3"
-            >
-              <div className="bg-white/5 p-6  rounded-lg cursor-pointer  mx-2 ">
-                <div className="h-[50%]">
-                  {" "}
-                  <img
-                    className="h-48 w-full object-contain object-center mb-6 rounded"
-                    src={item.thumbnail}
-                    alt={item.title}
-                  />
+        <div className="slider-controls">
+          <SamplePrevArrow className="prev-arrow" />
+          <Slider {...sliderSettings}>
+            {items.map((item) => (
+              <motion.div
+                key={item._id}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="hover:scale-100 h-3"
+              >
+                <div
+                  className="bg-white/5 p-5 rounded-lg cursor-pointer mx-5 my"
+                  style={{ height: "500px" }}
+                >
+                  <div className="">
+                    <img
+                      className="h-48 w-full object-cover object-center mb-6 rounded"
+                      src={item.thumbnail}
+                      alt={item.title}
+                    />
+                  </div>
+                  <div className="">
+                    <h2 className="text-2xl text-white font-bold font-medium title-font mb-4">
+                      {item.title}
+                    </h2>
+                    <p className="text-md text-white ">
+                      {item.content.substring(0, 100)}...
+                    </p>
+                  </div>
                 </div>
-                <div className="h-[50% ] text-wrap text-balance">
-                  <h2 className="text-2xl text-white font-bold font-medium title-font mb-4">
-                    {item.title}
-                  </h2>
-                  <p className="text-md text-white ">{item.content}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </Slider>
-        <div className="flex justify-center items-center mt-10">
-          <a href="/blogs">
-            <button
-              type="button"
-              className="px-14 mx-auto text-lg focus:outline-none text-white bg-purple-700 hover:bg-purple-800  focus:ring-4 focus:ring-purple-300 font-medium rounded-lg  px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-            >
-              Read More
-            </button>
-          </a>
+              </motion.div>
+            ))}
+          </Slider>
+          <SampleNextArrow className="next-arrow " />
         </div>
       </div>
     </motion.section>
