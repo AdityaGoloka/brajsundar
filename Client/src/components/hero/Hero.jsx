@@ -91,7 +91,7 @@ const Hero = () => {
         <img
           className="object-cover rounded-xl mx-auto"
           style={{ width: "28rem", height: "28rem" }}
-          src="https://www.brajsundar.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FmainPage.f3cd4c84.jpeg&w=384&q=75"
+          src="./hero-image.png"
           alt="braj"
         />
       </div>

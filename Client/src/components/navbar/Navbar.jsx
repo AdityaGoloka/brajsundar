@@ -10,12 +10,12 @@ const Navbar = () => {
       <Sidebar />
       <div className="lg:mx-[10rem] flex justify-between ">
         {" "}
-        <div className="my-[2rem] bg-white flex w-28 rounded ml-auto mr-10 lg:ml-0 lg:mr-0">
+        <div className="my-[2rem] flex w-28 rounded ml-auto mr-10 lg:ml-0 lg:mr-0">
           <a href="/">
             <img
               className="flex items-right"
-              src="https://www.brajsundar.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.fd5e1a42.png&w=128&q=75"
-              alt=""
+              src="./logo.png"
+              alt="logo"
             />
           </a>
         </div>
