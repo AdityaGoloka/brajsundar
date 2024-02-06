@@ -13,13 +13,13 @@ import Books from "../components/Books/Books.jsx";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
       {/* Uncomment the following lines */}
       {/* <Cursor /> */}
       <section id="Homepage">
         {/* Uncomment the following lines */}
         {/* <div className="md:hidden block"> */}
-        <Navbar />
+        {/* <Navbar /> */}
         {/* </div> */}
         {/* Uncomment the following lines */}
         {/* <div className="md:block hidden">
@@ -37,19 +37,24 @@ const Home = () => {
         {" "}
         <Portfolio />
       </section> */}
-      {/* <section> */} <Blog />
-      <Books />
+      {/* <section> */}
+      <section id="portfolio">
+        <Blog />
+      </section>
+      <section id="portfolio">
+        <Books />
+      </section>
       {/* </section> */}
       <section>
         {" "}
         <Videos />
       </section>
-      <section id="Contact">
+      <section>
         <Contact />
       </section>
-      <section id="Footer">
-        <Footer />
-      </section>
+      {/* <section id="Footer"> */}
+      <Footer />
+      {/* </section> */}
       {/* Framer Motion Crash Course */}
       {/* Uncomment the following lines */}
       {/* <Test/>

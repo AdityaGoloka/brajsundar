@@ -4,7 +4,7 @@ const Footer = () => {
   const date = new Date();
   return (
     <div>
-      <footer className="relative bg-blueGray-200 pt-8 pb-6 bottom-0">
+      <footer className=" bg-blueGray-200 pt-8  bottom-0">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap text-left lg:text-left">
             <div className="w-full lg:w-6/12 px-4">

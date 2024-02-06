@@ -2,11 +2,11 @@ import React from "react";
 
 const Social = () => {
   return (
-    <div className="bg-transparent flex gap-4">
+    <div className="bg-transparent flex gap-4 items-center font-bold ">
       <a href="#!" role="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-6 w-6"
           fill="currentColor"
           style={{ color: "#1877f2" }}
           viewBox="0 0 24 24"
@@ -18,7 +18,7 @@ const Social = () => {
       <a href="#!" role="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-6 w-6"
           fill="currentColor"
           style={{ color: "#c13584" }}
           viewBox="0 0 24 24"
@@ -30,7 +30,7 @@ const Social = () => {
       <a href="#!" role="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-7 w-7"
+          className="h-9 w-9"
           fill="currentColor"
           style={{ color: "#ea4335" }}
           viewBox="0 0 24 24"
@@ -46,7 +46,7 @@ const Social = () => {
       <a href="#!" role="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-6 w-6"
           fill="currentColor"
           style={{ color: "#1da1f2" }}
           viewBox="0 0 24 24"

@@ -16,7 +16,7 @@ const Single = ({ item }) => {
     target: ref,
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 200]);
 
   const truncatedBlogDetail =
     item.content.length > 30
@@ -30,12 +30,12 @@ const Single = ({ item }) => {
 
   return (
     <section>
-      <div className="container">
+      <div className="container my-5 lg:my-0 ">
         <div className="wrapper">
           <div className="imageContainer" ref={ref}>
             <img src={item.thumbnail} alt="" />
           </div>
-          <motion.div className="textContainer" style={{ y }}>
+          <motion.div className="textContainer " style={{ y }}>
             <h2>{item.title}</h2>
             <p>{truncatedBlogDetail}</p>
             <div>
@@ -85,11 +85,11 @@ const Blogs = () => {
 
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
-    damping: 30,
+    damping: 10,
   });
 
   return (
-    <div className="portfolio" ref={ref}>
+    <div className="portfolio overflow-x-hidden " ref={ref}>
       <div className="progress">
         <h1>Blogs</h1>
         <motion.div style={{ scaleX }} className="progressBar"></motion.div>

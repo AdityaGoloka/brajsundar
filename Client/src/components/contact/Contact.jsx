@@ -49,22 +49,34 @@ const Contact = () => {
   return (
     <motion.div
       ref={ref}
-      className="contact px-10"
+      className="contact md:mx-10 "
       variants={variants}
       initial="initial"
       whileInView="animate"
     >
-      <motion.div className="textContainer" variants={variants}>
+      <motion.div
+        className="textContainer sm:-my-10 lg:my-0 "
+        variants={variants}
+      >
         <motion.h1 variants={variants}>Let’s Connect</motion.h1>
-        <motion.div className="item" variants={variants}>
+        <motion.div
+          className="item flex sm:gap-2 sm:flex md:gap-0 md:block"
+          variants={variants}
+        >
           <h2>Mail</h2>
           <span>hello@react.dev</span>
         </motion.div>
-        <motion.div className="item" variants={variants}>
+        <motion.div
+          className="item sm:gap-2 sm:flex md:gap-0 md:block"
+          variants={variants}
+        >
           <h2>Address</h2>
           <span>Hello street New York</span>
         </motion.div>
-        <motion.div className="item" variants={variants}>
+        <motion.div
+          className="item sm:gap-2 sm:flex md:gap-0 md:block"
+          variants={variants}
+        >
           <h2>Phone</h2>
           <span>+1 234 5678</span>
         </motion.div>

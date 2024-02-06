@@ -1,14 +1,15 @@
 @import "../../app.scss";
 
 .hero {
-  height: calc(100vh - 100px);
+  height: calc(100vh);
+  padding: 10px;
   overflow: hidden;
   background: linear-gradient(180deg, #0c0c1d, #111132);
   position: relative;
 
   .wrapper {
     max-width: 1366px;
-    height: 100%;
+    height: 90%;
     margin: auto;
 
     .textContainer {
@@ -17,7 +18,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 40px;
+      gap: 10px;
 
       @include mobile {
         height: 50%;
@@ -34,7 +35,7 @@
       }
 
       h1 {
-        font-size: 88px;
+        font-size: 70px;
 
         @include mobile {
           font-size: 36px;
@@ -48,6 +49,7 @@
           border-radius: 10px;
           background-color: transparent;
           color: white;
+          cursor: pointer;
           margin-right: 20px;
           cursor: pointer;
           font-weight: 300;
@@ -83,8 +85,8 @@
 
   .slidingTextContainer {
     position: absolute;
-    font-size: 50vh;
-    bottom: -120px;
+    font-size: 60vh;
+    bottom: -50px;
     white-space: nowrap;
     color: #ffffff09;
     width: 50%;
