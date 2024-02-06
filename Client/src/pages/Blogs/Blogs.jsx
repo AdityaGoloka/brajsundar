@@ -25,7 +25,7 @@ const Blogs = () => {
       <h1 className="mx-auto text-3xl items-center font-bold text-center">
         Blogs
       </h1>
-      <div className="mx-[5rem] my-[2rem] grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mx-auto items-center justify-center gap-5">
+      <div className="my-[2rem] grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mx-auto items-center justify-center gap-5">
         {blogData.map((data, index) => (
           <div key={index}>
             <BlogCard data={data} />
