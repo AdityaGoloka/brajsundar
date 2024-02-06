@@ -31,7 +31,6 @@ export default function App() {
     <Router>
       <div className="">
         <Navbar />
-
         {/* <nav>
             <ul>
               <li>
@@ -42,12 +41,11 @@ export default function App() {
               </li>
               <li>
                 <Link to="/users">Users</Link>
-              </li>
+              </li> 
             </ul>
           </nav> */}
-
-        {/* A <Routes> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
+        {/* A <Routes> looks through its children <Route> and renders the first one that matches the current URL. */}
+        
         <Routes>
           <Route index element={<Home />} />
           <Route path="/academy" element={<Academy />} />

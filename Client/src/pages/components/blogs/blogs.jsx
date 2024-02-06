@@ -1,18 +1,48 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./blogs.scss";
 
 const Blogs = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          margin: "10px 0px",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "green" }}
+        onClick={onClick}
+      />
+    );
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/articles/getArticles");
+        const response = await fetch(
+          "http://localhost:5000/api/articles/getArticles"
+        );
         const data = await response.json();
         setItems(data.data);
-        console.log(items);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -49,6 +79,43 @@ const Blogs = () => {
     };
   }, [controls]);
 
+  var sliderSettings = {
+    // dots: true,
+    // dotsClass: "custom-dots", // Add a custom class for the dots
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <motion.section
       className="text-gray-600 body-font"
@@ -64,39 +131,46 @@ const Blogs = () => {
             <div className="h-1 w-full bg-indigo-500 rounded"></div>
           </div>
         </div>
-        <div className="flex flex-wrap -m-4">
-          {items.slice(0, 6).map((item) => (
+        <Slider {...sliderSettings}>
+          {items.map((item) => (
             <motion.div
               key={item._id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="xl:w-1/3 md:w-1/2 p-4"
+              className=" hover:scale-100 h-3"
             >
-              <div className="bg-gray-100 p-6 rounded-lg h-[18rem] w-[27rem]">
-                <img
-                  className="h-48 w-full object-contain object-center mb-6 rounded border-2 border-red-600"
-                  src={item.thumbnail}
-                  alt={item.title}
-                />
-                <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
-                  {formatDate(item.createdAt)}
-                </h3>
-                <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
-                  {item.title}
-                </h2>
-                <p className="text-base leading-5">{item.content}</p>
+              <div className="bg-white/5 p-6  rounded-lg cursor-pointer  mx-2 ">
+                <div className="h-[50%]">
+                  {" "}
+                  <img
+                    className="h-48 w-full object-contain object-center mb-6 rounded"
+                    src={item.thumbnail}
+                    alt={item.title}
+                  />
+                </div>
+                <div className="h-[50% ] text-wrap text-balance">
+                  <h2 className="text-2xl text-white font-bold font-medium title-font mb-4">
+                    {item.title}
+                  </h2>
+                  <p className="text-md text-white ">{item.content}</p>
+                </div>
               </div>
             </motion.div>
           ))}
-        </div>
-        <div className="flex justify-center items-center ">
+        </Slider>
+        <div className="flex justify-center items-center mt-10">
           <a href="/blogs">
-            <button className="text-white border border-blue-400 bg-blue-400 rounded-lg px-8 py-4 mt-8">Read More</button>
+            <button
+              type="button"
+              className="px-14 mx-auto text-lg focus:outline-none text-white bg-purple-700 hover:bg-purple-800  focus:ring-4 focus:ring-purple-300 font-medium rounded-lg  px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+            >
+              Read More
+            </button>
           </a>
         </div>
       </div>
-    </motion.section >
+    </motion.section>
   );
 };
 
