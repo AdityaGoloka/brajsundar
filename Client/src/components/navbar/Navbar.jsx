@@ -12,11 +12,7 @@ const Navbar = () => {
         {" "}
         <div className="my-[2rem] flex w-28 rounded ml-auto mr-10 lg:ml-0 lg:mr-0">
           <a href="/">
-            <img
-              className="flex items-right"
-              src="./logo.png"
-              alt="logo"
-            />
+            <img className="flex items-right" src="/logo.png" alt="logo" />
           </a>
         </div>
         <div className="lg:block hidden my-[2rem]">

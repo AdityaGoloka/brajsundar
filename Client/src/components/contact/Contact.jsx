@@ -50,33 +50,33 @@ const Contact = () => {
     <div
       //   ref={ref}
       className="contact md:mx-10 "
-    //   variants={variants}
-    //   initial="initial"
-    //   whileInView="animate"
+      //   variants={variants}
+      //   initial="initial"
+      //   whileInView="animate"
     >
       {/* <> */}
       <div
         className="textContainer sm:-my-10 lg:my-0 "
-      // variants={variants}
+        // variants={variants}
       >
         <h1 variants={variants}>Let’s Connect</h1>
         <div
           className="item flex sm:gap-2 sm:flex md:gap-0 md:block"
-        // variants={variants}
+          // variants={variants}
         >
           <h2>Mail</h2>
-          <span>hello@react.dev</span>
+          <span>bdas@brajsundar.com</span>
         </div>
         <div
           className="item sm:gap-2 sm:flex md:gap-0 md:block"
-        // variants={variants}
+          // variants={variants}
         >
           <h2>Address</h2>
           <span>Hello street New York</span>
         </div>
         <div
           className="item sm:gap-2 sm:flex md:gap-0 md:block"
-        // variants={variants}
+          // variants={variants}
         >
           <h2>Phone</h2>
           <span>+1 234 5678</span>
@@ -115,9 +115,9 @@ const Contact = () => {
         <form
           ref={formRef}
           onSubmit={sendEmail}
-        // initial={{ opacity: 0 }}
-        // whileInView={{ opacity: 1 }}
-        // transition={{ delay: 4, duration: 1 }}
+          // initial={{ opacity: 0 }}
+          // whileInView={{ opacity: 1 }}
+          // transition={{ delay: 4, duration: 1 }}
         >
           <input type="text" required placeholder="Name" name="name" />
           <input type="email" required placeholder="Email" name="email" />

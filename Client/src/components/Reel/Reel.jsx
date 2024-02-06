@@ -1,56 +1,29 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import { motion, useAnimation } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./blogs.scss";
 
-const Blogs = () => {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{
-          ...style,
-          display: "block",
-          margin: "10px 0px",
-        }}
-        onClick={onClick}
-      />
-    );
-  }
-
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return <div className={className} style={{ ...style }} onClick={onClick} />;
-  }
+const Reel = () => {
+  const [reelData, setReelData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getAllreel = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:5000/api/articles/getArticles"
+        const response = await axios.get(
+          "http://localhost:5000/api/reels/getReels"
         );
-        const data = await response.json();
-        setItems(data.data);
-        setLoading(false);
+        console.log("-->", response.data);
+        setReelData(response.data.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
+        console.error("Error fetching reel:", error);
       }
     };
 
-    fetchData();
+    getAllreel();
   }, []);
-
-  const formatDate = (createdAt) => {
-    const date = new Date(createdAt);
-    return date.toLocaleDateString();
-  };
 
   const controls = useAnimation();
 
@@ -73,15 +46,11 @@ const Blogs = () => {
     };
   }, [controls]);
 
-  var sliderSettings = {
-    // dots: true,
-    // dotsClass: "custom-dots", // Add a custom class for the dots
+  const sliderSettings = {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -89,11 +58,10 @@ const Blogs = () => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
         },
       },
       {
-        breakpoint: 900,
+        breakpoint: 800,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -111,70 +79,58 @@ const Blogs = () => {
   };
 
   return (
-    <motion.section
+    <motion.div
       className="text-gray-600 body-font"
       initial={{ opacity: 0 }}
       animate={controls}
     >
-      <div className="container px-10 mx-auto">
+      <div className="container px-10 mx-auto ">
         <div className="flex flex-wrap w-full mb-16 justify-center">
           <div className="lg:w-1/2 w-full  lg:mb-0 text-center ">
-            {/* <div className="flex "> */}{" "}
             <motion.h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">
-              Explore My Blogs
+              Reels
             </motion.h1>
-            {/* <button
-                type="button"
-                className=" mx-auto text-sm focus:outline-none text-white bg-purple-700 hover:bg-purple-800  focus:ring-4 focus:ring-purple-300  rounded-lg  px-3 py-2 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-              >
-                Enroll Now
-              </button> */}
-            {/* </div> */}
             <div className="h-1 w-full bg-indigo-500 rounded"></div>
           </div>
         </div>
         <div className="slider-controls">
-          <SamplePrevArrow className="prev-arrow" />
           <Slider {...sliderSettings}>
-            {items.map((item) => (
+            {reelData.map((reel, index) => (
               <motion.div
-                key={item._id}
+                key={reel.id}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="hover:scale-100"
+                className="hover:scale-100 "
               >
-                <a href={`/blog/${item._id}`}>
+                <a target="_blank" href={reel.url}>
                   {" "}
                   <div
                     className="bg-white/5 p-5 rounded-lg cursor-pointer mx-5 my"
-                    style={{ height: "400px" }}
+                    style={{ height: "330px" }}
                   >
                     <div className="">
                       <img
                         className="h-48 w-full object-cover object-center mb-6 rounded"
-                        src={item.thumbnail}
-                        alt={item.title}
+                        src={reel.reelThumbnail}
+                        alt={reel.reelName}
                       />
                     </div>
                     <div className="">
-                      <h2 className="text-2xl text-white font-bold font-medium title-font mb-4">
-                        {item.title}
+                      <h2 className="text-xl text-white font-bold font-medium title-font mb-4">
+                        {reel.reelName}
                       </h2>
-                      <p className="text-md text-white ">
-                        {item.content.substring(0, 100)}...
-                      </p>
+                      {/* Add other details like author, description, etc. here */}
                     </div>
                   </div>
                 </a>
               </motion.div>
             ))}
           </Slider>
-          <SampleNextArrow className="next-arrow " />
         </div>
       </div>
-    </motion.section>
+    </motion.div>
   );
 };
 
-export default Blogs;
+export default Reel;

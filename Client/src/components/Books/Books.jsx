@@ -84,7 +84,7 @@ const Books = () => {
       initial={{ opacity: 0 }}
       animate={controls}
     >
-      <div className="container px-10 mx-auto border">
+      <div className="container px-10 mx-auto ">
         <div className="flex flex-wrap w-full mb-16 justify-center">
           <div className="lg:w-1/2 w-full  lg:mb-0 text-center ">
             <motion.h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">
@@ -103,24 +103,27 @@ const Books = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="hover:scale-100 "
               >
-                <div
-                  className="bg-white/5 p-5 rounded-lg cursor-pointer mx-5 my"
-                  style={{ height: "330px" }}
-                >
-                  <div className="">
-                    <img
-                      className="h-48 w-full object-cover object-center mb-6 rounded"
-                      src={videos.bookThumbnail}
-                      alt={videos.bookName}
-                    />
+                <a target="_blank" href={videos.bookLink}>
+                  {" "}
+                  <div
+                    className="bg-white/5 p-5 rounded-lg cursor-pointer mx-5 my"
+                    style={{ height: "330px" }}
+                  >
+                    <div className="">
+                      <img
+                        className="h-48 w-full object-cover object-center mb-6 rounded"
+                        src={videos.bookThumbnail}
+                        alt={videos.bookName}
+                      />
+                    </div>
+                    <div className="">
+                      <h2 className="text-xl text-white font-bold font-medium title-font mb-4">
+                        {videos.bookName}
+                      </h2>
+                      {/* Add other details like author, description, etc. here */}
+                    </div>
                   </div>
-                  <div className="">
-                    <h2 className="text-xl text-white font-bold font-medium title-font mb-4">
-                      {videos.bookName}
-                    </h2>
-                    {/* Add other details like author, description, etc. here */}
-                  </div>
-                </div>
+                </a>
               </motion.div>
             ))}
           </Slider>

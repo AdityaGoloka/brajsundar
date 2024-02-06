@@ -10,6 +10,7 @@ import Blog from "./components/blogs/blogs.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import Videos from "./components/carousel/Videos.jsx";
 import Books from "../components/Books/Books.jsx";
+import Reel from "../components/Reel/Reel.jsx";
 // import Books from "./Books/Books.jsx";
 
 const Home = () => {
@@ -42,6 +43,9 @@ const Home = () => {
       <div className="my-12"></div>
       <section id="portfolio">
         <Blog />
+      </section>
+      <section id="portfolio">
+        <Reel />
       </section>
       {/* <div className="my-[5rem]"></div> */}
 

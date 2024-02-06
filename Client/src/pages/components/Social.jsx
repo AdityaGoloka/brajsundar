@@ -15,7 +15,11 @@ const Social = () => {
         </svg>
       </a>
 
-      <a href="#!" role="button">
+      <a
+        href="https://www.instagram.com/brajsundardas/"
+        target="_blank"
+        role="button"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
