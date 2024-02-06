@@ -3,17 +3,17 @@ import React from "react";
 export default function BlogCard({ data }) {
   return (
     <div className="mx-auto cursor-pointer">
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div className="h-[40%] p-3 object-cover mx-auto">
-          <a href="#" className="h-[40%]">
+      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-10">
+        <div className=" p-3 object-cover mx-auto">
+          <a href="#" className="h-10">
             <img
-              className="rounded-t-lg object-cover h-full mx-auto"
+              className="rounded-t-lg object-cover h-[8rem] mx-auto"
               src={data.thumbnail}
               alt="blogthumbnail"
             />
           </a>
         </div>
-        <div className="p-5 h-[50%]">
+        <div className="p-5 ">
           <a href="#">
             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {data.title}{" "}
@@ -25,7 +25,7 @@ export default function BlogCard({ data }) {
           </p>
           <a
             href={`/blog/${data._id}`}
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="inline-flex  items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Read more
             <svg
