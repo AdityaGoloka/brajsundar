@@ -21,12 +21,10 @@ import Workshop from "./pages/Workshop/Workshop.jsx";
 import Coaching from "./pages/Coaching/Coaching.jsx";
 import About from "./pages/About.jsx";
 import CourseViewPage from "./pages/CourseViewPage.jsx";
-// import Videos from "./pages/components/carousel/Videos.jsx";
-// import VideoDuration from "./pages/Courses/VideoDuration.jsx";
-import Video from "./pages/Videos/Video";
-// import Books from "./components/Books/Books.jsx";
-import Books from "./pages/Books/Books.jsx";
+import Video from "./pages/Videos/Video.jsx";
+import Reel from "./pages/Reels/Reel.jsx";
 import Blogs from "./pages/Blogs/Blogs.jsx";
+import Books from "./pages/Books/Books.jsx";
 
 export default function App() {
   return (
@@ -53,11 +51,12 @@ export default function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/academy" element={<Academy />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/books" element={<Books />} />
           <Route path="/academy/courses" element={<Courses />} />
           <Route path="/academy/workshop" element={<Workshop />} />
           <Route path="/video" element={<Video />} />
-          <Route path="/books" element={<Books />} />
-          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/reel" element={<Reel />} />
           <Route path="/academy/coaching" element={<Coaching />} />
           <Route
             path="/academy/course-detail/:id"
