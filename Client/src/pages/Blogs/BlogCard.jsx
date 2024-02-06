@@ -9,7 +9,7 @@ export default function BlogCard({ data }) {
             <img
               className="rounded-t-lg object-cover h-full mx-auto"
               src={data.thumbnail}
-              alt=""
+              alt="blogthumbnail"
             />
           </a>
         </div>
