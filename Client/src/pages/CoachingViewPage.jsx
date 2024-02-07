@@ -5,38 +5,39 @@ import { TbPointFilled } from "react-icons/tb";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const WorkshopViewPage = () => {
-  const [workShop, setWorkShop] = useState("");
+const CoachingViewPage = () => {
+  const [coaching, setCoaching] = useState("");
 
   const { id } = useParams();
   console.log(id);
 
   useEffect(() => {
-    const getSingleWorkshop = async () => {
+    const getSinglecoaching = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/workshop/getWorkshop/${id}`
+          `http://localhost:5000/api/coaching/getSpecificCoaching/${id}`
         );
         console.log(response.data.data);
-        setWorkShop(response.data.data);
+        setCoaching(response.data.data);
       } catch (error) {
-        console.log("Error Fetching the given Workshop");
+        console.log("Error Fetching the given coaching");
       }
     };
-    getSingleWorkshop();
+    getSinglecoaching();
   }, [id]);
-  const objective = workShop.workshopObjectives;
+  const coachingObjective = coaching.CoachingObjectives;
+
   return (
     <>
       <div className="mx-[10rem] my-[1rem]">
-        {workShop && (
+        {coaching && (
           <>
             <div className="border-2 border-white/40 p-10 rounded-lg bg-white/5 flex justify-between cursor-pointer ">
               <div className="max-w-[60%] items-center py-10">
                 {" "}
-                <h1 className="text-3xl font-bold">{workShop.workshopName}</h1>
+                <h1 className="text-3xl font-bold">{coaching.CoachingName}</h1>
                 <p className="text-xl font-medium py-5">
-                  {workShop.workshopSlug}
+                  {coaching.CoachingSlug}
                 </p>
                 <button
                   type="button"
@@ -50,7 +51,7 @@ const WorkshopViewPage = () => {
                   {" "}
                   <p className="text-2xl font-medium ">Price: </p>
                   <h1 className="text-3xl font-bold">
-                    ₹ {workShop.workshopPrice} /-
+                    ₹ {coaching.CoachingPrice} /-
                   </h1>
                 </div>
                 <button
@@ -77,7 +78,7 @@ const WorkshopViewPage = () => {
                   </h1>{" "}
                 </div>
                 <div className="text-lg flex flex-col gap-6 px-4">
-                  <p>{workShop.workshopDescription} </p>
+                  <p>{coaching.CoachingDescription} </p>
                 </div>
               </div>
               <div>
@@ -89,43 +90,15 @@ const WorkshopViewPage = () => {
                   </h1>{" "}
                 </div>
                 <div className="text-lg flex flex-col gap-6 px-5 border-2 bg-white/10 mx-4 py-8 rounded-xl w-3/4">
-                  {/* <p className="flex items-center gap-2">
-                    <IoIosArrowDroprightCircle className="text-2xl" />
-                    {workShop.workshopObjectives}
-                  </p> */}
-                  {objective?.map((data, index) => (
-                    <p className="flex items-center gap-2" key={index}>
+                  {coachingObjective?.map((data, index) => (
+                    <p className="flex items-center gap-2">
                       <IoIosArrowDroprightCircle className="text-2xl" />
                       {data}
                     </p>
                   ))}
                 </div>
               </div>
-              <div>
-                {" "}
-                <div className="py-10 mt-4">
-                  {" "}
-                  <h1 className="font-bold text-2xl">Key Highlights:</h1>{" "}
-                </div>
-                <div className="text-lg flex flex-col gap-6 px-5 border-2 bg-white/10 mx-4 py-8 rounded-xl w-3/4">
-                  <div className="flex ">
-                    <p className="flex items-center gap-2 ">
-                      <CgEditBlackPoint className="text-2xl" />
-                      {workShop.workshopHighlights}
-                    </p>
-                  </div>
-                  {/* <div className="flex items-center gap-10">
-                                        <p className="flex items-center gap-2">
-                                            <CgEditBlackPoint className="text-2xl" /> Develop conflict
-                                            resolution skills
-                                        </p>
-                                        <p className="flex items-center gap-2">
-                                            <CgEditBlackPoint className="text-2xl" />
-                                            Build trust and intimacy in your relationship
-                                        </p>
-                                    </div> */}
-                </div>
-              </div>
+              <div></div>
               <div>
                 {" "}
                 <div className="py-10 mt-4">
@@ -233,7 +206,7 @@ const WorkshopViewPage = () => {
                 </div>
                 <div>
                   {" "}
-                  <div className="flex flex-col pb-5">
+                  {/* <div className="flex flex-col pb-5">
                     <div className="py-5 mt-4">
                       {" "}
                       <h1 className="font-bold text-2xl">Assessment:</h1>{" "}
@@ -241,10 +214,10 @@ const WorkshopViewPage = () => {
                     <ul className="py-2 text-xl px-5">
                       <li className="flex gap-2">
                         <TbPointFilled />
-                        {workShop.Assessment}
+                        {coaching.Assessment}
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -255,4 +228,4 @@ const WorkshopViewPage = () => {
   );
 };
 
-export default WorkshopViewPage;
+export default CoachingViewPage;

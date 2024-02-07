@@ -1,31 +1,30 @@
 import React from "react";
 
-const CoachingCard = () => {
+const CoachingCard = ({
+  id,
+  CoachingSlug,
+  CoachingName,
+  coachingThumbnail,
+}) => {
   return (
     <div>
-      <div
-        href="#"
+      <a
+        href={`/academy/coaching-detail/${id}`}
         className="flex flex-col border rounded-lg shadow md:flex-row max-w-3xl bg-transparent border-none cursor-pointer hover:bg-white/5 py-5"
       >
         <div className="max-w-xs">
-          <img
-            className="rounded-t-lg"
-            src="https://dme2wmiz2suov.cloudfront.net/User(90154388)/CourseBundles(35258)/2344221-Blue_and_Black_Modern_Couple_Desktop_Wallpaper_(3).png"
-            alt=""
-          />
+          <img className="rounded-t-lg" src={coachingThumbnail} alt="" />
         </div>
         <div className="flex w flex-col p-4 leading-normal max-w-5xl">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white max-w-5xl">
             {/* Adjusted width using max-w-3xl */}
-            Noteworthy technology acquisitions 2021
+            {CoachingName}
           </h5>
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 w-3xl">
-            {/* Adjusted width using max-w-3xl */}
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
+            {CoachingSlug}
           </p>
         </div>
-      </div>
+      </a>
     </div>
   );
 };

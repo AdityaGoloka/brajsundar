@@ -12,8 +12,8 @@ import {
 const router = Router();
 
 router.post("/addCoaching", addCoaching);
-router.get("/getCoaching", getCoaching);
-router.get("/getSpecificCoaching", getSpecificCoaching);
+router.get("/getCoaching/", getCoaching);
+router.get("/getSpecificCoaching/:id", getSpecificCoaching);
 router.delete("/deleteCoaching/:id", deleteCoaching);
 router.put("/updateCoaching/:id", updateCoaching);
 

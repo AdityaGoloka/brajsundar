@@ -28,7 +28,7 @@ import Books from "./pages/Books/Books.jsx";
 import BlogDetail from "./pages/Blogs/BlogDetail.jsx";
 import Contact from "./components/contact/Contact.jsx";
 import WorkshopViewPage from "./pages/WorkshopViewPage.jsx";
-
+import CoachingViewPage from "./pages/CoachingViewPage.jsx";
 export default function App() {
   return (
     <Router>
@@ -68,6 +68,10 @@ export default function App() {
           <Route
             path="/academy/workshop-detail/:id"
             element={<WorkshopViewPage />}
+          />
+          <Route
+            path="/academy/coaching-detail/:id"
+            element={<CoachingViewPage />}
           />
           <Route path="/about" element={<About />} />
           <Route path="/article/:id" element={<SingleBlog />} />{" "}
