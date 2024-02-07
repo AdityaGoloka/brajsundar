@@ -1,19 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { CgEditBlackPoint } from "react-icons/cg";
 import { TbPointFilled } from "react-icons/tb";
+import { useParams } from "react-router-dom";
+
+import axios from "axios";
 
 const CourseViewPage = () => {
+  const [course, setCourse] = useState("");
+
+  const { id } = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    const getSinglecourse = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/course/getCourse/${id}`
+        );
+        console.log(response.data.data);
+        setCourse(response.data.data);
+      } catch (error) {
+        console.log("Error Fetching the given course");
+      }
+    };
+    getSinglecourse();
+  }, [id]);
+  // console.log(course);
+  const CourseObjectives = course.CourseObjectives;
+  const courseHighlights = course.CourseHighlights;
+  const Assessment = course.Assessment;
+  console.log(CourseObjectives);
   return (
     <div className="mx-[10rem] my-[1rem]">
       <div className="border-2 border-white/40 p-10 rounded-lg bg-white/5 flex justify-between cursor-pointer ">
         <div className="max-w-[60%] items-center py-10">
           {" "}
-          <h1 className="text-3xl font-bold">Making Marriage Success</h1>
-          <p className="text-xl font-medium py-5">
-            Transform your marriage by becoming the husband your wife needs.
-            Husband's role in a Successful Marriage
-          </p>
+          <h1 className="text-3xl font-bold">{course.CourseName}</h1>
+          <p className="text-xl font-medium py-5">{course.CourseSlug}</p>
           <button
             type="button"
             className="focus:outline-none text-white bg-yellow-500 hover:bg-yellow6500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-md my-2 rounded-2xl text-black px-5 py-1 dark:focus:ring-yellow-900"
@@ -25,7 +49,7 @@ const CourseViewPage = () => {
           <div className="flex flex-col text-center items-center py-10">
             {" "}
             <p className="text-2xl font-medium ">Price: </p>
-            <h1 className="text-3xl font-bold">₹ 3000 /-</h1>
+            <h1 className="text-3xl font-bold">₹ {course.CoursePrice}/-</h1>
           </div>
           <button
             type="button"
@@ -49,13 +73,8 @@ const CourseViewPage = () => {
             <h1 className="font-bold text-2xl">Course Description:</h1>{" "}
           </div>
           <div className="text-lg flex flex-col gap-6 px-4">
-            <p>
-              This course will explore the essential ingredients for a
-              successful marriage, including communication, conflict resolution,
-              intimacy, and commitment. Topics will also include the challenges
-              that couples face and how to overcome them.{" "}
-            </p>
-            <p className="italic font-bold">
+            <p>{course.CourseDescription}</p>
+            {/* <p className="italic font-bold">
               How does conflict resolution play a crucial role in maintaining a
               harmonious and thriving marriage? In what ways does intimacy
               contribute to the strength of a marriage, and what strategies can
@@ -69,7 +88,7 @@ const CourseViewPage = () => {
               fostering interdependence in their relationship? What role do
               trust and forgiveness play in building and maintaining a strong
               foundation for a successful marriage?
-            </p>
+            </p> */}
           </div>
         </div>
         <div>
@@ -79,22 +98,12 @@ const CourseViewPage = () => {
             <h1 className="font-bold text-2xl">Course Objectives:</h1>{" "}
           </div>
           <div className="text-lg flex flex-col gap-6 px-5 border-2 bg-white/10 mx-4 py-8 rounded-xl w-3/4">
-            <p className="flex items-center gap-2">
-              <IoIosArrowDroprightCircle className="text-2xl" />
-              Understand the essential ingredients for a successful marriage
-            </p>
-            <p className="flex items-center gap-2">
-              <IoIosArrowDroprightCircle className="text-2xl" /> Develop
-              effective communication and conflict resolution skills
-            </p>
-            <p className="flex items-center gap-2">
-              <IoIosArrowDroprightCircle className="text-2xl" /> Build intimacy
-              and a strong emotional connection with their spouse
-            </p>
-            <p className="flex items-center gap-2">
-              <IoIosArrowDroprightCircle className="text-2xl" />
-              Overcome the challenges that couples face
-            </p>
+            {CourseObjectives?.map((data, index) => (
+              <p className="flex items-center gap-2" key={index}>
+                <IoIosArrowDroprightCircle className="text-2xl" />
+                {data}
+              </p>
+            ))}
           </div>
         </div>
         <div>
@@ -103,18 +112,21 @@ const CourseViewPage = () => {
             {" "}
             <h1 className="font-bold text-2xl">Key Highlights:</h1>{" "}
           </div>
-          <div className="text-lg flex flex-col gap-6 px-5 border-2 bg-white/10 mx-4 py-8 rounded-xl w-3/4">
-            <div className="flex ">
-              <p className="flex items-center gap-2 ">
+          <div className="text-lg grid lg:grid-cols-2 sm:grid-cols-1 gap-6 px-5 border-2 bg-white/10 mx-4 py-8 rounded-xl w-3/4">
+            {courseHighlights?.map((data, index) => (
+              <p className="flex items-center gap-2 " key={index}>
                 <CgEditBlackPoint className="text-2xl" />
-                Learn effective communication techniques
+                {data}
               </p>
+            ))}
+
+            {/* <div className="flex ">
               <p className="flex items-center gap-2">
                 <CgEditBlackPoint className="text-2xl" /> Gain valuable insights
                 to strengthen your marriage
               </p>
-            </div>
-            <div className="flex items-center gap-10">
+            </div> */}
+            {/* <div className="flex items-center gap-10">
               <p className="flex items-center gap-2">
                 <CgEditBlackPoint className="text-2xl" /> Develop conflict
                 resolution skills
@@ -123,7 +135,7 @@ const CourseViewPage = () => {
                 <CgEditBlackPoint className="text-2xl" />
                 Build trust and intimacy in your relationship
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div>
@@ -268,14 +280,12 @@ const CourseViewPage = () => {
                 <h1 className="font-bold text-2xl">Assessment:</h1>{" "}
               </div>
               <ul className="py-2 text-xl px-5">
-                <li className="flex gap-2">
-                  <TbPointFilled />
-                  What are some of the challenges that couples face?
-                </li>
-                <li className="flex gap-2">
-                  <TbPointFilled />
-                  How can couples communicate effectively?
-                </li>
+                {Assessment?.map((data, index) => (
+                  <li className="flex gap-2">
+                    <TbPointFilled />
+                    {data}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

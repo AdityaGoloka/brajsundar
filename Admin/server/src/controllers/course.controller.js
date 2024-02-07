@@ -86,7 +86,6 @@ const getCourse = async (req, res) => {
     console.log(error);
   }
 };
-
 const updateCourse = async (req, res) => {
   const form = formidable({
     multiples: false,
@@ -204,7 +203,6 @@ const updateCourse = async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
 const deleteCourse = async (req, res) => {
   try {
     const course = await Course.findById(req.params.id);

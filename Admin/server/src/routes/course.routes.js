@@ -10,7 +10,7 @@ const router = Router();
 
 router.post("/addCourse", addCourse);
 router.get("/getCourse", getCourse);
-router.get("/getCourse", getSpecificCourse);
+router.get("/getCourse/:id", getSpecificCourse);
 router.delete("/deleteCourse/:id", deleteCourse);
 // router.get("/getArticle/:id", getArticle);
 router.put("/updateCourse/:id", updateCourse);
