@@ -5,7 +5,7 @@ const courseSchema = mongoose.Schema(
     CourseName: {
       type: String,
       required: true,
-      maxlength: 255,
+      // maxlength: 255,
     },
     CourseSlug: {
       type: String,
@@ -15,10 +15,10 @@ const courseSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
-    // CourseThumbnail: {
-    //   type: String,
-    //   required: true,
-    // },
+    thumbnail: {
+      type: String,
+      required: true,
+    },
     CourseDescription: {
       type: String,
       required: true,
@@ -31,18 +31,18 @@ const courseSchema = mongoose.Schema(
       type: [String],
       required: true,
     },
-    // CourseOutline: [
-    //   {
-    //     key: {
-    //       type: String,
-    //       required: true,
-    //     },
-    //     value: {
-    //       type: [String],
-    //       required: true,
-    //     },
-    //   },
-    // ],
+    CourseOutline: [
+      {
+        key: {
+          type: String,
+          required: true,
+        },
+        value: {
+          type: [String],
+          required: true,
+        },
+      },
+    ],
     Assessment: {
       type: [String],
       required: true,

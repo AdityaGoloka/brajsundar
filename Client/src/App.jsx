@@ -26,6 +26,7 @@ import Reel from "./pages/Reels/Reel.jsx";
 import Blogs from "./pages/Blogs/Blogs.jsx";
 import Books from "./pages/Books/Books.jsx";
 import BlogDetail from "./pages/Blogs/BlogDetail.jsx";
+import Contact from "./components/contact/Contact.jsx";
 
 export default function App() {
   return (
@@ -46,7 +47,7 @@ export default function App() {
             </ul>
           </nav> */}
         {/* A <Routes> looks through its children <Route> and renders the first one that matches the current URL. */}
-        
+
         <Routes>
           <Route index element={<Home />} />
           <Route path="/academy" element={<Academy />} />
@@ -54,6 +55,7 @@ export default function App() {
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/books" element={<Books />} />
           <Route path="/academy/courses" element={<Courses />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/academy/workshop" element={<Workshop />} />
           <Route path="/video" element={<Video />} />
           <Route path="/reel" element={<Reel />} />

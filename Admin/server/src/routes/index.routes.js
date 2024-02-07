@@ -9,6 +9,7 @@ import authRouter from "./auth.routes.js";
 import profileRouter from "../routes/profile.routes.js";
 import courseRouter from "../routes/course.routes.js";
 import workshopRouter from "../routes/workshop.routes.js";
+import coachingRouter from "../routes/coaching.routes.js";
 
 router.use("/reels", reelRoutes);
 router.use("/reviews", reviewRouter);
@@ -18,6 +19,7 @@ router.use("/articles", articleRouter);
 router.use("/user", authRouter);
 router.use("/user", profileRouter);
 router.use("/course", courseRouter);
+router.use("/coaching", coachingRouter);
 router.use("/workshop", workshopRouter);
 
 export default router;
