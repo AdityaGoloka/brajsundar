@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import WorkshopCard from "./WorkshopCard";
 import RatingCard from "./RatingCard";
 import VideoDuration from "./VideoDuration";
 import PriceFilterCard from "./PriceFilterCard.jsx";
 import RateDropDown from "./RateDropDown.jsx";
+import axios from "axios";
+
 const Workshop = () => {
+  const [workShop, setWorkShop] = useState([]);
+
+  useEffect(() => {
+    const getAllWorkshopData = async () => {
+      const response = await axios.get("http://localhost:5000/api/workshop/getWorkshops");
+      console.log(response.data.data);
+      setWorkShop(response.data.data);
+    }
+
+    getAllWorkshopData();
+  }, []);
+
   return (
     <div>
       <div>
@@ -28,11 +42,14 @@ const Workshop = () => {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <WorkshopCard />
-          <WorkshopCard />
-          <WorkshopCard />
-          <WorkshopCard />
-          <WorkshopCard />
+          {workShop.map((workshops) => (
+            <WorkshopCard
+              key={workshops._id}
+              workshopName={workshops.workshopName}
+              workshopSlug={workshops.workshopSlug}
+              workshopThumbnail={workshops.workshopThumbnail}
+            />
+          ))}
         </div>
       </div>
     </div>
