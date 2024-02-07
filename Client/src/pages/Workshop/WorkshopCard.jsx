@@ -1,10 +1,9 @@
 import React from "react";
 
-const WorkshopCard = ({ workshopName, workshopSlug, workshopThumbnail }) => {
+const WorkshopCard = ({ id, workshopName, workshopSlug, workshopThumbnail }) => {
   return (
     <div>
-      <div
-        href="#"
+      <a href={`/academy/workshop-detail/${id}`}
         className="flex flex-col border rounded-lg shadow md:flex-row max-w-3xl bg-transparent border-none cursor-pointer hover:bg-white/5 py-5"
       >
         <div className="max-w-xs">
@@ -24,7 +23,7 @@ const WorkshopCard = ({ workshopName, workshopSlug, workshopThumbnail }) => {
             {workshopSlug}
           </p>
         </div>
-      </div>
+      </a>
     </div>
   );
 };

@@ -45,6 +45,7 @@ const Workshop = () => {
           {workShop.map((workshops) => (
             <WorkshopCard
               key={workshops._id}
+              id={workshops._id}
               workshopName={workshops.workshopName}
               workshopSlug={workshops.workshopSlug}
               workshopThumbnail={workshops.workshopThumbnail}
