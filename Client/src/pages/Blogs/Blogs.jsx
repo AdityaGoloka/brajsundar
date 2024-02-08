@@ -21,7 +21,7 @@ const Blogs = () => {
   }, []);
 
   return (
-    <div>
+    <div className="my-10">
       <h1 className="mx-auto text-3xl items-center font-bold text-center">
         Blogs
       </h1>

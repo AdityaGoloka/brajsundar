@@ -11,13 +11,13 @@ const VideoCard = ({ bookName, thumbnail, bookLink }) => {
     <div>
       <a href={bookLink} target="_blank">
         {" "}
-        <div className="flex flex-col border rounded-lg shadow md:flex-row max-w-3xl bg-transparent border-none cursor-pointer hover:bg-white/5 py-5">
+        <div className="flex flex-col px-2 border rounded-lg shadow md:flex-row max-w-3xl bg-transparent border-none cursor-pointer hover:bg-white/5 py-5">
           <div className="max-wxs mx-auto">
             {/* <iframe 
                     src={`https://www.youtube.com/embed/${getYoutubeVideoId(video_url)}`} 
                     alt="video" 
                     className='rounded-t-lg' /> */}
-            <img src={thumbnail} alt="" className="w-[12rem]" />
+            <img src={thumbnail} alt="" className="w-[14rem]" />
           </div>
 
           <div className="flex w flex-col p-4 leading-normal max-w-5xl text-center md:text-left my-auto">

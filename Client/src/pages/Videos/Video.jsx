@@ -28,11 +28,11 @@ const Video = () => {
   return (
     <div>
       <div>
-        <h1 className="text-center text-4xl font-bold mb-7">Videos</h1>
+        <h1 className="text-center text-4xl font-bold mb-7 my-10">Videos</h1>
       </div>{" "}
-      <div className="mx-[7rem] flex gap-10 justify-between lg:flex-row flex-col">
-        <div className="lg:block hidden">
-          {/* ratings */}
+      {/* <div className="mx-[7rem] flex gap-10 justify-between lg:flex-row flex-col"> */}
+      <div>
+        {/* <div className="lg:block hidden">
           <div className="w-full my-5 mb-10">
             <RateDropDown />
           </div>
@@ -46,8 +46,8 @@ const Video = () => {
           <div className="w-full my-10">
             <h1 className="font-bold">Video Duration</h1> <PriceFilterCard />
           </div>
-        </div>
-        <div className="flex flex-col gap-4">
+        </div> */}
+        <div className="flex flex-col gap-4 items-center">
           {videoData.map((videos) => (
             <VideoCard
               key={videos.id}

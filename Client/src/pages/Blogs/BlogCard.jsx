@@ -3,11 +3,11 @@ import React from "react";
 export default function BlogCard({ data }) {
   return (
     <div className="mx-auto cursor-pointer">
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mx-10">
+      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800/30 dark:border-gray-700 mx-10">
         <div className=" p-3 object-cover mx-auto">
           <a href="#" className="h-10">
             <img
-              className="rounded-t-lg object-cover h-[8rem] mx-auto"
+              className="rounded-t-lg object-cover h-[10rem] mx-auto w-full "
               src={data.thumbnail}
               alt="blogthumbnail"
             />
@@ -19,7 +19,7 @@ export default function BlogCard({ data }) {
               {data.title}{" "}
             </h5>
           </a>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 ">
             Here are the biggest enterprise technology acquisitions of 2021 so
             far, in reverse chronological order.
           </p>

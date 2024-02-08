@@ -24,9 +24,10 @@ const Courses = () => {
       <div>
         <h1 className="text-center text-4xl font-bold mb-7">Courses</h1>
       </div>{" "}
-      <div className="lg:mx-[7rem] flex gap-10 justify-between lg:flex-row flex-col">
-        <div className="lg:block hidden">
-          {/* ratings */}
+      {/* <div className="lg:mx-[7rem] flex gap-10 justify-center lg:flex-row flex-col"> */}
+      <div className="">
+        {/* <div className="lg:block hidden"> */}
+        {/* ratings
           <div className="w-full my-5 mb-10">
             <RateDropDown />
           </div>
@@ -39,10 +40,10 @@ const Courses = () => {
           </div>
           <div className="w-full my-10">
             <h1 className="font-bold">Video Duration</h1> <PriceFilterCard />
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 w-full mx-auto items-center ">
           {course.map((courses) => (
             <CourseCard
               key={courses._id}

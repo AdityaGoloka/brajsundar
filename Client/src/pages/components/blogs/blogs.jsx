@@ -116,7 +116,7 @@ const Blogs = () => {
       initial={{ opacity: 0 }}
       animate={controls}
     >
-      <div className="container px-10 mx-auto">
+      <div className="container px-10 mx-auto ">
         <div className="flex flex-wrap w-full mb-16 justify-center">
           <div className="lg:w-1/2 w-full  lg:mb-0 text-center ">
             {/* <div className="flex "> */}{" "}
@@ -158,10 +158,10 @@ const Blogs = () => {
                       />
                     </div>
                     <div className="">
-                      <h2 className="text-2xl text-white font-bold font-medium title-font mb-4">
+                      <h2 className="md:text-2xl text-xl text-white font-bold font-medium title-font mb-4">
                         {item.title}
                       </h2>
-                      <p className="text-md text-white ">
+                      <p className="md:text-md text-white text-sm">
                         {item.content.substring(0, 100)}...
                       </p>
                     </div>

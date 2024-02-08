@@ -10,14 +10,15 @@ const Navbar = () => {
       <Sidebar />
       <div className="lg:mx-[10rem] flex justify-between ">
         {" "}
-        <div className="my-[2rem] flex w-28 rounded ml-auto mr-10 lg:ml-0 lg:mr-0">
+        <div className="my-[2rem] flex w-[9rem] rounded mx-auto">
+          {/* ml-auto mr-10 lg:ml-0 lg:mr-0 mx-auto */}
           <a href="/">
-            <img className="flex items-right" src="/logo.png" alt="logo" />
+            <img className=" items-center " src="/logo.png" alt="logo" />
           </a>
         </div>
-        <div className="lg:block hidden my-[2rem]">
+        {/* <div className="lg:block hidden my-[2rem]">
           <Social />
-        </div>
+        </div> */}
       </div>
       {/* <h1 className="">hello </h1> */}
       <div className="wrapper">
