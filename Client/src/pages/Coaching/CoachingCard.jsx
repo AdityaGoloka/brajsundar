@@ -8,10 +8,7 @@ const CoachingCard = ({
 }) => {
   return (
     <div>
-      <a
-        href={`/academy/coaching-detail/${id}`}
-        className="flex flex-col border rounded-lg shadow md:flex-row max-w-3xl bg-transparent border-none cursor-pointer hover:bg-white/5 py-5"
-      >
+      <div className="flex flex-col border rounded-lg shadow md:flex-row max-w-3xl bg-transparent border-none cursor-pointer hover:bg-white/5 py-5">
         <div className="max-w-xs">
           <img className="rounded-t-lg" src={coachingThumbnail} alt="" />
         </div>
@@ -24,7 +21,7 @@ const CoachingCard = ({
             {CoachingSlug}
           </p>
         </div>
-      </a>
+      </div>
     </div>
   );
 };
