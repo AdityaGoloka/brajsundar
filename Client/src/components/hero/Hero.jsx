@@ -48,7 +48,7 @@ const Hero = () => {
   });
 
   return (
-    <div className="hero ">
+    <div className="hero">
       <div className="wrapper px-10">
         <motion.div
           className="textContainer "
@@ -92,13 +92,6 @@ const Hero = () => {
           className="object-cover rounded-xl mx-auto pb-5 "
           style={{ width: "30rem", height: "31rem" }}
           src="./hero-image.png"
-
-      <div className="imageContainer pr-[10rem] lg:pt-5  object-cover ">
-        <img
-          className="object-cover rounded-xl mx-auto"
-          style={{ width: "25rem", height: "30rem" }}
-          src="/hero2.png"
-alt="braj"
         />
       </div>
     </div>
