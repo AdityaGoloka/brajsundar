@@ -10,10 +10,16 @@ const Navbar = () => {
       <Sidebar />
       <div className="lg:mx-[10rem] flex justify-between ">
         {" "}
+<<<<<<< Updated upstream
         <div className="my-[2rem] flex w-[9rem] rounded mx-auto">
           {/* ml-auto mr-10 lg:ml-0 lg:mr-0 mx-auto */}
           <a href="/">
             <img className=" items-center " src="/logo.png" alt="logo" />
+=======
+        <div className="my-[2rem]  flex w-[8rem] rounded ml-auto mr-10 lg:ml-0 lg:mr-0">
+          <a href="/">
+            <img className="flex items-right" src="/logo.png" alt="" />
+>>>>>>> Stashed changes
           </a>
         </div>
         {/* <div className="lg:block hidden my-[2rem]">

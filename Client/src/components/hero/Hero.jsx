@@ -87,11 +87,19 @@ const Hero = () => {
       >
         Spiritual Leader, Author, Educator
       </motion.div>
+<<<<<<< Updated upstream
       <div className="imageContainer pr-[12rem]   lg:mb-10  object-cover ">
         <img
           className="object-cover rounded-xl mx-auto pb-5 "
           style={{ width: "30rem", height: "31rem" }}
           src="./hero-image.png"
+=======
+      <div className="imageContainer pr-[10rem] lg:pt-5  object-cover ">
+        <img
+          className="object-cover rounded-xl mx-auto"
+          style={{ width: "25rem", height: "30rem" }}
+          src="/hero2.png"
+>>>>>>> Stashed changes
           alt="braj"
         />
       </div>
