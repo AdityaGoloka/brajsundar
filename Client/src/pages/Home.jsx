@@ -67,7 +67,6 @@ const Home = () => {
       <div className="my-10"></div>
 
       {/* <section id="Footer"> */}
-      <Footer />
       {/* </section> */}
       {/* Framer Motion Crash Course */}
       {/* Uncomment the following lines */}

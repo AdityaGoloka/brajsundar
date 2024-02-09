@@ -87,13 +87,13 @@ const Hero = () => {
       >
         Spiritual Leader, Author, Educator
       </motion.div>
-      <div className="imageContainer pr-[12rem]   lg:mb-10  object-cover ">
+      <motion.div className="imageContainer pr-[12rem]   lg:mb-8  object-cover ">
         <img
-          className="object-cover rounded-xl mx-auto pb-5 "
+          className="object-cover rounded-xl mx-auto "
           style={{ width: "30rem", height: "31rem" }}
           src="./hero-image.png"
         />
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Academy = () => {
         {" "}
         <h1 className="text-3xl font-bold">Academy</h1>
       </div> */}
-      <div className="my-5">
+      <div className="my-8">
         <div className="flex justify-between items-center">
           {" "}
           <h1 className="font-bold text-3xl my-5">Courses</h1>

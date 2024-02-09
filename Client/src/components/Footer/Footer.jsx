@@ -9,21 +9,21 @@ const Footer = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap text-left lg:text-left justify-center items-center">
             <div className="w-full lg:w-6/12 px-4 ">
-              <h4 className="text-5xl fonat-semibold text-blueGray-700 text-center">
+              <h4 className="text-4xl fonat-semibold text-blueGray-700 text-center">
                 Let us keep in touch!
               </h4>
-              <h5 className="text-2xl mt-0 mb-2 text-blueGray-600 text-center">
+              <h5 className="text-xl mt-0 mb-2 text-blueGray-600 text-center">
                 Find us on any of these platforms, we respond 1-2 business days.
               </h5>
               <div className="mt-6 lg:mb-0 mb-6 flex justify-center items-center ">
                 <Social />
               </div>
             </div>
-            {/* <div className="w-full lg:w-6/12 px-4">
+            <div className="w-full lg:w-6/12 px-4">
               <div className="flex flex-wrap items-top mb-6">
                 <div className="w-full lg:w-4/12 px-4 ml-auto">
                   <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
-                    Useful Links
+                    Get In Touch
                   </span>
                   <ul className="list-unstyled">
                     <li>
@@ -31,7 +31,7 @@ const Footer = () => {
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                         href="https://www.creative-tim.com/presentation?ref=njs-profile"
                       >
-                        About Us
+                        Goregaon (E) Mumbai – 400065
                       </a>
                     </li>
                     <li>
@@ -39,10 +39,18 @@ const Footer = () => {
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                         href="https://blog.creative-tim.com?ref=njs-profile"
                       >
-                        Blog
+                        info@mrajsundardas.com
                       </a>
                     </li>
                     <li>
+                      <a
+                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
+                        href="https://blog.creative-tim.com?ref=njs-profile"
+                      >
+                        99887766
+                      </a>
+                    </li>
+                    {/* <li>
                       <a
                         className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
                         href="https://www.github.com/creativetimofficial?ref=njs-profile"
@@ -57,10 +65,10 @@ const Footer = () => {
                       >
                         Free Products
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
-                <div className="w-full lg:w-4/12 px-4">
+                {/* <div className="w-full lg:w-4/12 px-4">
                   <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">
                     Other Resources
                   </span>
@@ -98,9 +106,9 @@ const Footer = () => {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
-            </div> */}
+            </div>
           </div>
           <hr className="my-6 border-blueGray-300" />
           <div className="flex flex-wrap items-center md:justify-between justify-center">

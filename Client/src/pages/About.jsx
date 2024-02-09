@@ -2,10 +2,12 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="mx-[10rem]">
+    <div className="mx-[10rem] my-10">
       <div>
         {/* <h1 className="text-center text-3xl font-bold mb-7">About Me</h1> */}
-        <h1 className="text-center text-4xl font-bold mb-14">About Me</h1>
+        <h1 className="text-center text-4xl font-bold mb-14">
+          Know More About Me
+        </h1>{" "}
       </div>
       <div className="flex max-w-[100%] gap-10 items-center">
         <div className="max-w-[50%]">
@@ -34,9 +36,9 @@ const About = () => {
       <div className="my-[8rem]"></div>
       <div>
         {/* <h1 className="text-center text-3xl font-bold mb-7">About Me</h1> */}
-        <h1 className="text-center text-4xl font-bold mb-14">
+        {/* <h1 className="text-center text-4xl font-bold mb-14">
           Know More About Me
-        </h1>
+        </h1> */}
       </div>
       <div className="flex max-w-[100%] gap-10 items-center mt-14">
         <div className="max-w-[60%]">

@@ -29,11 +29,12 @@ import BlogDetail from "./pages/Blogs/BlogDetail.jsx";
 import Contact from "./components/contact/Contact.jsx";
 import WorkshopViewPage from "./pages/WorkshopViewPage.jsx";
 import CoachingViewPage from "./pages/CoachingViewPage.jsx";
+import MainNavbar from "./components/mainNavbar/Mainnavbar.jsx";
 export default function App() {
   return (
     <Router>
       <div className="">
-        <Navbar />
+        <MainNavbar />
         {/* <nav>
             <ul>
               <li>
@@ -83,6 +84,7 @@ export default function App() {
               <Home />
             </Route> */}
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
