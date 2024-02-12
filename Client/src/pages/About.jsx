@@ -12,7 +12,7 @@ const About = () => {
       <div className="flex max-w-[100%] gap-10 items-center">
         <div className="max-w-[50%]">
           <h1 className=" text-4xl font-bold mb-7 ">Brajsundar Das</h1>
-          <p className="text-lg">
+          <p className="text-xl">
             Brajsundar Das is a multifaceted individual, encompassing the roles
             of a spiritual leader, author, global public speaker, educator, and
             relationship coach. His profound quest to unravel the ultimate
@@ -43,7 +43,7 @@ const About = () => {
       <div className="flex max-w-[100%] gap-10 items-center mt-14">
         <div className="max-w-[60%]">
           <h1 className=" text-4xl font-bold mb-7 ">Biography </h1>
-          <p className="text-lg">
+          <p className="text-xl">
             Brajsundar Das was born in December 1984 to an aristocratic Brahmin
             family. He was brought up in a spiritual environment and learned
             about Lord activities from his mother since the age of five. He
@@ -73,7 +73,7 @@ const About = () => {
       <div className="flex max-w-[100%] gap-10 items-center mt-14 flex-row-reverse">
         <div className="max-w-[60%] ">
           <h1 className=" text-4xl font-bold mb-7 ">Education </h1>
-          <p className="text-lg">
+          <p className="text-xl">
             Brajsundar Das pursued his secular education and obtained a Diploma,
             Bachelor's, and Master's degree in Information Technology. He also
             holds an M.A. in History. Currently, he is pursuing a Ph.D.
@@ -95,7 +95,7 @@ const About = () => {
       <div className="flex max-w-[100%] gap-10 items-center mt-14 ">
         <div className="max-w-[60%] ">
           <h1 className=" text-4xl font-bold mb-7 ">Childhood</h1>
-          <p className="text-lg">
+          <p className="text-xl">
             Brajsundar Das grew up in a spiritual environment within an
             aristocratic Brahmin family. He started learning about Lord
             activities from his mother at the age of five.
@@ -117,7 +117,7 @@ const About = () => {
       <div className="flex max-w-[100%] gap-10 items-center mt-14 flex-row-reverse">
         <div className="max-w-[60%] ">
           <h1 className=" text-4xl font-bold mb-7 ">Career</h1>
-          <p className="text-lg">
+          <p className="text-xl ">
             After joining ISKCON, Brajsundar Das dedicated his life to spreading
             the knowledge of Srimad Bhāgavatam. He established ISKCON Bhagavata
             Mahavidyalaya educational centers in India, Europe, and North

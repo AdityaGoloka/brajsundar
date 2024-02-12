@@ -11,6 +11,7 @@ import Footer from "../components/Footer/Footer.jsx";
 import Videos from "./components/carousel/Videos.jsx";
 import Books from "../components/Books/Books.jsx";
 import Reel from "../components/Reel/Reel.jsx";
+import HomeCard from "./components/HomeCard/HomeCard.jsx";
 // import Books from "./Books/Books.jsx";
 
 const Home = () => {
@@ -41,6 +42,20 @@ const Home = () => {
       </section> */}
       {/* <section> */}
       <div className="my-12"></div>
+      <div className="my-[7rem]">
+        <h1 className="sm:text-3xl text-3xl text-center font-medium title-font mb-2 text-white">
+          Explore
+        </h1>{" "}
+        <div className="grid mx-auto items-center gap-3 lg:gap-10 px-[7rem] lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+          <HomeCard data="Courses" link="courses" />
+          <HomeCard data="Workshops" link="workshop" />
+          <HomeCard data="Coaching" link="coaching" />
+          {/* <HomeCard />
+        <HomeCard /> */}
+        </div>
+      </div>
+      <div className="my-12"></div>
+
       <section id="portfolio">
         <Blog />
       </section>

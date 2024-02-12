@@ -59,8 +59,8 @@ const MainNavbar = () => {
   ];
   const menuItems2 = [
     { label: "About Me", href: "/about" },
-    { label: "Contact", href: "/contact" },
-    { label: "Speaking", href: "/speaking" },
+    { label: "Connect", href: "/contact" },
+    { label: "Event", href: "/bookMe" },
   ];
 
   return (
