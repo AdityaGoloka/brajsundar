@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const textVariants = {
@@ -33,6 +33,20 @@ const dropdownVariants = {
 
 const MainNavbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
@@ -46,12 +60,17 @@ const MainNavbar = () => {
   const menuItems2 = [
     { label: "About Me", href: "/about" },
     { label: "Contact", href: "/contact" },
+    { label: "Speaking", href: "/speaking" },
   ];
 
   return (
-    <motion.nav className="bg-gray-900 border-gray-200 bg-gray-900 border-gray-700 sticky top-0 z-10">
+    <motion.nav
+      className={`hover:bg-gray-900 ${
+        isScrolled ? "bg-gray-900" : "bg-transparent"
+      } z-10 absolute top-0 border-gray-200 border-gray-700 sticky top-0 z-10`}
+    >
       <motion.div
-        className="max-w-screen-xl flex flex-wrap items-center justify-between p-4"
+        className="max-w-screen-xl flex flex-wrap items-center justify-between p-3"
         variants={textVariants.animate}
         initial="initial"
         animate="animate"
@@ -100,9 +119,9 @@ const MainNavbar = () => {
           } w-full md:block md:w-auto`}
         >
           <ul
-            className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg 
+            className="flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg 
             bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white 
-            dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+            dark:bg-transparent md:dark:bg-transparent "
           >
             {menuItems2.map((item, index) => (
               <motion.li
@@ -123,7 +142,7 @@ const MainNavbar = () => {
           </ul>
         </div>
 
-        <div className="w-[7rem] items-center">
+        <div className="w-[8rem] items-center">
           {" "}
           <a href="/">
             <img
@@ -139,7 +158,12 @@ const MainNavbar = () => {
             isMobileMenuOpen ? "block" : "hidden"
           } w-full md:block md:w-auto `}
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul
+            className="flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg 
+            bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white 
+            dark:bg-transparent md:dark:bg-transparent "
+          >
+            {" "}
             {menuItems.map((item, index) => (
               <motion.li
                 key={index}
