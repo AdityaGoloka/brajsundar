@@ -49,7 +49,7 @@ const MainNavbar = () => {
   ];
 
   return (
-    <motion.nav className="bg-white border-gray-200 bg-gray-900 border-gray-700 sticky top-0 z-10">
+    <motion.nav className="bg-gray-900 border-gray-200 bg-gray-900 border-gray-700 sticky top-0 z-10">
       <motion.div
         className="max-w-screen-xl flex flex-wrap items-center justify-between p-4"
         variants={textVariants.animate}
