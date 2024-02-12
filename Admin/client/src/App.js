@@ -18,7 +18,6 @@ import Sidenav from "examples/Sidenav";
 import Configurator from "examples/Configurator";
 import theme from "assets/theme";
 import themeDark from "assets/theme-dark";
-import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import routes from "routes";
@@ -59,7 +58,6 @@ export default function App() {
   useMemo(() => {
     const cacheRtl = createCache({
       key: "rtl",
-      stylisPlugins: [rtlPlugin],
     });
 
     setRtlCache(cacheRtl);

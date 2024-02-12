@@ -22,7 +22,7 @@ const Courses = () => {
   return (
     <div>
       <div>
-        <h1 className="text-center text-4xl font-bold mb-7">Courses</h1>
+        <h1 className="text-center text-4xl font-bold mb-7">Live Courses</h1>
       </div>{" "}
       {/* <div className="lg:mx-[7rem] flex gap-10 justify-center lg:flex-row flex-col"> */}
       <div className="">

@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+
+
 const CourseCard = ({ id, courseSlug, courseName, courseThumbnail }) => {
   return (
     // <NavLink to={`/academy/course-detail/${id}`}>

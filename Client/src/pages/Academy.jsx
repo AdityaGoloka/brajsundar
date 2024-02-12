@@ -10,7 +10,7 @@ const Academy = () => {
       <div className="my-8">
         <div className="flex justify-between items-center">
           {" "}
-          <h1 className="font-bold text-3xl my-5">Courses</h1>
+          <h1 className="font-bold text-3xl my-5">Live Courses </h1>
           <a
             type="button"
             href="/academy/courses"
