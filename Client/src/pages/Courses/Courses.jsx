@@ -1,59 +1,56 @@
 import React, { useState, useEffect } from "react";
 import CourseCard from "./CourseCard";
-import RatingCard from "./RatingCard";
-import VideoDuration from "./VideoDuration";
-import PriceFilterCard from "./PriceFilterCard.jsx";
-import RateDropDown from "./RateDropDown.jsx";
 import axios from "axios";
+
 const Courses = () => {
-  const [course, setCourse] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [displayedCourses, setDisplayedCourses] = useState(2);
 
   useEffect(() => {
     const getAllCourseData = async () => {
-      const response = await axios.get(
-        "http://localhost:5000/api/course/getCourse"
-      );
-      console.log(response.data.data);
-      setCourse(response.data.data);
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/course/getCourse"
+        );
+        console.log(response.data.data);
+        setCourses(response.data.data);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
     };
 
     getAllCourseData();
   }, []);
+
+  const handleLoadMore = () => {
+    setDisplayedCourses((prevCount) => prevCount + 2);
+  };
+
   return (
     <div>
       <div>
         <h1 className="text-center text-4xl font-bold mb-7">Live Courses</h1>
-      </div>{" "}
-      {/* <div className="lg:mx-[7rem] flex gap-10 justify-center lg:flex-row flex-col"> */}
-      <div className="">
-        {/* <div className="lg:block hidden"> */}
-        {/* ratings
-          <div className="w-full my-5 mb-10">
-            <RateDropDown />
-          </div>
-          <div className="w-full my-10">
-            <h1 className="font-bold">Ratings</h1> <RatingCard />
-          </div>
+      </div>
 
-          <div className="w-full my-10">
-            <h1 className="font-bold">Video Duration</h1> <VideoDuration />
-          </div>
-          <div className="w-full my-10">
-            <h1 className="font-bold">Video Duration</h1> <PriceFilterCard />
-          </div> */}
-        {/* </div> */}
-
-        <div className="flex flex-col gap-4 w-full mx-auto items-center ">
-          {course.map((courses) => (
-            <CourseCard
-              key={courses._id}
-              id={courses._id}
-              courseName={courses.CourseName}
-              courseSlug={courses.CourseSlug}
-              courseThumbnail={courses.thumbnail}
-            />
-          ))}
-        </div>
+      <div className="flex flex-col gap-4 w-full mx-auto items-center justify-center">
+        {courses.slice(0, displayedCourses).map((course) => (
+          <CourseCard
+            key={course._id}
+            id={course._id}
+            courseName={course.CourseName}
+            courseSlug={course.CourseSlug}
+            courseThumbnail={course.thumbnail}
+          />
+        ))}
+        {displayedCourses < courses.length && (
+          <button
+            type="button"
+            className="px-14 mx-auto text-lg focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+            onClick={handleLoadMore}
+          >
+            Enroll Now
+          </button>
+        )}
       </div>
     </div>
   );

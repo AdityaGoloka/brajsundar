@@ -9,27 +9,27 @@ const Videos = () => {
   const [loading, setLoading] = useState(true);
   const [videoData, setVideoData] = useState([]);
 
-  useEffect(() => {
-    const getVideos = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/api/youtube/videos"
-        );
-        setVideoData(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching videos:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const getVideos = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "http://localhost:5000/api/youtube/videos"
+  //       );
+  //       setVideoData(response.data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching videos:", error);
+  //     }
+  //   };
 
-    getVideos();
-  }, []);
+  //   getVideos();
+  // }, []);
 
-  const getYoutubeVideoId = (url) => {
-    const regex = /[?&]v=([^?&]+)/;
-    const match = url.match(regex);
-    return match && match[1];
-  };
+  // const getYoutubeVideoId = (url) => {
+  //   const regex = /[?&]v=([^?&]+)/;
+  //   const match = url.match(regex);
+  //   return match && match[1];
+  // };
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -42,7 +42,7 @@ const Videos = () => {
   });
 
   return (
-    <div className="portfolio" ref={ref}>
+    <div className="portfolio" ref={ref} style={{ width: "100%" }}>
       <div className="flex flex-wrap w-full mb-16 justify-center">
         <div className="lg:w-1/2 w-full mb-6 lg:mb-0 text-center">
           <motion.h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">
@@ -51,39 +51,29 @@ const Videos = () => {
           <div className="h-1 w-full bg-indigo-500 rounded"></div>
         </div>
       </div>
-      <div className="flex items-center h-[250rem] justify-center min-h-screen relative">
-        <div className="rounded-lg overflow-hidden max-w-screen-lg w-full mx-4 h-full">
+      <div className="flex items-center justify-center min-h-screen relative">
+        <div className="rounded-lg overflow-hidden w-full mx-4 h-full">
           <Carousel
-            autoPlay={false}
-            dynamicHeight={true}
-            interval={5000}
-            infiniteLoop={false}
+            autoPlay={true}
+            dynamicHeight={false}
+            interval={1000}
+            showIndicators={false}
+            infiniteLoop={true}
             showArrows={false}
             showStatus={false}
             swipeable={true}
-            className="h-full"
+            className="h-full overflow-visible"
+            style={{ overflow: "visible" }} // Adjusted styling to prevent cropping
           >
-            {videoData.map((video) => (
-              <div key={video._id} className="w-full h-full ">
-                <a
-                  href={video?.video_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                ></a>
-                <div className="h-[600px] w-full">
-                  <iframe
-                    title={`YouTube Video ${video?._id}`}
-                    className="w-full h-full md:h-128 lg:h-160 xl:h-192"
-                    src={`https://www.youtube.com/embed/${getYoutubeVideoId(
-                      video?.video_url
-                    )}`}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-              </div>
-            ))}
+            <div>
+              <img src="https://www.megamaxaviation.com/wp-content/uploads/2023/01/Pilgrimage-to-Char-dham-yatra-1568x824.jpg" style={{ width: "80%", height: "100%" }} />
+            </div>
+            <div>
+              <img src="https://www.megamaxaviation.com/wp-content/uploads/2024/01/Costs-Involved-in-Char-Dham-Yatra-By-Helicopter.jpg" style={{ width: "80%", height: "100%" }} />
+            </div>
+            <div>
+              <img src="https://www.megamaxaviation.com/wp-content/uploads/2024/01/Char-Dham-Yatra-by-Helicopter-2024.jpg" style={{ width: "80%", height: "100%" }} />
+            </div>
           </Carousel>
         </div>
       </div>

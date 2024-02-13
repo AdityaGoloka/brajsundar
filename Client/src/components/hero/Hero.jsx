@@ -63,20 +63,6 @@ const Hero = () => {
           <motion.h1 variants={textVariants} className="font-bold">
             Spiritual Leader, Author, Educator
           </motion.h1>
-          {/* <motion.div variants={textVariants} className="buttons">
-            <motion.button variants={textVariants}>
-              See the Latest Courses
-            </motion.button>
-            <motion.button variants={textVariants} className="bg-white">
-              Contact Me
-            </motion.button>
-          </motion.div> */}
-          {/* <motion.img
-            variants={textVariants}
-            animate="scrollButton"
-            src="/scroll.png"
-            alt=""
-          /> */}
         </motion.div>
       </div>
       <motion.div
@@ -87,7 +73,7 @@ const Hero = () => {
       >
         Spiritual Leader, Author, Educator
       </motion.div>
-      <motion.div className="imageContainer pr-[12rem] mt-10     object-cover ">
+      <motion.div className="imageContainer pr-[12rem] mt-10 object-cover justify-center items-center ">
         <img
           className="object-cover rounded-xl mx-auto items-center "
           style={{ width: "30rem", height: "31rem" }}

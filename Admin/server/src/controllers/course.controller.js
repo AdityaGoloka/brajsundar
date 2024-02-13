@@ -1,15 +1,3 @@
-<<<<<<< Updated upstream
-import Course from "../models/course.schema.js";
-import formidable from "formidable";
-import fs from "fs";
-import { s3FileUpload, s3FileDelete } from "../services/imageUploader.js";
-import mongoose from "mongoose";
-import { error } from "console";
-
-const addCourse = async (req, res) => {
-  const form = formidable({ multiples: true, keepExtensions: true });
-
-=======
 // import Article/ from "../models/articles.schema.js";
 import Course from "../models/course.schema.js";
 
@@ -20,51 +8,11 @@ import mongoose from "mongoose";
 
 const addCourse = async (req, res) => {
   const form = formidable({ multiples: false, keepExtensions: true });
->>>>>>> Stashed changes
   try {
     form.parse(req, async (err, fields, files) => {
       if (err) {
         return res.status(500).json({ error: "Internal Server Error" });
       }
-<<<<<<< Updated upstream
-
-      const courseId = new mongoose.Types.ObjectId().toHexString();
-      if (!courseId) {
-        throw new Error("Failed to generate courseId");
-      }
-
-      const courseThumbnail = files.thumbnail[0];
-      const data = await fs.readFileSync(courseThumbnail.filepath);
-      const upload = await s3FileUpload({
-        bucketName: process.env.S3_BUCKET_NAME,
-        key: `Images/Workshop/${courseId}/thumbnail_1.png`,
-        body: data,
-        contentType: courseThumbnail.mimetype,
-      });
-
-      // console.log(courseId);
-
-      // Convert CourseOutline object to array of objects
-      const courseOutline = [];
-      for (let key in fields.CourseOutline) {
-        courseOutline.push({
-          key: key,
-          value: fields.CourseOutline[key],
-        });
-      }
-      console.log(courseOutline);
-      const course = await Course.create({
-        _id: courseId,
-        CourseName: fields.CourseName[0],
-        CourseSlug: fields.CourseSlug[0],
-        CoursePrice: fields.CoursePrice[0],
-        thumbnail: `https://d2lnag86znkprh.cloudfront.net/Images/Workshop/${courseId}/thumbnail_1.png`,
-        CourseDescription: fields.CourseDescription[0],
-        CourseObjectives: fields.CourseObjectives,
-        CourseHighlights: fields.CourseHighlights,
-        // CourseOutline: courseOutline, // Assign the converted courseOutline array
-        Assessment: fields.Assessment,
-=======
       const courseId = new mongoose.Types.ObjectId().toHexString();
       if (!courseId) {
         throw new Error("Failed to generate articleId");
@@ -91,7 +39,6 @@ const addCourse = async (req, res) => {
         // ...req.body,
         ...fields,
         // CourseThumbnail: `https://d2lnag86znkprh.cloudfront.net/Images/Article/${courseId}/thumbnail_1.png`,
->>>>>>> Stashed changes
       });
 
       const newCourse = await course.save();
@@ -107,11 +54,9 @@ const addCourse = async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
-<<<<<<< Updated upstream
 const getCourse = async (req, res) => {
   try {
     const course = await Course.find();
-    console.log("HEll");
     if (course.length === 0) {
       res.status(404).json({
         message: "Course Not Found",
@@ -298,7 +243,3 @@ const getSpecificCourse = async (req, res) => {
   }
 };
 export { addCourse, getCourse, updateCourse, getSpecificCourse, deleteCourse };
-=======
-
-export { addCourse };
->>>>>>> Stashed changes
