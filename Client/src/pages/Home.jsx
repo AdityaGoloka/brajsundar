@@ -56,27 +56,16 @@ const Home = () => {
         </div>
       </div>
       <div className="my-12"></div>
-
-      {/* <div className="my-[5rem]"></div> */}
-
       <section id="portfolio">
         <Books />
       </section>
       <section id="portfolio">
         <Blog />
       </section>
-      {/* <section id="portfolio">
-        <Reel />
-      </section> */}
-      {/* <div className="my-[8rem]"></div> */}
-
-      {/* </section> */}
       <section>
         {" "}
         <Videos />
       </section>
-      {/* <div className="my-[5rem]"></div> */}
-
       <section>
         <Testimonials />
       </section>
@@ -84,13 +73,6 @@ const Home = () => {
         <Contact />
       </section>
       <div className="my-10"></div>
-
-      {/* <section id="Footer"> */}
-      {/* </section> */}
-      {/* Framer Motion Crash Course */}
-      {/* Uncomment the following lines */}
-      {/* <Test/>
-      <Test/> */}
     </div>
   );
 };

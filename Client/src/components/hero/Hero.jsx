@@ -83,26 +83,19 @@ const Hero = () => {
     //   </motion.div> */}
     // </div>
 
-    // Center image 
+    // Center image
     <div className="hero">
       <div className="wrapper px-10">
-        <div
-          className="textContainer w-full "
-        >
+        <div className="textContainer w-full ">
           <h2 variants={textVariants} className="animationHeader ">
             {text}
             <Cursor cursorColor="#4ca5ff" />
-          </h2>
-
-          <div className="imageContainer ">
-            <img
-              src="./hero-image.png"
-            />
+          </h2>{" "}
+          <h1 className="font-bold heroText"> Author, Educator</h1>
+          <h1 className="font-bold heroText2">Spiritual Leader</h1>
+          <div className="imageContainer items-center">
+            <img src="./hero-image.png" className="mx-auto" />
           </div>
-
-          <h1 variants={textVariants} className="font-bold heroText">
-            Spiritual Leader, Author, Educator
-          </h1>
         </div>
       </div>
 
@@ -114,7 +107,6 @@ const Hero = () => {
       >
         Spiritual Leader, Author, Educator
       </motion.div>
-
     </div>
   );
 };
