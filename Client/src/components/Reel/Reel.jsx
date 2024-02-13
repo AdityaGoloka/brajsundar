@@ -127,6 +127,18 @@ const Reel = () => {
               </motion.div>
             ))}
           </Slider>
+          <div className="flex mx-auto my-5">
+            {" "}
+            <a
+              href="/reel"
+              type="button"
+              className="px-14 mx-auto text-lg focus:outline-none text-white bg-purple-700 hover:bg-purple-800 
+             focus:ring-4 focus:ring-purple-300 font-medium rounded  px-9 py-2.5 mb-2
+              dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 cursor-pointer"
+            >
+              View More
+            </a>
+          </div>
         </div>
       </div>
     </motion.div>

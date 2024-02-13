@@ -22,7 +22,6 @@ const Workshop = () => {
     getAllWorkshopData();
   }, []);
 
-
   const handleLoadMore = () => {
     setDisplayedWorkshop((prevCount) => prevCount + 2);
   };
@@ -34,7 +33,6 @@ const Workshop = () => {
       </div>{" "}
       {/* <div className="mx-[7rem] flex gap-10 justify-between lg:flex-row flex-col"> */}
       <div>
-
         <div className="flex flex-col gap-4 items-center">
           {workShop.slice(0, displayedWorkshop).map((workshops) => (
             <WorkshopCard
@@ -48,10 +46,10 @@ const Workshop = () => {
           {displayedWorkshop < workShop.length && (
             <button
               type="button"
-              className="px-14 mx-auto text-lg focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+              className="px-14 mb-[7rem] mx-auto text-lg focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
               onClick={handleLoadMore}
             >
-              Enroll Now
+              View More
             </button>
           )}
         </div>

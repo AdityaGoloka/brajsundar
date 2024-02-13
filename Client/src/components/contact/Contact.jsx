@@ -49,41 +49,43 @@ const Contact = () => {
   return (
     <div
       //   ref={ref}
-      className="contact md:mx-10 "
-    //   variants={variants}
-    //   initial="initial"
-    //   whileInView="animate"
+      className="contact md:mx-12 "
+      //   variants={variants}
+      //   initial="initial"
+      //   whileInView="animate"
     >
       {/* <> */}
       <div
         className="textContainer sm:-my-10 lg:my-0 "
-      // variants={variants}
+        // variants={variants}
       >
-        <h1 variants={variants} className="justify-center items-center flex">Connect</h1>
+        <h1 variants={variants} className="justify-center items-center flex">
+          Connect
+        </h1>
         <div
           className="item flex sm:gap-2 sm:flex md:gap-0 md:block justify-center items-center"
-        // variants={variants}
+          // variants={variants}
         >
-          <h2 className="text-4xl flex justify-center text-center">Mail</h2>
-          <span className="text-2xl flex justify-center text-center">
+          <h2 className="text-3xl flex justify-center text-center">Mail</h2>
+          <span className="text-xl flex justify-center text-center">
             bdas@brajsundar.com
           </span>
         </div>
         <div
           className="item sm:gap-2 sm:flex md:gap-0 md:block"
-        // variants={variants}
+          // variants={variants}
         >
-          <h2 className="text-4xl flex justify-center text-center">Address</h2>
-          <span className="text-2xl flex justify-center text-center">
+          <h2 className="text-3xl flex justify-center text-center">Address</h2>
+          <span className="text-xl flex justify-center text-center">
             Hello street New York
           </span>
         </div>
         <div
           className="item sm:gap-2 sm:flex md:gap-0 md:block"
-        // variants={variants}
+          // variants={variants}
         >
-          <h2 className="text-4xl flex justify-center text-center">Phone</h2>
-          <span className="text-2xl flex justify-center text-center">
+          <h2 className="text-3xl flex justify-center text-center">Phone</h2>
+          <span className="text-xl flex justify-center text-center">
             +1 234 5678
           </span>
         </div>
@@ -121,9 +123,9 @@ const Contact = () => {
         <form
           ref={formRef}
           onSubmit={sendEmail}
-        // initial={{ opacity: 0 }}
-        // whileInView={{ opacity: 1 }}
-        // transition={{ delay: 4, duration: 1 }}
+          // initial={{ opacity: 0 }}
+          // whileInView={{ opacity: 1 }}
+          // transition={{ delay: 4, duration: 1 }}
         >
           <input type="text" required placeholder="Name" name="name" />
           <input type="email" required placeholder="Email" name="email" />

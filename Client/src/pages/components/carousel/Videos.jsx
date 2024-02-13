@@ -57,7 +57,7 @@ const Videos = () => {
             autoPlay={true}
             dynamicHeight={false}
             interval={1000}
-            showIndicators={false}
+            showIndicators={true}
             infiniteLoop={true}
             showArrows={false}
             showStatus={false}
@@ -66,13 +66,22 @@ const Videos = () => {
             style={{ overflow: "visible" }} // Adjusted styling to prevent cropping
           >
             <div>
-              <img src="https://www.megamaxaviation.com/wp-content/uploads/2023/01/Pilgrimage-to-Char-dham-yatra-1568x824.jpg" style={{ width: "80%", height: "100%" }} />
+              <img
+                src="https://www.megamaxaviation.com/wp-content/uploads/2023/01/Pilgrimage-to-Char-dham-yatra-1568x824.jpg"
+                style={{ width: "80%", height: "100%" }}
+              />
             </div>
             <div>
-              <img src="https://www.megamaxaviation.com/wp-content/uploads/2024/01/Costs-Involved-in-Char-Dham-Yatra-By-Helicopter.jpg" style={{ width: "80%", height: "100%" }} />
+              <img
+                src="https://www.megamaxaviation.com/wp-content/uploads/2024/01/Costs-Involved-in-Char-Dham-Yatra-By-Helicopter.jpg"
+                style={{ width: "80%", height: "100%" }}
+              />
             </div>
             <div>
-              <img src="https://www.megamaxaviation.com/wp-content/uploads/2024/01/Char-Dham-Yatra-by-Helicopter-2024.jpg" style={{ width: "80%", height: "100%" }} />
+              <img
+                src="https://www.megamaxaviation.com/wp-content/uploads/2024/01/Char-Dham-Yatra-by-Helicopter-2024.jpg"
+                style={{ width: "80%", height: "100%" }}
+              />
             </div>
           </Carousel>
         </div>

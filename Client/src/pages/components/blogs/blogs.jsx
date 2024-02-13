@@ -147,7 +147,7 @@ const Blogs = () => {
                 <a href={`/blog/${item._id}`}>
                   {" "}
                   <div
-                    className="bg-white/5 p-5 rounded-lg cursor-pointer mx-5 my"
+                    className="bg-white/5 p-5 rounded-lg cursor-pointer mx-5 "
                     style={{ height: "400px" }}
                   >
                     <div className="">
@@ -171,6 +171,18 @@ const Blogs = () => {
             ))}
           </Slider>
           <SampleNextArrow className="next-arrow " />
+          <div className="flex mx-auto my-5">
+            {" "}
+            <a
+              href="/blogs"
+              type="button"
+              className="px-14 mx-auto text-lg focus:outline-none text-white bg-purple-700 hover:bg-purple-800 
+             focus:ring-4 focus:ring-purple-300 font-medium rounded  px-9 py-2.5 mb-2
+              dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 cursor-pointer"
+            >
+              View More
+            </a>
+          </div>
         </div>
       </div>
     </motion.section>

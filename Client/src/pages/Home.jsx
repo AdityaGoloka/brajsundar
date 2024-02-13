@@ -56,17 +56,17 @@ const Home = () => {
       </div>
       <div className="my-12"></div>
 
-      <section id="portfolio">
-        <Blog />
-      </section>
-      <section id="portfolio">
-        <Reel />
-      </section>
       {/* <div className="my-[5rem]"></div> */}
 
       <section id="portfolio">
         <Books />
       </section>
+      <section id="portfolio">
+        <Blog />
+      </section>
+      {/* <section id="portfolio">
+        <Reel />
+      </section> */}
       {/* <div className="my-[8rem]"></div> */}
 
       {/* </section> */}
