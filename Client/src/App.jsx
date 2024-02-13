@@ -30,6 +30,7 @@ import Contact from "./components/contact/Contact.jsx";
 import WorkshopViewPage from "./pages/WorkshopViewPage.jsx";
 import CoachingViewPage from "./pages/CoachingViewPage.jsx";
 import MainNavbar from "./components/mainNavbar/Mainnavbar.jsx";
+import Events from "./pages/Events.jsx";
 export default function App() {
   return (
     <Router>
@@ -74,6 +75,7 @@ export default function App() {
             path="/academy/coaching-detail/:id"
             element={<CoachingViewPage />}
           />
+          <Route path="/events" element={<Events />} />
           <Route path="/about" element={<About />} />
           <Route path="/article/:id" element={<SingleBlog />} />{" "}
           {/* Use Route within Routes */}

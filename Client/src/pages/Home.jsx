@@ -12,6 +12,7 @@ import Videos from "./components/carousel/Videos.jsx";
 import Books from "../components/Books/Books.jsx";
 import Reel from "../components/Reel/Reel.jsx";
 import HomeCard from "./components/HomeCard/HomeCard.jsx";
+import Testimonials from "../components/Testimonials/Testimonials.jsx";
 // import Books from "./Books/Books.jsx";
 
 const Home = () => {
@@ -76,6 +77,9 @@ const Home = () => {
       </section>
       {/* <div className="my-[5rem]"></div> */}
 
+      <section>
+        <Testimonials />
+      </section>
       <section>
         <Contact />
       </section>

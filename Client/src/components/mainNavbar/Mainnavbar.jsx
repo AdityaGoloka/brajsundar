@@ -60,14 +60,13 @@ const MainNavbar = () => {
   const menuItems2 = [
     { label: "About Me", href: "/about" },
     { label: "Connect", href: "/contact" },
-    { label: "Event", href: "/bookMe" },
+    { label: "Events", href: "/events" },
   ];
 
   return (
     <motion.nav
-      className={`hover:bg-gray-900 ${
-        isScrolled ? "bg-gray-900" : "bg-transparent"
-      } z-10 absolute top-0 border-gray-200 border-gray-700 sticky top-0 z-10`}
+      className={`hover:bg-gray-900 ${isScrolled ? "bg-gray-900" : "bg-transparent"
+        } z-10 absolute top-0 border-gray-200 border-gray-700 sticky top-0 z-10`}
     >
       <motion.div
         className="max-w-screen-xl flex flex-wrap items-center justify-between p-3"
@@ -114,9 +113,8 @@ const MainNavbar = () => {
           </div>
         </div>
         <div
-          className={`${
-            isMobileMenuOpen ? "block" : "hidden"
-          } w-full md:block md:w-auto`}
+          className={`${isMobileMenuOpen ? "block" : "hidden"
+            } w-full md:block md:w-auto`}
         >
           <ul
             className="flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg 
@@ -154,9 +152,8 @@ const MainNavbar = () => {
         </div>
 
         <div
-          className={`${
-            isMobileMenuOpen ? "block" : "hidden"
-          } w-full md:block md:w-auto `}
+          className={`${isMobileMenuOpen ? "block" : "hidden"
+            } w-full md:block md:w-auto `}
         >
           <ul
             className="flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg 
