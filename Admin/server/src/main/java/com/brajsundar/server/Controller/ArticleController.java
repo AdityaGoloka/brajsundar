@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brajsundar.server.Model.Article;
@@ -36,7 +35,7 @@ public class ArticleController {
 
     // Get All Articles
     @GetMapping("/article")
-    public ResponseEntity<List<Article>> getArticleEntity() {
+    public ResponseEntity<List<Article>> getArticle() {
         return ResponseEntity.ok().body(articleService.getArticle());
     }
 
@@ -48,14 +47,14 @@ public class ArticleController {
 
     // Update Article
     @PutMapping("/article/{id}")
-    public ResponseEntity<Article> updateArticle(@PathVariable String id, @RequestBody Article article){
+    public ResponseEntity<Article> updateArticle(@PathVariable String id, @RequestBody Article article) {
         article.setId(id);
         return ResponseEntity.ok().body(this.articleService.updateArticle(article));
     }
 
     // Delete Article
     @DeleteMapping("/article/{id}")
-    public HttpStatus deleteArticle(@PathVariable String id){
+    public HttpStatus deleteArticle(@PathVariable String id) {
         this.articleService.deleteArticle(id);
         return HttpStatus.OK;
     }

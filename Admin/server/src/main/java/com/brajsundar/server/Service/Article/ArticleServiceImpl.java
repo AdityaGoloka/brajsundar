@@ -1,15 +1,12 @@
 package com.brajsundar.server.Service.Article;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.amazonaws.services.s3.AmazonS3;
 import com.brajsundar.server.Model.Article;
 import com.brajsundar.server.Repository.ArticleRepository;
 
