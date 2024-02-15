@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 
 const Navbar = () => {
   return (
-    <div className="navbar">
+    <div className="navbar overflow-x-hidden">
       {/* Sidebar */}
       <Sidebar />
       <div className="lg:mx-[10rem] flex justify-between ">
         {" "}
-        <div className="my-[2rem] flex w-[9rem] rounded mx-auto">
+        <div className="my-[2rem] flex w-[12rem] rounded mx-auto">
           {/* ml-auto mr-10 lg:ml-0 lg:mr-0 mx-auto */}
           <a href="/">
             <img className=" items-center " src="/logo.png" alt="logo" />

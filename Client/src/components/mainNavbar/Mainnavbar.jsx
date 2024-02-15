@@ -53,23 +53,25 @@ const MainNavbar = () => {
   };
 
   const menuItems = [
-    { label: "Academy", href: "/academy" },
     { label: "Literature", href: "/literature" },
-    { label: "Media", href: "/media" },
+    { label: "Events", href: "/events" },
+    { label: "Connect", href: "/contact" },
   ];
   const menuItems2 = [
-    { label: "About Me", href: "/about" },
-    { label: "Connect", href: "/contact" },
-    { label: "Events", href: "/events" },
+    { label: "About", href: "/about" },
+
+    { label: "School of love", href: "/academy" },
+    { label: "Media", href: "/media" },
   ];
 
   return (
     <motion.nav
-      className={`hover:bg-gray-900 ${isScrolled ? "bg-gray-900" : "bg-transparent"
-        } z-10 absolute top-0 border-gray-200 border-gray-700 sticky top-0 z-10`}
+      className={`hover:bg-gray-900 ${
+        isScrolled ? "bg-gray-900" : "bg-transparent"
+      }  absolute top-0 border-gray-200 border-gray-700 sticky top-0 z-10  `}
     >
       <motion.div
-        className="max-w-screen-xl flex flex-wrap items-center justify-between p-3"
+        className="max-w-screen-xl flex flex-wrap items-center justify-between p-3 "
         variants={textVariants.animate}
         initial="initial"
         animate="animate"
@@ -105,75 +107,41 @@ const MainNavbar = () => {
             {" "}
             <a href="/" className=" items-center">
               <img
-                className="items-center w-[7rem]  md:hidden "
-                src="/logo.png"
+                className="items-center w-[8rem]  absolute top-3 right-3 md:hidden "
+                src="/logoBold.png"
                 alt="logo"
               />
             </a>
           </div>
         </div>
         <div
-          className={`${isMobileMenuOpen ? "block" : "hidden"
-            } w-full md:block md:w-auto`}
+          className={`${
+            isMobileMenuOpen ? "block" : "hidden"
+            // } w-full md:block md:w-auto h-[60vh]`}
+          } w-full md:block md:w-auto `}
         >
           <ul
-            className="flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg 
+            className="flex flex-col font-medium p-4 md:p-0 mt-1  rounded-lg 
             bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white 
-            dark:bg-transparent md:dark:bg-transparent "
+            dark:bg-transparent md:dark:bg-transparent lg:gap-10 gap-3 "
           >
             {menuItems2.map((item, index) => (
               <motion.li
                 key={index}
                 variants={textVariants}
-                className="relative group"
+                className="relative group "
               >
                 <a
                   href={item.href}
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-white"
+                  className="block py-2 px-3 text-gray-900 rounded 
+                  hover:bg-gray-100 md:hover:bg-transparent md:border-0 
+                  md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500
+                   dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent 
+                   text-white text-xl lg:text-lg "
                 >
                   {item.label}
                 </a>
-
-                {/* ... other dropdowns */}
-              </motion.li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="w-[8rem] items-center">
-          {" "}
-          <a href="/">
-            <img
-              className="items-center  hidden md:block"
-              src="/logo.png"
-              alt="logo"
-            />
-          </a>
-        </div>
-
-        <div
-          className={`${isMobileMenuOpen ? "block" : "hidden"
-            } w-full md:block md:w-auto `}
-        >
-          <ul
-            className="flex flex-col font-medium p-4 md:p-0 mt-4  rounded-lg 
-            bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white 
-            dark:bg-transparent md:dark:bg-transparent "
-          >
-            {" "}
-            {menuItems.map((item, index) => (
-              <motion.li
-                key={index}
-                variants={textVariants}
-                className="relative group"
-              >
-                <a
-                  href={item.href}
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-white"
-                >
-                  {item.label}
-                </a>
-                {item.label === "Academy" && (
+                {item.label === "School Of Love" && (
                   <motion.div
                     className="z-10 hidden absolute left-0 mt-1 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 group-hover:block"
                     variants={dropdownVariants}
@@ -210,16 +178,20 @@ const MainNavbar = () => {
                 )}
                 {item.label === "Media" && (
                   <motion.div
-                    className="z-10 hidden absolute left-0 mt-1 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 group-hover:block text-white"
+                    className="z-10 hidden absolute left-0 mt-1
+                     font-normal bg-white divide-y divide-gray-100 rounded-lg shadow
+                      w-40 dark:bg-gray-700 dark:divide-gray-600 group-hover:block text-white"
                     variants={dropdownVariants}
                     initial="hidden"
                     animate="visible"
                   >
-                    <ul className="py-2 text-sm text-gray-700 dark:text-gray-400">
+                    <ul className="py-2 text-sm text-gray-700 dark:text-gray-400 ">
                       <li>
                         <a
                           href="/academy/podcast"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-white"
+                          className="block px-4 py-2
+                           hover:bg-gray-100 dark:hover:bg-gray-600 
+                           dark:hover:text-white text-white"
                         >
                           Podcast
                         </a>
@@ -243,6 +215,51 @@ const MainNavbar = () => {
                     </ul>
                   </motion.div>
                 )}
+                {/* ... other dropdowns */}
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="w-[9rem] items-center ">
+          {" "}
+          <a href="/">
+            <img
+              className="items-center  hidden md:block"
+              src="/logoBold.png "
+              alt="logo"
+            />
+          </a>
+        </div>
+
+        <div
+          className={`${
+            isMobileMenuOpen ? "block" : "hidden"
+          } w-full md:block md:w-auto `}
+        >
+          <ul
+            className="flex flex-col font-medium p-4 md:p-0 mt-4 -mt-2  rounded-lg 
+            bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white 
+            dark:bg-transparent md:dark:bg-transparent lg:gap-10 sm:gap- mr-10  gap-3 "
+          >
+            {" "}
+            {menuItems.map((item, index) => (
+              <motion.li
+                key={index}
+                variants={textVariants}
+                className="relative group"
+              >
+                <a
+                  href={item.href}
+                  className="block py-2 px-1 
+                  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent 
+                  md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white 
+                  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 
+                  dark:hover:text-white md:dark:hover:bg-transparent text-xl lg:text-lg  text-white"
+                >
+                  {item.label}
+                </a>
+
                 {item.label === "Literature" && (
                   <motion.div
                     className="z-10 hidden absolute left-0 mt-1 font-normal bg-white text-white

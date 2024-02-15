@@ -7,8 +7,12 @@ const Footer = () => {
     <div>
       <footer
         className=" bg-opacity-75 
-      bg-[url('https://golokait.com/wp-content/uploads/2023/06/footer-bg-1.png')] pt-[4rem]  bottom-0"
+      bg-[url('/footer1.png')] pt-[4rem]  bottom-0"
       >
+        {/* <footer
+        className=" bg-opacity-75 
+      bg-[url('https://golokait.com/wp-content/uploads/2023/06/footer-bg-1.png')] pt-[4rem]  bottom-0"
+      > */}
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap text-left lg:text-left justify-center items-center mb-[9rem] ">
             <div className="w-full lg:w-6/12 px-4 ">

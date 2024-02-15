@@ -48,9 +48,9 @@ const Home = () => {
           Explore
         </h1>{" "}
         <div className="grid mx-auto items-center gap-3 lg:gap-10 px-[7rem] lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-          <HomeCard data="Courses" link="courses" />
-          <HomeCard data="Workshops" link="workshop" />
-          <HomeCard data="Coaching" link="coaching" />
+          <HomeCard data="Courses" link="/academy/courses" />
+          <HomeCard data="Workshops" link="/academy/workshop" />
+          <HomeCard data="Coaching" link="/academy/coaching" />
           {/* <HomeCard />
         <HomeCard /> */}
         </div>

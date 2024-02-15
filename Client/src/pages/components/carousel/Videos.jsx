@@ -43,20 +43,20 @@ const Videos = () => {
 
   return (
     <div className="portfolio" ref={ref} style={{ width: "100%" }}>
-      <div className="flex flex-wrap w-full mb-16 justify-center">
-        <div className="lg:w-1/2 w-full mb-6 lg:mb-0 text-center">
+      <div className="flex  flex-wrap w-full mb-12 justify-center">
+        <div className="lg:w-1/2 w-full  lg:mb-0 text-center">
           <motion.h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">
-            Explore Videos
+            Worldwide Bhagwat Yatra
           </motion.h1>
           <div className="h-1 w-full bg-indigo-500 rounded"></div>
         </div>
       </div>
-      <div className="flex items-center justify-center min-h-screen relative">
-        <div className="rounded-lg overflow-hidden w-full mx-4 h-full">
+      <div className="flex items-center justify-center min-h-screen ">
+        <div className="rounded-lg overflow-hidden w-full  h-full -py-2">
           <Carousel
             autoPlay={true}
             dynamicHeight={false}
-            interval={1000}
+            interval={2500}
             showIndicators={true}
             infiniteLoop={true}
             showArrows={false}
@@ -67,20 +67,63 @@ const Videos = () => {
           >
             <div>
               <img
-                src="https://www.megamaxaviation.com/wp-content/uploads/2023/01/Pilgrimage-to-Char-dham-yatra-1568x824.jpg"
-                style={{ width: "80%", height: "100%" }}
+                // src="https://www.megamaxaviation.com/wp-content/uploads/2023/01/Pilgrimage-to-Char-dham-yatra-1568x824.jpg"
+                src="/yatra/1.jpg"
+                style={{ width: "80%", height: "150%" }}
               />
             </div>
             <div>
               <img
-                src="https://www.megamaxaviation.com/wp-content/uploads/2024/01/Costs-Involved-in-Char-Dham-Yatra-By-Helicopter.jpg"
-                style={{ width: "80%", height: "100%" }}
+                src="/yatra/2.jpg"
+                style={{ width: "80%", height: "150%" }}
               />
             </div>
             <div>
               <img
-                src="https://www.megamaxaviation.com/wp-content/uploads/2024/01/Char-Dham-Yatra-by-Helicopter-2024.jpg"
-                style={{ width: "80%", height: "100%" }}
+                src="/yatra/3.jpg"
+                style={{ width: "80%", height: "150%" }}
+              />
+            </div>
+            <div>
+              <img
+                src="/yatra/4.jpg"
+                style={{ width: "80%", height: "150%" }}
+              />
+            </div>
+            <div>
+              <img
+                src="/yatra/5.jpg"
+                style={{ width: "80%", height: "150%" }}
+              />
+            </div>
+            <div>
+              <img
+                src="/yatra/6.jpg"
+                style={{ width: "80%", height: "150%" }}
+              />
+            </div>
+            <div>
+              <img
+                src="/yatra/7.jpg"
+                style={{ width: "80%", height: "150%" }}
+              />
+            </div>
+            <div>
+              <img
+                src="/yatra/8.jpg"
+                style={{ width: "80%", height: "150%" }}
+              />
+            </div>
+            <div>
+              <img
+                src="/yatra/9.jpg"
+                style={{ width: "80%", height: "150%" }}
+              />
+            </div>
+            <div>
+              <img
+                src="/yatra/10.jpg"
+                style={{ width: "80%", height: "150%" }}
               />
             </div>
           </Carousel>

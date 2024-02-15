@@ -49,7 +49,7 @@ const Events = () => {
           className="border rounded border-violet-500 text-white text-bold flex justify-center items-center bg-blue-400 m-auto w-fit px-14 py-5 text-black hover:bg-blue-600 cursor-pointer font-bold text-lg "
           onClick={() => setFormModal(true)}
         >
-          Events:
+          Book Me
         </button>
 
         {formModal && (
