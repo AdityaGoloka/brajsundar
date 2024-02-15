@@ -34,7 +34,7 @@ public class ArticleServiceImpl implements ArticleService {
         return this.articleRepository.save(article);
     }
 
-    // @Override
+    @Override
     public List<Article> getArticle() {
         return this.articleRepository.findAll();
     }
