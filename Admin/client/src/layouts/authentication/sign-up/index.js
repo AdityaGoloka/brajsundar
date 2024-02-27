@@ -1,20 +1,4 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// react-router-dom components
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -31,8 +15,49 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 
 // Images
 import bgImage from "assets/images/bg-sign-up-cover.jpeg";
+import { Button } from "antd";
+import { useState } from "react";
 
-function Cover() {
+import axios from "axios";
+
+import Toastify from "toastify-js";
+import BASEURL from "../../../API.js";
+
+const Cover = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSignUp = async (e) => {
+    try {
+      e.preventDefault();
+
+      const response = await axios.post(`${BASEURL}/user/signup`, {
+        username,
+        email,
+        password,
+      });
+      console.log(response.data);
+
+      Toastify({
+        text: "User Registered Successfully",
+        duration: 1800,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "linear-gradient(to right, #3C50E0, #3C50E0)",
+          padding: "10px 50px",
+        },
+      }).showToast();
+      navigate("/auth/signin");
+    } catch (error) {
+      console.log("Error while Registering User: ", error);
+    }
+  };
+
   return (
     <CoverLayout image={bgImage}>
       <Card>
@@ -48,22 +73,40 @@ function Cover() {
           textAlign="center"
         >
           <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-            Join us today
-          </MDTypography>
-          <MDTypography display="block" variant="button" color="white" my={1}>
-            Enter your email and password to register
+            Register
           </MDTypography>
         </MDBox>
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form">
             <MDBox mb={2}>
-              <MDInput type="text" label="Name" variant="standard" fullWidth />
+              <MDInput
+                type="text"
+                label="Username"
+                variant="standard"
+                fullWidth
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" variant="standard" fullWidth />
+              <MDInput
+                type="email"
+                label="Email"
+                variant="standard"
+                fullWidth
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Password" variant="standard" fullWidth />
+              <MDInput
+                type="password"
+                label="Password"
+                variant="standard"
+                fullWidth
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </MDBox>
             <MDBox display="flex" alignItems="center" ml={-1}>
               <Checkbox />
@@ -87,23 +130,24 @@ function Cover() {
               </MDTypography>
             </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth>
+              <MDButton variant="gradient" color="info" fullWidth onClick={handleSignUp}>
                 sign in
               </MDButton>
             </MDBox>
             <MDBox mt={3} mb={1} textAlign="center">
               <MDTypography variant="button" color="text">
                 Already have an account?{" "}
-                <MDTypography
+                <Button
                   component={Link}
-                  to="/authentication/sign-in"
+                  to="/auth/sign-in"
                   variant="button"
                   color="info"
                   fontWeight="medium"
                   textGradient
+                  onClick={handleSignUp}
                 >
                   Sign In
-                </MDTypography>
+                </Button>
               </MDTypography>
             </MDBox>
           </MDBox>
@@ -111,6 +155,6 @@ function Cover() {
       </Card>
     </CoverLayout>
   );
-}
+};
 
 export default Cover;

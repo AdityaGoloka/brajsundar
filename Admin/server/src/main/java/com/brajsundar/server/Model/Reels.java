@@ -1,5 +1,6 @@
 package com.brajsundar.server.Model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,21 +12,29 @@ import javax.validation.constraints.Size;
 public class Reels {
 
     @Id
-    private String id; // Use String instead of long for MongoDB-generated ID
+    private ObjectId id; // Use String instead of long for MongoDB-generated ID
 
     @NotBlank
     @Size(max = 100)
     @Indexed(unique = true)
     private String reelName;
     private String reelUrl;
+    private String reelThumbnail;
+
+    public Reels(String reelName, String reelUrl, String reelThumbnail, ObjectId id) {
+        this.reelName = reelName;
+        this.reelUrl = reelUrl;
+        this.reelThumbnail = reelThumbnail;
+        this.id = id;
+    }
 
     // Getters and setters
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -43,5 +52,13 @@ public class Reels {
 
     public void setReelUrl(String reelUrl) {
         this.reelUrl = reelUrl;
+    }
+
+    public String getReelThumbnail() {
+        return reelThumbnail;
+    }
+
+    public void setReelThumbnail(String reelThumbnail) {
+        this.reelThumbnail = reelThumbnail;
     }
 }

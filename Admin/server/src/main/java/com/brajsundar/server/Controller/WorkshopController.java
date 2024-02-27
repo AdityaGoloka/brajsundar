@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.brajsundar.server.Model.Workshop;
 import com.brajsundar.server.Service.Workshop.WorkshopService;
@@ -23,8 +24,11 @@ public class WorkshopController {
     private WorkshopService workshopService;
 
     @PostMapping("/workshop")
-    public ResponseEntity<Workshop> uploadWorkshop(@RequestBody Workshop workshop) {
-        return ResponseEntity.ok().body(this.workshopService.uploadWorkshop(workshop));
+    public ResponseEntity<Workshop> uploadWorkshop(@RequestParam("file") MultipartFile file,
+            String name, String description,
+            String exclyUrl) {
+        return ResponseEntity.ok()
+                .body(this.workshopService.uploadWorkshop(file, name, description, exclyUrl));
     }
 
     @GetMapping("/workshop")
@@ -38,9 +42,14 @@ public class WorkshopController {
     }
 
     @PutMapping("/workshop/{id}")
-    public ResponseEntity<Workshop> updateWorkshop(@PathVariable String id, @RequestBody Workshop workshop) {
-        workshop.setId(id);
-        return ResponseEntity.ok().body(this.workshopService.updateWorkshop(workshop));
+    public ResponseEntity<Workshop> updateWorkshop(@PathVariable String id,
+            @RequestParam(value = "file", required = false) MultipartFile newThumbnail,
+            @RequestParam String name,
+            @RequestParam String description,
+            @RequestParam String exclyUrl) {
+        Workshop updatedWorkshop = workshopService.updateWorkshop(id, name, description, exclyUrl,
+                newThumbnail);
+        return ResponseEntity.ok(updatedWorkshop);
     }
 
     @DeleteMapping("/workshop/{id}")

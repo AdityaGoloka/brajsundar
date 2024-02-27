@@ -2,17 +2,20 @@ package com.brajsundar.server.Service.Coaching;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.brajsundar.server.Model.Coaching;
 
 public interface CoachingService {
-    Coaching uploadCoaching(Coaching coaching);
+        Coaching uploadCoaching(MultipartFile file, String name, String description, String exclyUrl);
 
-    List<Coaching> getCoaching();
+        List<Coaching> getCoaching();
 
-    Coaching getCoachingById(String id);
+        Coaching getCoachingById(String id);
 
-    Coaching updateCoaching(Coaching coaching);
+        Coaching updateCoaching(String id, String name, String description, String exclyUrl,
+                        MultipartFile file);
 
-    void deleteCoaching(String id);
+        void deleteCoaching(String id);
 
 }

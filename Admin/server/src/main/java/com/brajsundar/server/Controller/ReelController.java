@@ -5,18 +5,21 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.brajsundar.server.Model.Reels;
 import com.brajsundar.server.Service.Reels.ReelService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 public class ReelController {
 
     @Autowired
@@ -24,8 +27,10 @@ public class ReelController {
 
     // Create Single Article
     @PostMapping("/reels")
-    public ResponseEntity<Reels> uploadReel(@RequestBody Reels reels) {
-        return ResponseEntity.ok().body(this.reelService.uploadReel(reels));
+    public ResponseEntity<Reels> uploadReel(@RequestParam("file") MultipartFile file, String reelName, String reelUrl,
+            String reelThumbnail) {
+        Reels saveReel = reelService.uploadReel(file, reelName, reelUrl);
+        return ResponseEntity.ok(saveReel);
     }
 
     // Get All Articles
@@ -42,9 +47,11 @@ public class ReelController {
 
     // Update Article
     @PutMapping("/reels/{id}")
-    public ResponseEntity<Reels> updateReel(@PathVariable String id, @RequestBody Reels reels) {
-        reels.setId(id);
-        return ResponseEntity.ok().body(this.reelService.updateReel(reels));
+    public ResponseEntity<Reels> updateReel(@PathVariable String id,
+            @RequestParam(value = "file", required = false) MultipartFile newThumbnail, @RequestParam String reelName,
+            @RequestParam String reelUrl) {
+        Reels updatedReel = reelService.updateReel(id, reelName, reelUrl, newThumbnail);
+        return ResponseEntity.ok(updatedReel);
     }
 
     // Delete Article

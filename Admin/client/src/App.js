@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import SignIn from "./layouts/authentication/sign-in";
+import SignUp from "./layouts/authentication/sign-up";
 import Tables from "layouts/tables";
 import Books from "layouts/books";
 import Reels from "layouts/reels";
@@ -83,21 +84,21 @@ export default function App() {
   const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
 
   // Setting the dir attribute for the body element
-  // useEffect(() => {
-  //   document.body.setAttribute("dir", direction);
-  // }, [direction]);
+  useEffect(() => {
+    document.body.setAttribute("dir", direction);
+  }, [direction]);
 
   // Setting page scroll to 0 when changing the route
-  // useEffect(() => {
-  //   document.documentElement.scrollTop = 0;
-  //   document.scrollingElement.scrollTop = 0;
-  // }, [pathname]);
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.scrollingElement.scrollTop = 0;
+  }, [pathname]);
 
-  // useEffect(() => {
-  //   if (currentUser) {
-  //     navigate("/dashboard");
-  //   }
-  // }, [currentUser, navigate]);
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/dashboard");
+    }
+  }, [currentUser, navigate]);
 
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
@@ -153,8 +154,9 @@ export default function App() {
       {/* <RequirePath> */}
       <Routes>
         <Route index path="auth/signin" element={<SignIn />} />
+        <Route index path="auth/signup" element={<SignUp />} />
         <Route
-          path="/"
+          path="/dashboard"
           element={
             <RequirePath>
               <Dashboard />
@@ -163,7 +165,7 @@ export default function App() {
         />
         <Route
           index
-          path="tables"
+          path="/books"
           element={
             // <RequirePath>
             <Books />

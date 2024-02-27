@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.brajsundar.server.Model.Courses;
 import com.brajsundar.server.Service.Courses.CourseService;
@@ -23,8 +24,11 @@ public class CourseController {
     private CourseService courseService;
 
     @PostMapping("/course")
-    public ResponseEntity<Courses> uploadCourse(@RequestBody Courses courses) {
-        return ResponseEntity.ok().body(this.courseService.uploadCourse(courses));
+    public ResponseEntity<Courses> uploadCourse(@RequestParam("file") MultipartFile file,
+            String name, String description,
+            String exclyUrl) {
+        return ResponseEntity.ok()
+                .body(this.courseService.uploadCourse(file, name, description, exclyUrl));
     }
 
     @GetMapping("/course")
@@ -38,9 +42,14 @@ public class CourseController {
     }
 
     @PutMapping("/course/{id}")
-    public ResponseEntity<Courses> updateCourse(@PathVariable String id, @RequestBody Courses courses) {
-        courses.setId(id);
-        return ResponseEntity.ok().body(this.courseService.updateCourse(courses));
+    public ResponseEntity<Courses> updateCourse(@PathVariable String id,
+            @RequestParam(value = "file", required = false) MultipartFile newThumbnail,
+            @RequestParam String name,
+            @RequestParam String description,
+            @RequestParam String exclyUrl) {
+        Courses updatedCourses = courseService.updateCourse(id, name, description, exclyUrl,
+                newThumbnail);
+        return ResponseEntity.ok(updatedCourses);
     }
 
     @DeleteMapping("/course/{id}")

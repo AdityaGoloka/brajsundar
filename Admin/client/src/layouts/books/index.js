@@ -16,9 +16,9 @@ import Footer from "examples/Footer";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import axios from "axios";
-// import { EyeOutlined } from "@ant-design/icons";
 import "./index.css";
-function BooksTable() {
+import BASEURL from "API";
+const BooksTable = () => {
   const [booksData, setBooksData] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -35,14 +35,17 @@ function BooksTable() {
   useEffect(() => {
     fetchData();
   }, []);
-  const fetchData = () => {
-    fetch("http://localhost:5000/api/books/getBooks")
-      .then((response) => response.json())
-      .then((data) => {
-        setBooksData(data.data);
-        setFilteredBooks(data.data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${BASEURL}/book`);
+      const data = response.data;
+      console.log(data);
+      setBooksData(data.data);
+      setFilteredBooks(data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   const columns = [
@@ -342,7 +345,7 @@ function BooksTable() {
                 <Col xs={24} sm={12}>
                   <div>
                     <h3 className="book-details-title">Prebook:</h3>
-                    <p className="book-details-text">{selectedBook.prebook}</p>
+                    <p className="book-details-text">{selectedBook.Book}</p>
                   </div>
                 </Col>
                 <Col xs={24} sm={12}>
@@ -358,7 +361,7 @@ function BooksTable() {
               </Row>
               <div>
                 <h2 className="book-details-title">Book Detail:</h2>
-                <p className="book-details-text">{selectedBook.detail}</p>
+                <p className="book-details-text">{selectedBook.bookDetail}</p>
               </div>
             </div>
           )}
@@ -457,6 +460,6 @@ function BooksTable() {
       {/* <Footer /> */}
     </DashboardLayout>
   );
-}
+};
 
 export default BooksTable;

@@ -20,7 +20,8 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import BASEURL from "API";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
@@ -29,56 +30,53 @@ function Dashboard() {
   const [videoCount, setVideoCount] = useState(0);
   const [articleCount, setArticleCount] = useState(0);
 
-  const fetchBookData = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/api/books/getBooks");
-      const data = response;
-      // console.log("Book Data: ", data);
-      setBookCount(data.data.data.length);
-    } catch (error) {
-      console.log("Error Fetching Book Data: ", error);
-    }
-  };
+  // useEffect(() => {
+  //   const fetchBookData = async () => {
+  //     try {
+  //       const response = await axios.get(`${BASEURL}/book`);
+  //       const data = response.data;
+  //       console.log("Book Data: ", data);
+  //       setBookCount(data.length);
+  //     } catch (error) {
+  //       console.log("Error Fetching Book Data: ", error);
+  //     }
+  //   };
 
-  const fetchReelData = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/api/reels/getReels");
-      const data = response;
-      // console.log("Reel Data: ", data);
-      setReelCount(data.data.data.length);
-    } catch (error) {
-      console.log("Error Fetching Reel Data: ", error);
-    }
-  };
+  //   fetchBookData();
+  // }, [bookCount]);
 
-  const fetchVideoData = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/api/youtube/videos");
-      const data = response;
-      // console.log("Video Data: ", data);
-      setVideoCount(data.data.length);
-    } catch (error) {
-      console.log("Error Fetching Video Data: ", error);
-    }
-  };
+  // const fetchReelData = async () => {
+  //   try {
+  //     const response = await axios.get(`${BASEURL}/reels`);
+  //     const data = response.data;
+  //     console.log("Reel Data: ", data);
+  //     setReelCount(data.length);
+  //   } catch (error) {
+  //     console.log("Error Fetching Reel Data: ", error);
+  //   }
+  // };
 
-  const fetchArticleData = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/api/articles/getArticles");
-      const data = response;
-      // console.log("Article Data: ", data);
-      setArticleCount(data.data.data.length);
-    } catch (error) {
-      console.log("Error Fetching Article Data: ", error);
-    }
-  };
+  // const fetchVideoData = async () => {
+  //   try {
+  //     const response = await axios.get(`${BASEURL}/video`);
+  //     const data = response.data;
+  //     console.log("Video Data: ", data);
+  //     setVideoCount(data.length);
+  //   } catch (error) {
+  //     console.log("Error Fetching Video Data: ", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchBookData();
-    fetchReelData();
-    fetchVideoData();
-    fetchArticleData();
-  }, []);
+  // const fetchArticleData = async () => {
+  //   try {
+  //     const response = await axios.get(`${BASEURL}/article`);
+  //     const data = response.data;
+  //     console.log("Article Data: ", data);
+  //     setArticleCount(data.length);
+  //   } catch (error) {
+  //     console.log("Error Fetching Article Data: ", error);
+  //   }
+  // };
 
   return (
     <DashboardLayout>
@@ -95,26 +93,12 @@ function Dashboard() {
                   icon="weekend"
                   title="Books"
                   count={bookCount}
-                  // percentage={{
-                  //   color: "success",
-                  //   amount: "+55%",
-                  //   label: "than lask week",
-                  // }}
                 />
               </MDBox>
             </Grid>
             <Grid item xs={12} md={6} lg={3}>
               <MDBox mb={1.5}>
-                <ComplexStatisticsCard
-                  icon="leaderboard"
-                  title="Reels"
-                  count={reelCount}
-                  // percentage={{
-                  //   color: "success",
-                  //   amount: "+3%",
-                  //   label: "than last month",
-                  // }}
-                />
+                <ComplexStatisticsCard icon="leaderboard" title="Reels" count={reelCount} />
               </MDBox>
             </Grid>
             <Grid item xs={12} md={6} lg={3}>
@@ -124,11 +108,6 @@ function Dashboard() {
                   icon="store"
                   title="Videos"
                   count={videoCount}
-                  // percentage={{
-                  //   color: "success",
-                  //   amount: "+1%",
-                  //   label: "than yesterday",
-                  // }}
                 />
               </MDBox>
             </Grid>
@@ -139,11 +118,6 @@ function Dashboard() {
                   icon="person_add"
                   title="Articles"
                   count={articleCount}
-                  // percentage={{
-                  //   color: "success",
-                  //   amount: "",
-                  //   label: "Just updated",
-                  // }}
                 />
               </MDBox>
             </Grid>

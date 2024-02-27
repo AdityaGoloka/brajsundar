@@ -1,10 +1,10 @@
 package com.brajsundar.server.Model;
 
+import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -12,24 +12,32 @@ import javax.validation.constraints.Size;
 @Document(collection = "Workshop")
 public class Workshop {
     @Id
-    private String id; // Use String instead of long for MongoDB-generated ID
+    private ObjectId id; // Use String instead of long for MongoDB-generated ID
 
     @NotBlank
     @Size(max = 100)
     @Indexed(unique = true)
     private String name;
-    private String slug;
-    private Number price;
     private String description;
-    private List<String> objectives;
-    private List<String> highlights;
-    private List<String> assessment;
+    private String thumbnail;
+    private String exclyUrl;
 
-    public String getId() {
+    @Autowired
+    public Workshop(String name, String description, String thumbnail,
+            String exclyUrl,
+            ObjectId id) {
+        this.name = name;
+        this.description = description;
+        this.exclyUrl = exclyUrl;
+        this.thumbnail = thumbnail;
+        this.id = id;
+    }
+
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -49,43 +57,19 @@ public class Workshop {
         this.description = description;
     }
 
-    public String getSlug() {
-        return slug;
+    public String getExclyUrl() {
+        return exclyUrl;
     }
 
-    public void setSlug(String slug) {
-        this.slug = slug;
+    public void setExclyUrl(String exclyUrl) {
+        this.exclyUrl = exclyUrl;
     }
 
-    public Number getPrice() {
-        return price;
+    public String getThumbnail() {
+        return thumbnail;
     }
 
-    public void setPrice(Number price) {
-        this.price = price;
-    }
-
-    public List<String> getObjectives() {
-        return objectives;
-    }
-
-    public void setObjectives(List<String> objectives) {
-        this.objectives = objectives;
-    }
-
-    public List<String> getHighlights() {
-        return highlights;
-    }
-
-    public void setHighlights(List<String> highlights) {
-        this.highlights = highlights;
-    }
-
-    public List<String> getAssessment() {
-        return assessment;
-    }
-
-    public void setAssessment(List<String> assessment) {
-        this.assessment = assessment;
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }

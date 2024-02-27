@@ -1,5 +1,6 @@
 package com.brajsundar.server.Model;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,7 +11,7 @@ import javax.validation.constraints.Size;
 @Document(collection = "Books")
 public class Books {
     @Id
-    private String id; // Use String instead of long for MongoDB-generated ID
+    private ObjectId id;
 
     @NotBlank
     @Size(max = 100)
@@ -20,14 +21,26 @@ public class Books {
     private String bookLink;
     private String country;
     private String preBook;
+    private String bookThumbnail;
+
+    public Books(String bookName, String bookDetail, String bookLink, String country, String preBook,
+            String bookThumbnail, ObjectId id) {
+        this.bookName = bookName;
+        this.bookDetail = bookDetail;
+        this.bookLink = bookLink;
+        this.country = country;
+        this.preBook = preBook;
+        this.bookThumbnail = bookThumbnail;
+        this.id = id;
+    }
 
     // Getters and setters
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -69,5 +82,13 @@ public class Books {
 
     public void setPreBook(String preBook) {
         this.preBook = preBook;
+    }
+
+    public String getBookThumbnail() {
+        return bookThumbnail;
+    }
+
+    public void setBookThumbnail(String bookThumbnail) {
+        this.bookThumbnail = bookThumbnail;
     }
 }

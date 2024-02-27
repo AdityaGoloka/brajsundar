@@ -11,6 +11,7 @@ import Toastify from "toastify-js";
 import { setUserData } from "../../../Redux/slices/user-slice";
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import BASEURL from "../../../API.js";
 
 function Basic() {
   const dispatch = useDispatch();
@@ -18,22 +19,23 @@ function Basic() {
   const navigate = useNavigate();
 
   const [rememberMe, setRememberMe] = useState(false);
-  const [email, setEmail] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
   const handleSignIn = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/user/login", {
-        email,
+      const response = await axios.post(`${BASEURL}/user/login`, {
+        username,
         password,
       });
+      console.log(response.data);
       // console.log(response.data.token);
       // const token = response.data.token;
       dispatch(setUserData(response.data));
 
-      setEmail("");
+      setUserName("");
       setPassword("");
       Toastify({
         text: "Login Sucessfully",
@@ -45,12 +47,8 @@ function Basic() {
           background: "linear-gradient(to right, #3C50E0, #3C50E0",
           padding: "10px 50px",
         },
-        onClick: function () {}, // Callback after click
       }).showToast();
       navigate("/dashboard");
-
-      // console.log("User data:", userData);
-      // navigate("/dashboard");
 
       // Optionally, redirect to another page after successful login
       // Example: history.push("/dashboard");
@@ -82,11 +80,11 @@ function Basic() {
           <MDBox component="form" role="form">
             <MDBox mb={2}>
               <MDInput
-                type="email"
-                label="Email"
+                type="username"
+                label="username"
                 fullWidth
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
               />
             </MDBox>
             <MDBox mb={2}>
