@@ -8,7 +8,10 @@ const SingleBlog = () => {
 
   useEffect(() => {
     // Fetch data for a single blog post using the id parameter
-    fetch(`http://localhost:5000/api/articles/getArticle/${id}`)
+    // fetch(`http://localhost:5000/api/articles/getArticle/${id}`)
+    fetch(
+      `https://brajsundarproject.onrender.com/api/articles/getArticle/${id}`
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

@@ -5,6 +5,7 @@ import PriceFilterCard from "./PriceFilterCard.jsx";
 import RateDropDown from "./RateDropDown.jsx";
 import VideoCard from "./VideoCard";
 import axios from "axios";
+import { BASE_URL } from "../../api";
 
 const Video = () => {
   const [videoData, setVideoData] = useState([]);
@@ -13,7 +14,8 @@ const Video = () => {
     const getAllVideos = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/youtube/videos"
+          // "https://brajsundarproject.onrender.com/api/youtube/videos"
+          `${BASE_URL}/video`
         );
         console.log(response.data);
         setVideoData(response.data);
@@ -26,7 +28,7 @@ const Video = () => {
   }, []);
 
   return (
-    <div>
+    <div className="my-10 ">
       <div>
         <h1 className="text-center text-4xl font-bold mb-7 my-10">Videos</h1>
       </div>{" "}
@@ -52,7 +54,7 @@ const Video = () => {
             <VideoCard
               key={videos.id}
               videoName={videos.videoName}
-              video_url={videos.video_url}
+              video_url={videos.videoUrl}
             />
           ))}
         </div>

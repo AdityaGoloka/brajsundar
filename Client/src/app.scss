@@ -22,7 +22,12 @@ a {
 
 // Define mixins
 @mixin mobile {
-  @media (max-width: 738px) {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+@mixin mobilell {
+  @media (max-width: 110px) {
     @content;
   }
 }
@@ -32,7 +37,22 @@ a {
   }
 }
 @mixin desktop {
-  @media (max-width: 1366px) {
+  @media (max-width: 1566px) {
+    @content;
+  }
+}
+@mixin lgScreen {
+  @media (min-width: 1600px) {
+    @content;
+  }
+}
+@mixin midScreen {
+  @media (min-width: 700px) and (max-width: 1365px) {
+    @content;
+  }
+}
+@mixin midScreen2 {
+  @media (min-width: 900px) and (max-width: 1500px) {
     @content;
   }
 }
@@ -47,6 +67,8 @@ section {
   // padding: -100px;
 
   @include mobile {
-    height: 100vh;
+    // margin: auto;
+    // padding: auto;
+    height: 90vh;
   }
 }

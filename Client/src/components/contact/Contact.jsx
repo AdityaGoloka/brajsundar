@@ -49,48 +49,81 @@ const Contact = () => {
   return (
     <div
       //   ref={ref}
-      className="contact md:mx-12 "
+      className="contact  m-auto pb-20 2xl:pt-10 "
       //   variants={variants}
       //   initial="initial"
       //   whileInView="animate"
     >
       {/* <> */}
       <div
-        className="textContainer sm:-my-10 lg:my-0 "
+        className="textContainer "
         // variants={variants}
       >
         <h1 variants={variants} className="justify-center items-center flex">
           Connect
         </h1>
-        <div
-          className="item flex sm:gap-2 sm:flex md:gap-0 md:block justify-center items-center"
-          // variants={variants}
-        >
-          <h2 className="text-3xl flex justify-center text-center">Mail</h2>
-          <span className="text-xl flex justify-center text-center">
-            bdas@brajsundar.com
-          </span>
-        </div>
-        <div
-          className="item sm:gap-2 sm:flex md:gap-0 md:block"
-          // variants={variants}
-        >
-          <h2 className="text-3xl flex justify-center text-center">Address</h2>
-          <span className="text-xl flex justify-center text-center">
-            Hello street New York
-          </span>
-        </div>
-        <div
-          className="item sm:gap-2 sm:flex md:gap-0 md:block"
-          // variants={variants}
-        >
-          <h2 className="text-3xl flex justify-center text-center">Phone</h2>
-          <span className="text-xl flex justify-center text-center">
+        <div className=" flex flex-col gap-2 md:px-10">
+          {" "}
+          <div className="flex flex-col my-2  gap-5">
+            {" "}
+            <div
+              className="item flex sm:gap-2 sm:flex md:gap-0 md:block  justify-center "
+              // variants={variants}
+            >
+              <h2 className="lg:text-3xl text-xl flex py-2">Podcast : </h2>
+              <span className="lg:text-xl cursor-pointer md:px-0 px-2 hover:text-white/90 text-mg items-center flex ">
+                media@brajsundar.com{" "}
+              </span>
+            </div>
+            <div
+              className="item sm:gap-2 flex md:gap-0 md:block"
+              // variants={variants}
+            >
+              <h2 className="lg:text-3xl text-xl flex py-2 ">Speaking :</h2>
+              <span className="lg:text-xl hover:text-white/90 md:px-0 px-2 cursor-pointer text-mg items-center  flex ">
+                secretary@brajsundar.com{" "}
+              </span>
+            </div>
+          </div>
+          {/* --------------------- */}
+          <div className="flex gap-5 flex-col">
+            {" "}
+            <div
+              className="item sm:gap-2 flex md:gap-0 md:block"
+              // variants={variants}
+            >
+              {" "}
+              <h2 className="lg:text-3xl text-xl flex py-2 ">Partnership : </h2>
+              <span className="lg:text-xl hover:text-white/90 md:px-0 px-2 cursor-pointer text-mg items-center flex  ">
+                admin@brajsundar.com
+              </span>
+              {/* <h2 className="lg:text-3xl text-xl flex ">
+            Phone
+          </h2>
+          <span className="lg:text-xl  text-mg  flex  ">
             +1 234 5678
-          </span>
+          </span> */}
+            </div>
+            <div
+              className="item sm:gap-2 flex md:gap-0 md:block"
+              // variants={variants}
+            >
+              {" "}
+              <h2 className="lg:text-3xl text-xl flex py-2  ">Support : </h2>
+              <span className="lg:text-xl hover:text-white/90 md:px-0 px-2 font-bold cursor-pointer items-center  text-mg  flex  ">
+                admin@brajsundar.com{" "}
+              </span>
+              {/* <h2 className="lg:text-3xl text-xl flex ">
+            Phone
+          </h2>
+          <span className="lg:text-xl  text-mg  flex  ">
+            +1 234 5678
+          </span> */}
+            </div>
+          </div>
         </div>
       </div>
-      <div className="formContainer">
+      <div className="formContainer md:pr-10">
         {/* <div
           className="phoneSvg"
         // initial={{ opacity: 1 }}
@@ -129,7 +162,7 @@ const Contact = () => {
         >
           <input type="text" required placeholder="Name" name="name" />
           <input type="email" required placeholder="Email" name="email" />
-          <textarea rows={8} placeholder="Message" name="message" />
+          <textarea rows={7} placeholder="Message" name="message" />
           <button className="text-black font-bold">Submit</button>
           {error && "Error"}
           {success && "Success"}

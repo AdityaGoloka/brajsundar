@@ -42,16 +42,14 @@ const Videos = () => {
   });
 
   return (
-    <div className="portfolio" ref={ref} style={{ width: "100%" }}>
-      <div className="flex  flex-wrap w-full mb-12 justify-center">
-        <div className="lg:w-1/2 w-full  lg:mb-0 text-center">
-          <motion.h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">
-            Worldwide Bhagwat Yatra
-          </motion.h1>
-          <div className="h-1 w-full bg-indigo-500 rounded"></div>
-        </div>
+    <div className="portfolio my-10" ref={ref} style={{ width: "100%" }}>
+      <div className="flex  flex-wrap w-full lg:mb-12 justify-center">
+        <motion.h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">
+          Worldwide Bhagwat Yatra
+        </motion.h1>
+        <div className="h-1 w-full bg-indigo-500 rounded"></div>
       </div>
-      <div className="flex items-center justify-center min-h-screen ">
+      <div className="flex items-center justify-center my-10 ">
         <div className="rounded-lg overflow-hidden w-full  h-full -py-2">
           <Carousel
             autoPlay={true}
@@ -62,8 +60,9 @@ const Videos = () => {
             showArrows={false}
             showStatus={false}
             swipeable={true}
+            showThumbs={false} // Add this line to hide the thumbs
             className="h-full overflow-visible"
-            style={{ overflow: "visible" }} // Adjusted styling to prevent cropping
+            style={{ overflow: "visible" }}
           >
             <div>
               <img

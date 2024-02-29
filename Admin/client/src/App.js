@@ -26,6 +26,7 @@ import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
 import { useSelector } from "react-redux";
 import Dashboard from "layouts/dashboard";
+import SignUp from "./layouts/authentication/sign-up";
 
 export default function App() {
   const navigate = useNavigate();
@@ -153,6 +154,7 @@ export default function App() {
       {/* <RequirePath> */}
       <Routes>
         <Route index path="auth/signin" element={<SignIn />} />
+        <Route index path="auth/signup" element={<SignUp />} />
         <Route
           path="/"
           element={

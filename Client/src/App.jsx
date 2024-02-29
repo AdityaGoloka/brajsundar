@@ -18,6 +18,7 @@ import Academy from "./pages/Academy";
 import SingleBlog from "./components/blogs/SingleBlog.jsx";
 import Courses from "./pages/Courses/Courses.jsx";
 import Workshop from "./pages/Workshop/Workshop.jsx";
+import Podcast from "./pages/Podcast/Podcast.jsx";
 import Coaching from "./pages/Coaching/Coaching.jsx";
 import About from "./pages/About.jsx";
 import CourseViewPage from "./pages/CourseViewPage.jsx";
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/books" element={<Books />} />
           <Route path="/academy/courses" element={<Courses />} />
+          <Route path="/academy/podcast" element={<Podcast />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/academy/workshop" element={<Workshop />} />
           <Route path="/video" element={<Video />} />

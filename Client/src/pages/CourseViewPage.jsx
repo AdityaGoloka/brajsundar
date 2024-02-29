@@ -16,7 +16,8 @@ const CourseViewPage = () => {
     const getSinglecourse = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/course/getCourse/${id}`
+          // `http://localhost:5000/api/course/getCourse/${id}`
+          `https://brajsundarproject.onrender.com/api/course/getCourse/${id}`
         );
         console.log(response.data.data);
         setCourse(response.data.data);

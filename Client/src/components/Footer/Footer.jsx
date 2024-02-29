@@ -30,31 +30,31 @@ const Footer = () => {
             </div>
             <div className="w-full lg:w-6/12 px-4 pr-10">
               <div className="flex flex-wrap items-top ">
-                <div className="w-full lg:w-4/12 px-4 ml-auto">
-                  <span className="block text-blueGray-500 text-2xl font-semibold mb-3">
+                <div className="w-full lg:w-5/12 px-4 ml-auto">
+                  <span className="block text-blueGray-500 text-3xl font-semibold mb-3">
                     Get In Touch
                   </span>
                   <ul className="list-unstyled">
                     <li>
                       <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://www.creative-tim.com/presentation?ref=njs-profile"
+                        className="text-blueGray-600 hover:text-blueGray-800
+                         font-semibold block pb-2 text-lg "
                       >
-                        Goregaon (E) Mumbai – 400065
+                        Vrindavan India
                       </a>
                     </li>
                     <li>
                       <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://blog.creative-tim.com?ref=njs-profile"
+                        className="text-blueGray-600 
+                        hover:text-blueGray-800 font-semibold block pb-2 text-lg"
                       >
-                        info@mrajsundardas.com
+                        info@brajsundardas.com
                       </a>
                     </li>
                     <li>
                       <a
-                        className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm"
-                        href="https://blog.creative-tim.com?ref=njs-profile"
+                        className="text-blueGray-600 hover:text-blueGray-800 
+                        font-semibold block pb-2 text-lg"
                       >
                         99887766
                       </a>
@@ -121,11 +121,22 @@ const Footer = () => {
           </div>
           <hr className="my-6 border-blueGray-300" />
           <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-4/12 px-4 mx-auto text-center">
-              <div className="text-md text-blueGray-500 font-semibold py-3">
-                Copyright ©{" "}
-                <span id="get-current-year pr-1">{date.getFullYear()}</span>
-                All Rights Reserved.
+            <div className="w-full px-4 mx-auto text-center mb-4">
+              <div className="text-md text-blueGray-500 font-semibold py-3 gap-10">
+                {/* <h1 className="text-xl py-2">
+                  {" "}
+                  Copyright ©{" "}
+                  <span id="get-current-year">{date.getFullYear()}</span>{" "}
+                  <span className="text-white ">Brajsundar Das</span> All Rights
+                  Reserved.
+                </h1> */}
+                <a
+                  className="my-10 text-xl hover:text-white/90"
+                  href="https://golokait.com/"
+                  target="_blank"
+                >
+                  Developed By <span className="text-white">Goloka IT</span>
+                </a>
               </div>
             </div>
           </div>

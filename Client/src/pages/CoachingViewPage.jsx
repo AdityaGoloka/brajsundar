@@ -15,7 +15,8 @@ const CoachingViewPage = () => {
     const getSinglecoaching = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/coaching/getSpecificCoaching/${id}`
+          // `http://localhost:5000/api/coaching/getSpecificCoaching/${id}`
+          `https://brajsundarproject.onrender.com/api/coaching/getSpecificCoaching/${id}`
         );
         console.log(response.data.data);
         setCoaching(response.data.data);

@@ -15,7 +15,8 @@ const WorkshopViewPage = () => {
     const getSingleWorkshop = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/workshop/getWorkshop/${id}`
+          // `http://localhost:5000/api/workshop/getWorkshop/${id}`
+          `https://brajsundarproject.onrender.com/api/workshop/getWorkshop/${id}`
         );
         console.log(response.data.data);
         setWorkShop(response.data.data);

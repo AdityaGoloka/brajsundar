@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, useResetProjection } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./blogs.scss";
+import { BASE_URL } from "../../../api";
+import axios from "axios";
 
 const Blogs = () => {
   const [items, setItems] = useState([]);
@@ -32,11 +34,14 @@ const Blogs = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:5000/api/articles/getArticles"
+        const response = await axios.get(
+          // "http://localhost:5000/api/articles/getArticles"
+          `${BASE_URL}/article`
+          // "https://brajsundarproject.onrender.com/api/articles/getArticles"
         );
-        const data = await response.json();
-        setItems(data.data);
+        // const data = await response.json();
+        // console.log("===>", response.data);
+        setItems(response.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -111,7 +116,7 @@ const Blogs = () => {
   };
 
   return (
-    <motion.section
+    <motion.div
       className="text-gray-600 body-font"
       initial={{ opacity: 0 }}
       animate={controls}
@@ -153,7 +158,11 @@ const Blogs = () => {
                     <div className="">
                       <img
                         className="h-48 w-full object-cover object-center mb-6 rounded"
-                        src={item.thumbnail}
+                        src={
+                          "https://brajsundar.s3.ap-south-1.amazonaws.com/" +
+                          item.thumbnail
+                        }
+                        // src="https://d2lnag86znkprh.cloudfront.net/Images/Article/65b2bdc85d779ca088e99748/thumbnail_5.png"
                         alt={item.title}
                       />
                     </div>
@@ -162,7 +171,7 @@ const Blogs = () => {
                         {item.title}
                       </h2>
                       <p className="md:text-md text-white text-sm">
-                        {item.content.substring(0, 100)}...
+                        {item.description.substring(0, 100)}...
                       </p>
                     </div>
                   </div>
@@ -171,13 +180,13 @@ const Blogs = () => {
             ))}
           </Slider>
           <SampleNextArrow className="next-arrow " />
-          <div className="flex mx-auto my-5">
+          <div className="flex mx-auto my-2">
             {" "}
             <a
               href="/blogs"
               type="button"
               className="px-14 mx-auto text-lg focus:outline-none text-white bg-purple-700 hover:bg-purple-800 
-             focus:ring-4 focus:ring-purple-300 font-medium rounded  px-9 py-2.5 mb-2
+             focus:ring-4 focus:ring-purple-300 font-medium rounded  lg:px-9 px-4 lg:py-2.5 py-1 my-1
               dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 cursor-pointer"
             >
               View More
@@ -185,7 +194,7 @@ const Blogs = () => {
           </div>
         </div>
       </div>
-    </motion.section>
+    </motion.div>
   );
 };
 

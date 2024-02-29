@@ -1,57 +1,57 @@
-  import Article from "../models/articles.schema.js";
-  import fs from "fs";
-  import { s3FileUpload, s3FileDelete } from "../services/imageUploader.js";
-  import formidable from "formidable";
-  import mongoose from "mongoose";
+import Article from "../models/articles.schema.js";
+import fs from "fs";
+import { s3FileUpload, s3FileDelete } from "../services/imageUploader.js";
+import formidable from "formidable";
+import mongoose from "mongoose";
 
-  const uploadArticle = async (req, res) => {
-    const form = formidable({ multiples: false, keepExtensions: true });
-    try {
-      form.parse(req, async  (err, fields, files) => {
-        if (err) {
-          return res.status(500).json({ error: "Internal Server Error" });
-        }
-        const articleId = new mongoose.Types.ObjectId().toHexString();
-        if (!articleId) {
-          throw new Error("Failed to generate articleId");
-        }
-        console.log(articleId);
-        // if (!fields.title || !fields.content) {
-        //   throw new Error("All fields needed");
-        // }
+const uploadArticle = async (req, res) => {
+  const form = formidable({ multiples: false, keepExtensions: true });
+  try {
+    form.parse(req, async (err, fields, files) => {
+      if (err) {
+        return res.status(500).json({ error: "Internal Server Error" });
+      }
+      const articleId = new mongoose.Types.ObjectId().toHexString();
+      if (!articleId) {
+        throw new Error("Failed to generate articleId");
+      }
+      console.log(articleId);
+      // if (!fields.title || !fields.content) {
+      //   throw new Error("All fields needed");
+      // }
 
-        const thumbnailFile = files.thumbnail[0];
-        console.log(thumbnailFile);
+      const thumbnailFile = files.thumbnail[0];
+      console.log(thumbnailFile);
 
-        const data = await fs.readFileSync(thumbnailFile.filepath);
+      const data = await fs.readFileSync(thumbnailFile.filepath);
 
-        const thumbnailUpload = await s3FileUpload({
-          bucketName: process.env.S3_BUCKET_NAME,
-          key: `Images/Article/${articleId}/thumbnail_1.png`, //`https://d2lnag86znkprh.cloudfront.net/Images/Book/${bookId}/thumbnail.png`
-          body: data,
-          contentType: "image/png",
-        });
-
-        const article = await Article.create({
-          _id: articleId,
-          title: fields.title[0],
-          content: fields.content[0],
-          thumbnail: `https://d2lnag86znkprh.cloudfront.net/Images/Article/${articleId}/thumbnail_1.png`,
-        });
-
-        const newArticle = await article.save();
-
-        return res.status(200).json({
-          success: true,
-          message: "Article saved successfully",
-          data: newArticle,
-        });
+      const thumbnailUpload = await s3FileUpload({
+        bucketName: process.env.S3_BUCKET_NAME,
+        key: `Images/Article/${articleId}/thumbnail_1.png`, //`https://d2lnag86znkprh.cloudfront.net/Images/Book/${bookId}/thumbnail.png`
+        body: data,
+        contentType: "image/png",
       });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ error: "Internal Server Error" });
-    }
-  };
+
+      const article = await Article.create({
+        _id: articleId,
+        title: fields.title[0],
+        content: fields.content[0],
+        thumbnail: `https://d2lnag86znkprh.cloudfront.net/Images/Article/${articleId}/thumbnail_1.png`,
+      });
+
+      const newArticle = await article.save();
+
+      return res.status(200).json({
+        success: true,
+        message: "Article saved successfully",
+        data: newArticle,
+      });
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 const getArticles = async (req, res) => {
   try {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../../api";
 
 import { motion, useAnimation } from "framer-motion";
 import Slider from "react-slick";
@@ -13,10 +14,12 @@ const Books = () => {
     const getAllVideos = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/books/getBooks"
+          // "http://localhost:5000/api/books/getBooks"
+          `${BASE_URL}/book`
+          // "https://brajsundarproject.onrender.com/api/books/getBooks"
         );
         console.log(response.data);
-        setVideoData(response.data.data);
+        setVideoData(response.data);
       } catch (error) {
         console.error("Error fetching videos:", error);
       }
@@ -112,7 +115,11 @@ const Books = () => {
                     <div className="">
                       <img
                         className="h-48 w-full object-cover object-center mb-6 rounded"
-                        src={videos.bookThumbnail}
+                        src={
+                          "https://brajsundar.s3.ap-south-1.amazonaws.com/" +
+                          videos?.bookThumbnail
+                        }
+                        // src="https://d2lnag86znkprh.cloudfront.net/Images/Book/65b8088ea6c92bf273b6312c/thumbnail_1.png"
                         alt={videos.bookName}
                       />
                     </div>
@@ -120,8 +127,8 @@ const Books = () => {
                       <h2 className="text-xl text-white font-bold font-medium title-font mb-4">
                         {videos.bookName}
                       </h2>
-                      {/* Add other details like author, description, etc. here */}
                     </div>
+                    <p className="text-md text-white/70">{videos.country}</p>
                   </div>
                 </a>
               </motion.div>
@@ -133,7 +140,7 @@ const Books = () => {
               href="/books"
               type="button"
               className="px-14 mx-auto text-lg focus:outline-none text-white bg-purple-700 hover:bg-purple-800 
-             focus:ring-4 focus:ring-purple-300 font-medium rounded  px-9 py-2.5 mb-2
+             focus:ring-4 focus:ring-purple-300 font-medium rounded  lg:px-9 px-4 lg:py-2.5 py-1 mb-2
               dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 cursor-pointer"
             >
               View More

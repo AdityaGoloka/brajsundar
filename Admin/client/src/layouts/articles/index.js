@@ -31,29 +31,30 @@ function ArticleTabel() {
   const [editUploadedFileName, setEditUploadedFileName] = useState(null);
   const [addUploadedFileName, setAddUploadedFileName] = useState(null);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/articles/getArticles");
-      setArticleData(response.data.data);
-      setFilteredArticle(response.data.data);
+      // const response = await axios.get("http://localhost:5000/api/articles/getArticles");
+      const response = await axios.get("http://localhost:8080/article");
+      console.log(response.data);
+      setArticleData(response.data);
+      setFilteredArticle(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const columns = [
-    {
-      title: "Thumbnail Img",
-      dataIndex: "thumbnail",
-      key: "thumbnail",
-      render: (text) => (
-        <img src={text} alt="thumbnail" style={{ width: "50px", height: "50px" }} />
-      ),
-    },
+    // {
+    //   title: "Thumbnail Img",
+    //   dataIndex: "thumbnail",
+    //   key: "thumbnail",
+    //   render: (text) => (
+    //     <img src={text} alt="thumbnail" style={{ width: "50px", height: "50px" }} />
+    //   ),
+    // },
     {
       title: "Title",
       dataIndex: "title",
@@ -61,8 +62,8 @@ function ArticleTabel() {
     },
     {
       title: "Description",
-      dataIndex: "content",
-      key: "content",
+      dataIndex: "description",
+      key: "description",
     },
     {
       title: "Actions",
@@ -98,7 +99,7 @@ function ArticleTabel() {
   const handleEdit = (record) => {
     form.setFieldsValue({
       title: record.title,
-      content: record.content,
+      description: record.description,
     });
     setSelectedArticle(record);
     setEditModalVisible(true);
@@ -159,12 +160,13 @@ function ArticleTabel() {
     try {
       const values = await form.validateFields();
       const formData = new FormData();
-      formData.append("thumbnail", file);
+      // formData.append("thumbnail", file);
       for (const key in values) {
         formData.append(key, values[key]);
       }
       const response = await axios.post(
-        "http://localhost:5000/api/articles/uploadArticle",
+        // "http://localhost:5000/api/articles/uploadArticle",
+        "http://localhost:3000/article",
         formData
       );
       if (response.status === 200) {
@@ -210,7 +212,7 @@ function ArticleTabel() {
             <Form.Item label="Title" name="title" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
-            <Form.Item label="Description" name="content" rules={[{ required: true }]}>
+            <Form.Item label="Description" name="description" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
             <Form.Item

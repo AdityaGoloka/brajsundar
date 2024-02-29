@@ -5,6 +5,7 @@ import WorkshopCard from "./WorkshopCard";
 // import PriceFilterCard from "./PriceFilterCard.jsx";
 // import RateDropDown from "./RateDropDown.jsx";
 import axios from "axios";
+import { BASE_URL } from "../../api";
 
 const Workshop = () => {
   const [workShop, setWorkShop] = useState([]);
@@ -13,10 +14,12 @@ const Workshop = () => {
   useEffect(() => {
     const getAllWorkshopData = async () => {
       const response = await axios.get(
-        "http://localhost:5000/api/workshop/getWorkshops"
+        // "http://localhost:5000/api/workshop/getWorkshops"
+        `${BASE_URL}/workshop`
+        // "https://brajsundarproject.onrender.com/api/workshop/getWorkshops"
       );
-      console.log(response.data.data);
-      setWorkShop(response.data.data);
+      console.log(response.data);
+      setWorkShop(response.data);
     };
 
     getAllWorkshopData();
@@ -38,9 +41,9 @@ const Workshop = () => {
             <WorkshopCard
               key={workshops._id}
               id={workshops._id}
-              workshopName={workshops.workshopName}
-              workshopSlug={workshops.workshopSlug}
-              workshopThumbnail={workshops.workshopThumbnail}
+              workshopName={workshops.name}
+              workshopSlug={workshops.description}
+              workshopThumbnail={workshops.thumbnail}
             />
           ))}
           {displayedWorkshop < workShop.length && (

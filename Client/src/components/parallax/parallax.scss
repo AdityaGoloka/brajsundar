@@ -28,6 +28,7 @@
     z-index: 3;
 
     @include mobile {
+      margin-bottom: 8rem;
       background-size: contain;
       background-repeat: no-repeat;
     }

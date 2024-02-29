@@ -10,7 +10,8 @@ const BlogDetail = () => {
     const getSingleBlogData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/articles/getArticle/${id}`
+          // `http://localhost:5000/api/articles/getArticle/${id}`
+          `https://brajsundarproject.onrender.com/api/articles/getArticle/${id}`
         );
         const blog = response.data.findArticle;
         console.log(blog);
