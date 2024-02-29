@@ -3,34 +3,37 @@ import { Table, Button, Space, Modal, Form, Input } from "antd";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import axios from "axios";
+import { BASEURL } from "API";
 
 function YoutubeVideosTable() {
   const [videosData, setVideosData] = useState();
   const [modalVisible, setModalVisible] = useState(false);
   const [form] = Form.useForm();
-  const [selectedVideo, setSelectedVideo] = useState(null); // New state for the selected video
+  const [selectedVideo, setSelectedVideo] = useState(null);
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [filteredVideos, setFilteredVideos] = useState([]);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
   const fetchData = () => {
-    fetch("http://localhost:5000/api/youtube/videos")
+    fetch(`${BASEURL}/video`)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setVideosData(data);
         setFilteredVideos(data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
+      });
   };
 
-  const handleView = (record) => {
-    window.open(record.video_url, "_blank");
-  };
+  // const handleView = (record) => {
+  //   window.open(record.video_url, "_blank");
+  // };
 
   const handleEdit = (record) => {
-    // console.log("Editing video:", record._id);
     // Fetch video by id
-    fetch(`http://localhost:5000/api/youtube/videos/${record._id}`)
+    fetch(`${BASEURL}/video/${record?.id}`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Fetched video data:", data);
@@ -38,7 +41,7 @@ function YoutubeVideosTable() {
         console.log(videoData);
         form.setFieldsValue({
           videoName: videoData.videoName,
-          videoUrl: videoData.video_url,
+          videoUrl: videoData.videoUrl,
           category: videoData.category,
         });
         setSelectedVideo(record);
@@ -49,40 +52,32 @@ function YoutubeVideosTable() {
   };
 
   const handleEditModalCancel = () => {
-    setEditingVideo(null); // Reset editing state
+    setEditingVideo(null);
     setEditModalVisible(false);
     form.resetFields();
   };
 
   const handleEditFormSubmit = async () => {
     try {
-      // const validatedValues = await form.validateFields();
-
-      // const formData = new FormData();
-      // formData.append("videoName", validatedValues.videoName);
-      // formData.append("category", validatedValues.category);
-      // formData.append("video_url", validatedValues.videoUrl);
+      const validatedValues = await form.validateFields();
       const formData = new FormData();
       formData.append("videoName", validatedValues.videoName);
       formData.append("category", validatedValues.category);
-      formData.append("video_url", validatedValues.videoUrl);
-      console.log(selectedVideo._id);
-      const response = await axios.put(
-        `http://localhost:5000/api/youtube/videos/${selectedVideo._id}`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      formData.append("videoUrl", validatedValues.videoUrl);
+      console.log(selectedVideo?.id);
+      const response = await axios.put(`${BASEURL}/video/${selectedVideo?.id}`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.status === 200) {
         const data = response.data;
         console.log("Video edited successfully:", data);
         setEditModalVisible(false);
-        setEditingVideo(null); // Reset editing state
+        form.resetFields();
         fetchData();
+        message.success("Video Edited Successfully");
       } else {
         console.error("Failed to edit video");
       }
@@ -93,13 +88,14 @@ function YoutubeVideosTable() {
 
   const handleDelete = async (record) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/youtube/videos/${record._id}`);
+      const response = await axios.delete(`${BASEURL}/video/${record?.id}`);
 
       if (response.status === 200) {
-        console.log(`Video with ID ${record._id} deleted successfully`);
+        console.log(`Video with ID ${record?.id} deleted successfully`);
         fetchData();
+        message.success("Video Deleted Successfully");
       } else {
-        console.error(`Failed to delete video with ID ${record._id}`);
+        console.error(`Failed to delete video with ID ${record?.id}`);
       }
     } catch (error) {
       console.error("Error deleting video:", error.message);
@@ -118,26 +114,27 @@ function YoutubeVideosTable() {
     try {
       const values = await form.validateFields();
       const formData = new FormData();
-
       formData.append("videoName", values.videoName);
       formData.append("category", values.category);
-      formData.append("video_url", values.videoUrl);
+      formData.append("videoUrl", values.videoUrl);
 
-      const response = await axios.post("http://localhost:5000/api/youtube/createVideo", formData, {
+      const response = await axios.post(`${BASEURL}/video`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       });
+      console.log(formData);
 
       if (response.status === 200) {
         console.log("Video Added Successfully");
         setModalVisible(false);
         fetchData();
+        message.success("Video added successfully");
       } else {
         console.log("Failed to Add Video");
       }
     } catch (error) {
-      console.log("Failed:", error);
+      console.log("Failed: ", error);
     }
   };
 
@@ -151,10 +148,6 @@ function YoutubeVideosTable() {
     setFilteredVideos(filtered);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const columns = [
     {
       title: "Video Name",
@@ -163,8 +156,8 @@ function YoutubeVideosTable() {
     },
     {
       title: "Video URL",
-      dataIndex: "video_url",
-      key: "video_url",
+      dataIndex: "videoUrl",
+      key: "videoUrl",
       render: (text) => (
         <Button type="primary" onClick={() => window.open(text, "_blank")}>
           View Video

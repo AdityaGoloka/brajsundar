@@ -32,8 +32,8 @@ public class Article {
         this.id = id;
     }
 
-    public ObjectId getId() {
-        return id;
+    public String getId() {
+        return id.toHexString();
     }
 
     public void setId(ObjectId id) {

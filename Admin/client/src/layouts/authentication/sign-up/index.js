@@ -21,7 +21,7 @@ import { useState } from "react";
 import axios from "axios";
 
 import Toastify from "toastify-js";
-import BASEURL from "../../../API.js";
+import { BASEURL } from "../../../API.js";
 
 const Cover = () => {
   const [username, setUsername] = useState("");

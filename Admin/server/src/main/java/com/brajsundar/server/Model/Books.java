@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -23,26 +24,28 @@ public class Books {
     private String preBook;
     private String bookThumbnail;
 
+
     public Books(String bookName, String bookDetail, String bookLink, String country, String preBook,
             String bookThumbnail, ObjectId id) {
+        this.id = id;
         this.bookName = bookName;
         this.bookDetail = bookDetail;
         this.bookLink = bookLink;
         this.country = country;
         this.preBook = preBook;
         this.bookThumbnail = bookThumbnail;
-        this.id = id;
     }
 
     // Getters and setters
 
-    public ObjectId getId() {
-        return id;
+    public String getId() {
+        return id.toHexString();
     }
 
     public void setId(ObjectId id) {
         this.id = id;
     }
+    
 
     public String getBookName() {
         return bookName;

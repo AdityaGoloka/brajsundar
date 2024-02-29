@@ -4,6 +4,8 @@ import { UploadOutlined, EyeOutlined } from "@ant-design/icons";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import axios from "axios";
+import { BASEURL } from "API";
+import { IMG } from "API";
 
 function ReelsTable() {
   const [reelsData, setReelsData] = useState([]);
@@ -23,21 +25,20 @@ function ReelsTable() {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/api/reels/getReels");
-      setReelsData(response.data.data);
-      setFilteredReels(response.data.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const fetchData = () => {
+    fetch(`${BASEURL}/reels`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setReelsData(data);
+        setFilteredReels(data);
+      });
   };
 
   const handleEdit = (record) => {
     form.setFieldsValue({
       reelName: record.reelName,
-      url: record.url,
+      reelUrl: record.reelUrl,
     });
     setSelectedReel(record);
     setEditModalVisible(true);
@@ -45,10 +46,9 @@ function ReelsTable() {
 
   const handleDelete = async (record) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/api/reels/deleteReel/${record._id}`
-      );
+      const response = await axios.delete(`${BASEURL}/reels/${record?.id}`);
       if (response.status === 200) {
+        message.success("Reel Deleted successfully");
         fetchData();
       }
     } catch (error) {
@@ -60,19 +60,15 @@ function ReelsTable() {
     try {
       const values = await form.validateFields();
       const formData = new FormData();
-      formData.append("reelThumbnail", editFile);
+      formData.append("file", editFile);
 
       for (const key in values) {
         formData.append(key, values[key]);
       }
 
-      const response = await axios.put(
-        `http://localhost:5000/api/reels/updateReel/${selectedReel._id}`,
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const response = await axios.put(`${BASEURL}/reels/${selectedReel?.id}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       if (response.status === 200) {
         setEditModalVisible(false);
@@ -116,10 +112,10 @@ function ReelsTable() {
       const values = await form.validateFields();
       const formData = new FormData();
       formData.append("reelName", values.reelName);
-      formData.append("url", values.url);
-      formData.append("reelThumbnail", file);
+      formData.append("reelUrl", values.reelUrl);
+      formData.append("file", file);
 
-      const response = await axios.post("http://localhost:5000/api/reels/uploadReel", formData, {
+      const response = await axios.post(`${BASEURL}/reels`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -173,8 +169,8 @@ function ReelsTable() {
     },
     {
       title: "URL",
-      dataIndex: "url",
-      key: "url",
+      dataIndex: "reelUrl",
+      key: "reelUrl",
       render: (text) => (
         <Button type="primary" onClick={() => window.open(text, "_blank")}>
           View Reel
@@ -186,7 +182,7 @@ function ReelsTable() {
       dataIndex: "reelThumbnail",
       key: "reelThumbnail",
       render: (text) => (
-        <img src={text} alt="Thumbnail" style={{ width: "50px", height: "50px" }} />
+        <img src={`${IMG}${text}`} alt="Thumbnail" style={{ width: "50px", height: "50px" }} />
       ),
     },
     {
@@ -240,7 +236,7 @@ function ReelsTable() {
                     <Button
                       type="primary"
                       icon={<EyeOutlined />}
-                      onClick={() => window.open(selectedReel.url, "_blank")}
+                      onClick={() => window.open(selectedReel.reelUrl, "_blank")}
                     >
                       View Reel
                     </Button>
@@ -267,7 +263,7 @@ function ReelsTable() {
             <Form.Item label="Reel Name" name="reelName" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
-            <Form.Item label="URL" name="url" rules={[{ required: true }]}>
+            <Form.Item label="reelUrl" name="reelUrl" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
             <Form.Item

@@ -3,6 +3,7 @@ import { Table, Button, Popconfirm, message, Input } from "antd";
 import Footer from "examples/Footer";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
+import { BASEURL } from "API";
 
 function ReviewsTable() {
   const [reviewsData, setReviewsData] = useState([]);
@@ -13,17 +14,16 @@ function ReviewsTable() {
     fetchData();
   }, []);
   const fetchData = () => {
-    fetch("http://localhost:5000/api/reviews/getReviews")
+    fetch(`${BASEURL}/review`)
       .then((response) => response.json())
       .then((data) => {
-        // Assuming your API response has a property named "reviews"
-        setReviewsData(data.data);
-        setFilteredReviews(data.data); // Set filteredReviews initially to all reviews
-      })
-      .catch((error) => console.error("Error fetching data:", error));
+        console.log(data);
+        setReviewsData(data);
+        setFilteredReviews(data);
+      });
   };
   const handleDelete = async (record) => {
-    fetch(`http://localhost:5000/api/reviews/deleteReview/${record?._id}`, {
+    fetch(`${BASEURL}/review/${record?.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ function ReviewsTable() {
           throw new Error(`Failed to delete book with ID ${record._id}`);
         }
         fetchData();
-        // console.log(`Book with ID ${record._id} deleted successfully`);
+        alert("Deleted Review Successfully");
       })
       .catch((error) => {
         console.error("Error deleting book:", error.message);

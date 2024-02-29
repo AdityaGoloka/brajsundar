@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 public class Video {
 
     @Id
-    private String id; // Use String instead of long for MongoDB-generated ID
+    private String id;
 
     @NotBlank
     @Size(max = 100)

@@ -11,7 +11,7 @@ import Toastify from "toastify-js";
 import { setUserData } from "../../../Redux/slices/user-slice";
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
-import BASEURL from "../../../API.js";
+import { BASEURL } from "../../../API.js";
 
 function Basic() {
   const dispatch = useDispatch();

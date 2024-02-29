@@ -40,7 +40,7 @@ public class CourseServiceImpl implements CourseService {
 
             // String bookId = generateBookId();
             ObjectId objectId = new ObjectId();
-            String folderPath = "https://brajsundar.s3.amazonaws.com/" + "Images/Course/" + objectId.toHexString()
+            String folderPath = "Images/Course/" + objectId.toHexString()
                     + "/";
             String fileName = "thumbnail_1.png";
             String s3Key = folderPath + fileName;
@@ -91,8 +91,8 @@ public class CourseServiceImpl implements CourseService {
                     ObjectMetadata metadata = new ObjectMetadata();
                     metadata.setContentType(newThumbnail.getContentType());
 
-                    String folderPath = "https://brajsundar.s3.amazonaws.com/" + "Images/Course/"
-                            + existingCourses.getId().toHexString() + "/";
+                    String folderPath = "Images/Course/"
+                            + existingCourses.getId() + "/";
                     String newFileName = "thumbnail_1.png";
                     String newS3Key = folderPath + newFileName;
 

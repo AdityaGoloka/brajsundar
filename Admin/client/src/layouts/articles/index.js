@@ -16,9 +16,10 @@ import { UploadOutlined } from "@ant-design/icons";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import axios from "axios";
-import { EyeOutlined } from "@ant-design/icons";
+import { BASEURL } from "API";
+import { IMG } from "API";
 
-function ArticleTabel() {
+const ArticleTable = () => {
   const [articleData, setArticleData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [selectedArticle, setSelectedArticle] = useState(null);
@@ -31,19 +32,18 @@ function ArticleTabel() {
   const [editUploadedFileName, setEditUploadedFileName] = useState(null);
   const [addUploadedFileName, setAddUploadedFileName] = useState(null);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/api/articles/getArticles");
-      setArticleData(response.data.data);
-      setFilteredArticle(response.data.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
+  const fetchData = () => {
+    fetch(`${BASEURL}/article`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setArticleData(data);
+        setFilteredArticle(data);
+      });
+  };
 
   const columns = [
     {
@@ -51,7 +51,7 @@ function ArticleTabel() {
       dataIndex: "thumbnail",
       key: "thumbnail",
       render: (text) => (
-        <img src={text} alt="thumbnail" style={{ width: "50px", height: "50px" }} />
+        <img src={`${IMG}${text}`} alt="thumbnail" style={{ width: "50px", height: "50px" }} />
       ),
     },
     {
@@ -61,8 +61,8 @@ function ArticleTabel() {
     },
     {
       title: "Description",
-      dataIndex: "content",
-      key: "content",
+      dataIndex: "description",
+      key: "description",
     },
     {
       title: "Actions",
@@ -98,7 +98,7 @@ function ArticleTabel() {
   const handleEdit = (record) => {
     form.setFieldsValue({
       title: record.title,
-      content: record.content,
+      description: record.description,
     });
     setSelectedArticle(record);
     setEditModalVisible(true);
@@ -108,16 +108,14 @@ function ArticleTabel() {
     try {
       const values = await form.validateFields();
       const formData = new FormData();
-      formData.append("thumbnail", editFile);
+      formData.append("file", editFile);
       for (const key in values) {
         formData.append(key, values[key]);
       }
-      const response = await axios.put(
-        `http://localhost:5000/api/articles/updateArticle/${selectedArticle._id}`,
-        formData
-      );
+      const response = await axios.put(`${BASEURL}/article/${selectedArticle?.id}`, formData);
       if (response.status === 200) {
         setEditModalVisible(false);
+        alert("Article Updated Successfully");
         fetchData();
         form.resetFields();
       }
@@ -128,10 +126,9 @@ function ArticleTabel() {
 
   const handleDelete = async (record) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/api/articles/deleteArticle/${record._id}`
-      );
+      const response = await axios.delete(`${BASEURL}/article/${record?.id}`);
       if (response.status === 200) {
+        alert("Article Deleted Successfully");
         fetchData();
       }
     } catch (error) {
@@ -159,16 +156,14 @@ function ArticleTabel() {
     try {
       const values = await form.validateFields();
       const formData = new FormData();
-      formData.append("thumbnail", file);
+      formData.append("file", file);
       for (const key in values) {
         formData.append(key, values[key]);
       }
-      const response = await axios.post(
-        "http://localhost:5000/api/articles/uploadArticle",
-        formData
-      );
+      const response = await axios.post(`${BASEURL}/article`, formData);
       if (response.status === 200) {
         setAddModalVisible(false);
+        alert("Article Added Successfully");
         fetchData();
         form.resetFields();
       }
@@ -210,7 +205,7 @@ function ArticleTabel() {
             <Form.Item label="Title" name="title" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
-            <Form.Item label="Description" name="content" rules={[{ required: true }]}>
+            <Form.Item label="Description" name="description" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
             <Form.Item
@@ -249,6 +244,5 @@ function ArticleTabel() {
       </div>
     </DashboardLayout>
   );
-}
-
-export default ArticleTabel;
+};
+export default ArticleTable;

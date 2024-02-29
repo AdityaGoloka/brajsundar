@@ -40,7 +40,9 @@ public class BookServiceImpl implements BookService {
 
             // String bookId = generateBookId();
             ObjectId objectId = new ObjectId();
-            String folderPath = "https://brajsundar.s3.amazonaws.com/" + "Images/Book/" + objectId.toHexString() + "/";
+            String folderPath = "Images/Book/" + objectId.toHexString() + "/";
+            // String folderPath = "https://brajsundar.s3.amazonaws.com/" + "Images/Book/" +
+            // objectId.toHexString() + "/";
             String fileName = "thumbnail_1.png";
             String s3Key = folderPath + fileName;
 
@@ -48,12 +50,13 @@ public class BookServiceImpl implements BookService {
             amazonS3.putObject(request);
 
             Books book = new Books(bookName, bookDetail, bookLink, country, preBook, s3Key, objectId);
+            // Books book = new Books(bookName, bookDetail, bookLink, country, preBook,
+            // s3Key, objectId);
             return this.bookRepository.save(book);
         } catch (IOException e) {
             throw new RuntimeException("Failed to process file", e);
         }
     }
-
 
     @Override
     public List<Books> getBook() {
@@ -93,7 +96,11 @@ public class BookServiceImpl implements BookService {
                     ObjectMetadata metadata = new ObjectMetadata();
                     metadata.setContentType(newThumbnail.getContentType());
 
-                    String folderPath = "https://brajsundar.s3.amazonaws.com/" + "Images/Book/" + existingBook.getId().toHexString() + "/";
+                    String folderPath = "Images/Book/"
+                            + existingBook.getId() + "/";
+                    // String folderPath = "https://brajsundar.s3.amazonaws.com/" + "Images/Book/"
+                    // + existingBook.getId() + "/";
+                    // + existingBook.getId().toHexString() + "/";
                     String newFileName = "thumbnail_1.png";
                     String newS3Key = folderPath + newFileName;
 

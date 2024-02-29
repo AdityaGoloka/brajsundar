@@ -4,12 +4,13 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import SignIn from "./layouts/authentication/sign-in";
 import SignUp from "./layouts/authentication/sign-up";
-import Tables from "layouts/tables";
+// import Tables from "layouts/tables";
 import Books from "layouts/books";
 import Reels from "layouts/reels";
 import Videos from "layouts/videos";
 import Reviews from "layouts/reviews";
 import Articles from "layouts/articles";
+import Courses from "layouts/courses";
 import Profile from "layouts/profile";
 import PropTypes from "prop-types"; // Import PropTypes
 
@@ -176,6 +177,7 @@ export default function App() {
         <Route index path="video" element={<Videos />} />
         <Route path="reviews" element={<Reviews />} />
         <Route path="articles" element={<Articles />} />
+        <Route path="courses" element={<Courses />} />
         <Route path="profile" element={<Profile />} />
       </Routes>
       {/* </RequirePath> */}

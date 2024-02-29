@@ -17,8 +17,8 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import axios from "axios";
 import "./index.css";
-import BASEURL from "API";
-const BooksTable = () => {
+import { BASEURL, IMG } from "API";
+function BooksTable() {
   const [booksData, setBooksData] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -35,17 +35,15 @@ const BooksTable = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`${BASEURL}/book`);
-      const data = response.data;
-      console.log(data);
-      setBooksData(data.data);
-      setFilteredBooks(data.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const fetchData = () => {
+    fetch(`${BASEURL}/book`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setBooksData(data);
+        setFilteredBooks(data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
   };
 
   const columns = [
@@ -59,11 +57,7 @@ const BooksTable = () => {
       dataIndex: "bookLink",
       key: "bookLink",
       render: (text) => (
-        <Button
-          type="primary"
-          // style={{ background: "#228B22", color: "white" }}
-          onClick={() => window.open(text, "_blank")}
-        >
+        <Button type="primary" onClick={() => window.open(text, "_blank")}>
           View Book
         </Button>
       ),
@@ -78,7 +72,7 @@ const BooksTable = () => {
       dataIndex: "bookThumbnail",
       key: "bookThumbnail",
       render: (text) => (
-        <img src={text} alt="bookThumbnail" style={{ width: "50px", height: "50px" }} />
+        <img src={`${IMG}${text}`} alt="bookThumbnail" style={{ width: "50px", height: "50px" }} />
       ),
     },
     {
@@ -98,11 +92,7 @@ const BooksTable = () => {
           >
             View
           </Button> */}
-          <Button
-            type="primary"
-            // style={{ background: "lightblue", color: "white" }}
-            onClick={() => handleEdit(record)}
-          >
+          <Button type="primary" onClick={() => handleEdit(record)}>
             Edit
           </Button>
           <Button
@@ -119,14 +109,13 @@ const BooksTable = () => {
 
   const handleView = (record) => {
     // Fetch book details by ID
-    fetch(`http://localhost:5000/api/books/getBooks/${record._id}`)
+    fetch(`${BASEURL}/book/${record._id}`)
       .then((response) => response.json())
       .then((data) => {
-        setSelectedBook(data.data);
-        // console.log(data.data);
+        setSelectedBook(data);
         setModalVisible(true);
       })
-      .catch((error) => console.error("Error fetching book details:", error));
+      .catch((error) => console.error("Error fetching book details: ", error));
   };
   const fileSelected2 = (info) => {
     // console.log(info);
@@ -150,31 +139,29 @@ const BooksTable = () => {
     setAddModalVisible(true);
   };
 
-  const handleEdit = (record) => {
-    // Fetch book details by ID
+  const handleEdit = async (record) => {
+    try {
+      const response = await axios.get(`${BASEURL}/book/${record.id}`);
+      const bookData = response.data;
+      console.log(bookData);
 
-    fetch(`http://localhost:5000/api/books/getBooks/${record._id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const bookData = data.data;
+      form.setFieldsValue({
+        bookName: bookData.bookName,
+        bookLink: bookData.bookLink,
+        bookDetail: bookData.bookDetail,
+        country: bookData.country,
+        preBook: bookData.preBook,
+        bookThumbnail: bookData.bookThumbnail,
+      });
 
-        // Open the add modal with the selected book's data pre-filled for editing
-        form.setFieldsValue({
-          bookName: bookData.bookName,
-          bookLink: bookData.bookLink,
-          bookDetail: bookData.bookDetail,
-          country: bookData.country,
-          preBook: bookData.preBook,
-          bookThumbnail: bookData.thumbnail,
-        });
-
-        // Assuming 'bookThumbnail' is the file field
-        setFile(bookData.bookThumbnail);
-        setSelectedBook(bookData);
-        setEditModalVisible(true);
-      })
-      .catch((error) => console.error("Error fetching book details:", error));
+      setFile(bookData.file);
+      setSelectedBook(bookData);
+      setEditModalVisible(true);
+    } catch (error) {
+      console.error("Error fetching book details:", error);
+    }
   };
+
   const handleEditModalCancel = () => {
     setEditModalVisible(false);
     form.resetFields(); // Reset form fields in the "Edit Book" modal
@@ -193,24 +180,21 @@ const BooksTable = () => {
       const validatedValues = await form.validateFields();
 
       const formData = new FormData();
-      formData.append("bookThumbnail", editFile);
+      formData.append("file", editFile);
       for (const key in validatedValues) {
-        if (key !== "bookThumbnail") {
+        if (key !== "file") {
           formData.append(key, validatedValues[key]);
         }
       }
 
-      const response = await axios.put(
-        `http://localhost:5000/api/books/updateBook/${selectedBook?._id}`,
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
+      const response = await axios.put(`${BASEURL}/book/${selectedBook?.id}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       if (response.status === 200) {
         const data = response.data;
-        // console.log("Book edited successfully:", data.UpdateBook);
+        console.log("Book edited successfully:", data.UpdateBook);
+        alert("Book edited successfully:", data.UpdateBook);
         setEditModalVisible(false);
         fetchData();
         form.resetFields(); // Reset the form fields
@@ -219,27 +203,32 @@ const BooksTable = () => {
       } else {
         console.error("Failed to edit book");
       }
+      fetchData();
     } catch (error) {
       console.error("Error editing book:", error);
     }
   };
-  const handleDelete = (record) => {
-    fetch(`http://localhost:5000/api/books/deleteBook/${record?._id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Failed to delete book with ID ${record._id}`);
-        }
-        fetchData();
-        // console.log(`Book with ID ${record._id} deleted successfully`);
-      })
-      .catch((error) => {
-        console.error("Error deleting book:", error.message);
+  const handleDelete = async (record) => {
+    try {
+      console.log(record?.id);
+
+      const response = await axios.delete(`${BASEURL}/book/${record?.id}`, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
+      console.log(response);
+
+      if (response.status == 200) {
+        alert("Book Deleted Successfully");
+      } else {
+        throw new Error(`Failed to delete book with ID ${record?.id}`);
+      }
+
+      fetchData();
+    } catch (error) {
+      console.error("Error deleting book: ", error.message);
+    }
   };
 
   const fileSelected = (info) => {
@@ -258,27 +247,26 @@ const BooksTable = () => {
       const validatedValues = await form.validateFields();
 
       const formData = new FormData();
-      formData.append("bookThumbnail", file);
+      formData.append("file", file);
 
-      // Append other form values to formData
       for (const key in validatedValues) {
-        if (key !== "bookThumbnail") {
+        if (key !== "file") {
           formData.append(key, validatedValues[key]);
         }
       }
-      // console.log(formData);
-      const response = await axios.post("http://localhost:5000/api/books/uploadBook", formData, {
+      console.log(formData);
+      const response = await axios.post(`${BASEURL}/book`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       if (response.status === 200) {
         const data = response.data;
-        // console.log("Book added successfully:", data.newBook);
+        console.log("Book added successfully:", data);
+        alert("Book Added Successfully");
         setAddModalVisible(false);
         fetchData();
         form.resetFields(); // Reset the form fields
         setFile(null);
-        // You may want to update the booksData state with the new data here
       } else {
         console.error("Failed to add book");
       }
@@ -345,7 +333,7 @@ const BooksTable = () => {
                 <Col xs={24} sm={12}>
                   <div>
                     <h3 className="book-details-title">Prebook:</h3>
-                    <p className="book-details-text">{selectedBook.Book}</p>
+                    <p className="book-details-text">{selectedBook.prebook}</p>
                   </div>
                 </Col>
                 <Col xs={24} sm={12}>
@@ -361,11 +349,13 @@ const BooksTable = () => {
               </Row>
               <div>
                 <h2 className="book-details-title">Book Detail:</h2>
-                <p className="book-details-text">{selectedBook.bookDetail}</p>
+                <p className="book-details-text">{selectedBook.detail}</p>
               </div>
             </div>
           )}
         </Modal>
+
+        {/* Main Book Modal */}
 
         <Modal
           title={selectedBook ? selectedBook.bookName : "Add New Book"}
@@ -410,9 +400,10 @@ const BooksTable = () => {
           </Form>
         </Modal>
 
+        {/* Edit Modal  */}
         <Modal
           title={selectedBook ? selectedBook.bookName : "Edit Book"}
-          visible={editModalVisible}
+          open={editModalVisible}
           onCancel={handleEditModalCancel}
           footer={null}
         >
@@ -452,7 +443,7 @@ const BooksTable = () => {
               )}
             </Form.Item>
             <Button onClick={handleEditFormSubmit} type="primary" htmlType="submit">
-              Add Book
+              Edit Book
             </Button>
           </Form>
         </Modal>
@@ -460,6 +451,6 @@ const BooksTable = () => {
       {/* <Footer /> */}
     </DashboardLayout>
   );
-};
+}
 
 export default BooksTable;

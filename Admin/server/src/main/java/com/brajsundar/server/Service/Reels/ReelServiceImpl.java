@@ -39,7 +39,7 @@ public class ReelServiceImpl implements ReelService {
 
             // String bookId = generateBookId();
             ObjectId objectId = new ObjectId();
-            String folderPath = "https://brajsundar.s3.amazonaws.com/" + "Images/Reel/" + objectId.toHexString() + "/";
+            String folderPath = "Images/Reel/" + objectId.toHexString() + "/";
             String fileName = "thumbnail_1.png";
             String s3Key = folderPath + fileName;
 
@@ -87,8 +87,8 @@ public class ReelServiceImpl implements ReelService {
                     ObjectMetadata metadata = new ObjectMetadata();
                     metadata.setContentType(newThumbnail.getContentType());
 
-                    String folderPath = "https://brajsundar.s3.amazonaws.com/" + "Images/Reel/"
-                            + existingReel.getId().toHexString() + "/";
+                    String folderPath = "Images/Reel/"
+                            + existingReel.getId() + "/";
                     String newFileName = "thumbnail_1.png";
                     String newS3Key = folderPath + newFileName;
 

@@ -32,10 +32,6 @@ public class ArticleController {
     private ArticleService articleService;
 
     // Create Single Article
-    // @PostMapping("/article")
-    // ic ResponseEntity<Article> uploadArticle(@RequestBody Article article) {
-    // return ResponseEntity.ok().body(this.articleService.uploadArticle(article));
-    // }
     @PostMapping("/article")
     public ResponseEntity<Article> uploadArticle(@RequestParam("file") MultipartFile file, String title,
             String description) {
@@ -56,12 +52,6 @@ public class ArticleController {
     }
 
     // Update Article
-    // @PutMapping("/article/{id}")
-    // public ResponseEntity<Article> updateArticle(@PathVariable String id,
-    // @RequestBody Article article) {
-    // article.setId(id);
-    // return ResponseEntity.ok().body(this.articleService.updateArticle(article));
-    // }
     @PutMapping("/article/{id}")
     public ResponseEntity<Article> updateArticle(@PathVariable String id,
             @RequestParam(value = "file", required = false) MultipartFile newThumbnail,

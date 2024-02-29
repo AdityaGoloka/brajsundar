@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
+// import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,17 +19,13 @@ import com.brajsundar.server.Model.Books;
 import com.brajsundar.server.Service.Book.BookService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+// @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 public class BookController {
 
     @Autowired
     private BookService bookService;
 
     // Create Single Book
-    // @PostMapping("/book")
-    // public ResponseEntity<Books> uploadBook(@RequestBody Books books) {
-    // return ResponseEntity.ok().body(this.bookService.uploadBook(books));
-    // }
     @PostMapping("/book")
     public ResponseEntity<Books> uploadBook(@RequestParam("file") MultipartFile file, String bookName,
             String bookDetail, String bookLink, String country, String preBook) {
@@ -40,7 +36,12 @@ public class BookController {
     // Get All Books
     @GetMapping("/book")
     public ResponseEntity<List<Books>> getBook() {
-        return ResponseEntity.ok().body(bookService.getBook());
+        try {
+            List<Books> books = bookService.getBook();
+            return ResponseEntity.ok(books);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // Get Book By id

@@ -30,11 +30,6 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private AmazonS3 amazonS3;
 
-    // @Override
-    // public Article uploadArticle(Article article) {
-    // return this.articleRepository.save(article);
-    // }
-
     @Override
     public Article uploadArticle(MultipartFile file, String title, String description) {
         try {
@@ -43,7 +38,7 @@ public class ArticleServiceImpl implements ArticleService {
 
             ObjectId objectId = new ObjectId();
 
-            String folderPath = "https://brajsundar.s3.amazonaws.com/" + "Images/Article/" + objectId.toHexString()
+            String folderPath = "Images/Article/" + objectId.toHexString()
                     + "/";
             String fileName = "thumbnail_1.png";
             String s3Key = folderPath + fileName;
@@ -69,30 +64,11 @@ public class ArticleServiceImpl implements ArticleService {
         if (Article.isPresent()) {
             return Article.get();
         } else {
-            System.out.println("Record Not Found with IdL " + id);
+            System.out.println("Record Not Found with Id " + id);
         }
         return null;
     }
 
-    // @Override
-    // public Article updateArticle(String id, String title, String description,
-    // MultipartFile file) {
-    // // Optional<Article> Article =
-    // this.articleRepository.findById(article.getId());
-    // Optional<Article> Article = this.articleRepository.findById(id);
-
-    // if (Article.isPresent()) {
-    // Article updatedArticle = Article.get();
-    // updatedArticle.setId(article.getId());
-    // updatedArticle.setTitle(article.getTitle());
-    // updatedArticle.setDescription(article.getDescription());
-    // articleRepository.save(updatedArticle);
-    // return updatedArticle;
-    // } else {
-    // System.out.println("Record Not found with id: " + article.getId());
-    // }
-    // return article;
-    // }
     @Override
     public Article updateArticle(String id, String title, String description, MultipartFile newThumbnail) {
         Optional<Article> articleOptional = this.articleRepository.findById(id);
@@ -112,8 +88,8 @@ public class ArticleServiceImpl implements ArticleService {
                     ObjectMetadata metadata = new ObjectMetadata();
                     metadata.setContentType(newThumbnail.getContentType());
 
-                    String folderPath = "https://brajsundar.s3.amazonaws.com/" + "Images/Article/"
-                            + existingArticle.getId().toHexString() + "/";
+                    String folderPath = "Images/Article/"
+                            + existingArticle.getId() + "/";
                     String newFileName = "thumbnail_1.png";
                     String newS3Key = folderPath + newFileName;
 
